@@ -5,16 +5,17 @@
 - **Entrance**: Opening balance circulation (not invented transaction)
 - **Central corridor**: Bank/cash circulation route
 - **Branch corridors**: Public circulation halls (horizontal/vertical), NOT accounting edges
-- **Wings**: Income, expense, asset-liability sections
-- **Rooms**: Near-square (min 80x80mm), non-overlapping polygons, areas proportional to amounts
+- **Wings**: Separate asset, liability, income and expense branches
+- **Rooms**: Non-overlapping leaf rectangles, depth 90 plan units and minimum width 60; 1 plan unit = 50 mm
 
 ## Geometry Algorithm
 - Deterministic layout from evidence graph
-- Corridor branch spines place rooms along multiple halls
+- Compute room widths before placing a dynamic central spine and four touching branch halls. Leaf width = max(60, round(max(5400, 0.005 × gross cents) / 90)); height = 90.
+- Bank circulation is an explicitly labelled area exception, not an account-value-sized rectangle.
 - Rooms placed only where doors coincide with wall gaps
 - Door graph independent from accounting graph
 - Each room supported iff evidence reachable via actual doors
-- Unsupported graph edges explicit limitations (never ignored)
+- Non-bank graph edges without a direct room-to-room door are listed as routed-via-bank limitations; the fixture has one such edge (EV-C2). This is not a general exact adjacency solver.
 - Wall gaps exact same in SVG and DXF
 
 ## Account Metadata (from journal.csv memos or fiction)
@@ -31,7 +32,7 @@
 
 ## Input Schema (journal.csv)
 - Quoted CSV, 7 columns:
-  `transaction, date, account, debit_cents, credit_cents, evidence, memo`
+  `transaction,date,account,debit_cents,credit_cents,evidence,memo`
 - `transaction`: string ID (e.g. "J0001"), repeated exactly twice per balanced posting
 - `date`: YYYY-MM-DD (strict ISO round-trip, rejects phantoms like 2026-02-30)
 - `account`: 4-digit string in ranges 1xxx/2xxx/4xxx/5xxx
@@ -54,7 +55,7 @@
 
 ## UI Components
 - Drag & drop CSV import
-- Room click shows exact rows and mismatch explanation
+- Room click shows all source transactions and missing-reference reasons. Counterparty mismatch detection is not implemented because the seven-column source has no counterparty fields.
 - Audit trail dot follows door routes only
 - Anti-XSS for DOM text
 

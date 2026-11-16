@@ -28,15 +28,15 @@ scripts/          # Build and development scripts
 ### Core Modules (src/)
 
 - **geometry.js**: Deterministic room layout algorithms
-- **validator.js**: CSV parsing and validation
+- **data.js**: CSV parsing, validation and evidence graph
 - **renderer.js**: SVG generation and styling
 - **auditor.js**: Pathfinding and audit trail visualization
-- **dxfer.js**: DXF output generation
+- **dxf.js**: Shared wall segments and DXF output generation
 - **main.js**: Application entry point
 
 ### Data Files
 
-- **fixture.json**: Structural layout definition
+- **fixture.json**: Fictional transactions, journal entries and seeded cases; not geometry
 - **journal.csv**: Accounting transactions (fictional)
 - **samples/**: Additional sample CSV files
 
@@ -102,7 +102,7 @@ scripts/          # Build and development scripts
 ## Performance
 
 - **In-Memory**: All processing in memory
-- **No Async I/O**: Synchronous file operations for simplicity
+- **Local I/O**: Browser sample loading and file imports are asynchronous; pure geometry and graph calculations are synchronous
 - **Deterministic**: Same input always produces same output
 
 ## Browser Compatibility

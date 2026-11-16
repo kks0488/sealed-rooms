@@ -18,17 +18,17 @@ An offline accounting evidence floorplan visualizer for fictional data. Maps acc
 
 `journal.csv` (7 columns):
 ```
-transaction, date, account, debit_cents, credit_cents, evidence, memo
+transaction,date,account,debit_cents,credit_cents,evidence,memo
 ```
 
 - **transaction**: J0001–J0194 (unique, repeated exactly 2 times per ID for balanced debit/credit)
 - **date**: ISO 8601 (2026-09-01 to 2026-11-27)
 - **account**: 1xxx (assets), 2xxx (liabilities), 4xxx (income), 5xxx (expense), or 1000 (bank)
 - **debit_cents/credit_cents**: Integer cents (no decimals)
-- **evidence**: Document reference (e.g., INV-001) or empty for unmapped transactions
+- **evidence**: Document reference or empty when no reference was supplied
 - **memo**: Description
 
-**Totals**: 194 unique transactions, 388 data rows + 1 header row (some with embedded newlines), balanced
+**Totals**: 194 unique transactions, 388 data rows + 1 header row, balanced. The parser also supports quoted commas and embedded newlines.
 
 ### Accounts (24)
 
@@ -83,7 +83,7 @@ Runs Node.js built-in test runner (143 tests):
 bash scripts/verify.sh
 ```
 
-Browser verification (23 checks) via Playwright/Chromium. Requires Chrome/Chromium environment.
+Browser verification uses an existing Playwright installation and standalone Chromium. This workspace reuses the installed Playwright package for testing only; no prototype application code is imported. Other machines can set `SEALED_PLAYWRIGHT` to a module file URL and `SEALED_CHROMIUM` to their existing browser executable.
 
 ## Features
 
@@ -145,15 +145,16 @@ journal.csv → parseCSV → balance check → evidence BFS
 ## Known Limitations
 
 1. **Topology**: One account pair (1010↔1020) must route via bank circulation—no direct room-to-room door due to layout constraints.
+   The layout preserves bank-rooted evidence reachability and lists non-bank connections as routed limitations; it is not a general exact account-adjacency floorplan solver. Bank circulation space is excluded from the room-value area rule.
 2. **Minimum area**: All rooms ≥60×90 units; very small accounts are floor-sized.
 3. **Evidence validation**: Bank statement window validation is synthetic; no real banking data.
 4. **Offline only**: No external requests; bank windows and window data are generated fixtures.
 
-## Design & Concept
+## Prior work
 
 Prior external work exists for design concepts and overall architecture. This implementation:
-- **Copied data**: fixture.json and journal.csv sourced externally
-- **Kiro implementation**: All application logic—geometry engine, DXF export, SVG renderer, auditor, test suite
+- **Copied data**: Only fixture.json and journal.csv were copied from the prior non-Kiro proof. No application source code from `../proto` was copied.
+- **Kiro implementation**: Initial application logic, steering/specs, tests and hook setup were written through Kiro CLI 3.3.0, then reviewed and corrected as disclosed below.
 - **Externally supplied**: Overall concept and non-Kiro prototype
 - **Supervisor corrections**: Codex supervisor reviewed and corrected index.html, src/main.js, src/renderer.js, src/style.css, src/dxf.js; authored .gitignore, scripts/capture.mjs, scripts/verify.sh (see artifacts/provenance.json for exact line counts)
 

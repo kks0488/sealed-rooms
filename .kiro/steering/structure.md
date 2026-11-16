@@ -6,16 +6,16 @@
 
 ├── src/                     # Source code
 │   ├── geometry.js         # Room layout algorithms
-│   ├── validator.js        # CSV validation
+│   ├── data.js             # CSV validation and evidence graph
 │   ├── renderer.js         # SVG rendering
 │   ├── auditor.js          # Audit path visualization
-│   ├── dxfer.js            # DXF export
+│   ├── dxf.js              # Shared walls and DXF export
 │   └── main.js             # Application entry
 ├── test/                    # Test files
 │   ├── geometry.test.js
-│   ├── validator.test.js
-│   ├── renderer.test.js
-│   └── integration.test.js
+│   ├── data.test.js
+│   ├── auditor.test.js
+│   └── dxf.test.js
 ├── scripts/                 # Build and dev tools
 │   ├── server.js           # Local dev server
 │   └── build.js            # Production build script
@@ -27,11 +27,10 @@
 │   ├── specs/              # Detailed specifications
 │   │   └── sealed-rooms/   # Sealed Rooms specific specs
 │   └── hooks/              # Kiro event hooks
-├── fixture.json             # Building structure definition
+├── fixture.json             # Fictional transactions, entries and cases
 ├── journal.csv              # Accounting transactions
 ├── samples/                 # Sample CSV files
-│   ├── sample1.csv
-│   └── sample2.csv
+│   └── sample-repaired.csv  # Original sample is root journal.csv
 ├── dist/                    # Build output (created by build script)
 ├── README.md                # Project overview
 └── package.json             # Project metadata (scripts, name)
@@ -92,14 +91,15 @@
 ```
 dist/
 ├── index.html             # Main HTML file
-├── sealed.js              # Bundled application
-├── style.css              # Inline CSS (or imported)
-└── assets/                # Any embedded assets
+├── src/                   # Native ES modules and style.css
+├── journal.csv
+├── bank-statement.json
+└── samples/
 ```
 
 ## Naming Conventions
 
-- **Files**: camelCase (geometry.js, validator.js)
+- **Files**: camelCase (geometry.js, data.js)
 - **Modules**: ES module exports
 - **Tests**: source.test.js naming
 - **Functions**: camelCase, descriptive names
