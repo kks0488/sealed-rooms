@@ -13,7 +13,7 @@ Sealed Rooms is an English offline accounting evidence floorplan visualizer for 
 
 ## Data Model
 
-- **Fixture**: `fixture.json` - structural elements (walls, doors, rooms, dimensions)
+- **Fixture**: `fixture.json` - transaction/entry/case data (NOT geometry)
 - **Journal**: `journal.csv` - accounting transactions and balances
 - **Evidence Graph**: Mathematical relationships preserved in spatial layout
 
