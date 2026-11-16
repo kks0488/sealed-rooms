@@ -1,6 +1,6 @@
 # Sealed Rooms - Tasks
 
-1. - [ ] Data/validation: CSV parsing, integer cents, unique IDs, UTC dates, account lookup, balanced tx groups, error handling, preserve plan on error, fixture.json structure
+1. - [x] Data/validation: CSV parsing, integer cents, unique IDs, UTC dates, account lookup, balanced tx groups, error handling, preserve plan on error, fixture.json structure
 
 2. - [ ] Architecture geometry+DXF: Corridor branch spines, room placement with aspect ratio, wall gaps matching SVG/DXF, door graph independent from accounting graph, unsupported room tracking, evidence reachability analysis, 1440x900 layout, room areas proportional to amounts
 

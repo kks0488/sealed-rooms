@@ -30,10 +30,16 @@
 - No fabricated mismatch facts
 
 ## Input Schema (journal.csv)
-- Quoted CSV format
-- Columns: id (unique, safe integer), date (UTC), account_id, debit, credit, memo, counterparty (optional)
-- All amounts in integer cents
-- Exact date format: YYYY-MM-DDTHH:mm:ssZ
+- Quoted CSV, 7 columns:
+  `transaction, date, account, debit_cents, credit_cents, evidence, memo`
+- `transaction`: string ID (e.g. "J0001"), repeated exactly twice per balanced posting
+- `date`: YYYY-MM-DD (strict ISO round-trip, rejects phantoms like 2026-02-30)
+- `account`: 4-digit string in ranges 1xxx/2xxx/4xxx/5xxx
+- `debit_cents` / `credit_cents`: `/^\d+$/`, Number.isSafeInteger, exactly one non-zero per row
+- `evidence`: reference string or empty; empty → transaction excluded from evidence graph
+- `memo`: non-empty string; must agree across the two rows of a group
+- `from` = account of the CREDIT row (money source); `to` = account of the DEBIT row
+- `bankMatched`: false by default; never inferred from bank participation
 
 ## SVG Rendering
 - Midnight navy/chalk white palette
