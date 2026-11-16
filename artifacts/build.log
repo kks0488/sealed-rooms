@@ -1,0 +1,11 @@
+
+> sealed-rooms@1.0.0 build
+> node scripts/build.js
+
+Building Sealed Rooms...
+✓ Copied index.html
+✓ Copied journal.csv
+✓ Copied bank-statement.json
+✓ Copied src/
+✓ Copied samples/
+Build complete! Output: dist

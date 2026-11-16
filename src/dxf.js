@@ -287,10 +287,10 @@ export function buildDXF(layout) {
     entities.push(lineEntity('WALL', seg.x1, seg.y1, seg.x2, seg.y2));
   }
 
-  // DOOR: gap LINE + swing arc (north-facing door: hinge at gap left, arc 90°→180°)
+  // DOOR: gap LINE + quarter-circle swing, identical to the SVG coordinates.
   for (const door of doors) {
     entities.push(lineEntity('DOOR', door.gapX1, door.gapY1, door.gapX2, door.gapY2));
-    entities.push(arcEntity('DOOR', door.arcCX, door.arcCY, door.arcR, 90, 180));
+    entities.push(arcEntity('DOOR', door.arcCX, door.arcCY, door.arcR, 0, 90));
   }
 
   // ROOM_NAME: text at room centre

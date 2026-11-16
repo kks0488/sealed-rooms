@@ -80,6 +80,7 @@ async function init() {
     // Build layout and apply bank statements
     currentLayout = buildLayout(currentTransactions);
     currentLayout = applyBankStatements(currentLayout, currentBankStatement, currentTransactions);
+    cancelAudit();
 
     // Enable export buttons
     elements.exportDxfBtn.disabled = false;
@@ -124,6 +125,8 @@ async function init() {
  */
 function renderLayout() {
   if (!currentLayout) return;
+  document.querySelector('.main-content').classList.toggle('has-selection', Boolean(selectedRoomId));
+  updateMetrics();
 
   // Render floorplan (SVG fully redrawn; dot position set afterwards)
   const svg = renderFloorplan(currentLayout, selectedRoomId, onRoomSelect, auditState);
@@ -153,7 +156,7 @@ function updateRoomDetails() {
     return;
   }
 
-  const room = currentLayout.rooms.find(r => r.id === selectedRoomId);
+  const room = selectedAccount();
   if (!room) {
     const p = document.createElement('p');
     p.textContent = 'Room not found';
@@ -175,7 +178,7 @@ function updateRoomDetails() {
 
   const statusEl = document.createElement('p');
   statusEl.innerHTML = '<strong>Status:</strong> ';
-  statusEl.appendChild(createTextNode(room.sealed ? 'SEALED (unmapped)' : 'Mapped'));
+  statusEl.appendChild(createTextNode(room.sealed ? 'SEALED — no evidence route' : 'Connected by evidence'));
   div.appendChild(statusEl);
 
   const accountEl = document.createElement('p');
@@ -200,7 +203,7 @@ function updateTransactionList() {
     return;
   }
 
-  const room = currentLayout.rooms.find(r => r.id === selectedRoomId);
+  const room = selectedAccount();
   if (!room) {
     const p = document.createElement('p');
     p.textContent = 'Room not found';
@@ -236,6 +239,12 @@ function updateTransactionList() {
     dateEl.className = 'transaction-date';
     dateEl.textContent = tx.date;
     txDiv.appendChild(dateEl);
+    const evidenceEl = document.createElement('div');
+    evidenceEl.textContent = tx.evidence ? `Reference: ${tx.evidence}` : 'Reference: missing';
+    txDiv.appendChild(evidenceEl);
+    const memoEl = document.createElement('div');
+    memoEl.textContent = tx.memo;
+    txDiv.appendChild(memoEl);
 
     if (!tx.evidence) {
       const noEvidenceEl = document.createElement('div');
@@ -255,15 +264,16 @@ function updateTransactionList() {
  */
 function updateAuditorInfo() {
   const info = elements.auditorInfo;
+  info.dataset.state = auditState.state;
   info.innerHTML = '';
 
   if (auditState.state === 'idle') {
     const p = document.createElement('p');
-    p.textContent = 'Click "Start Walkthrough" to begin auditor path animation';
+    p.textContent = 'Follow the evidence from the entrance. Closed rooms remain unvisited.';
     info.appendChild(p);
   } else if (auditState.state === 'walking') {
     const p = document.createElement('p');
-    p.textContent = `Walking: waypoint ${auditState.currentWaypoint + 1} of ${auditState.walk.waypoints.length}`;
+    p.textContent = 'Auditor walking through documented doors…';
     info.appendChild(p);
   } else if (auditState.state === 'complete') {
     const div = document.createElement('div');
@@ -286,6 +296,7 @@ function updateAuditorInfo() {
  * Handle room selection from viewport
  */
 function onRoomSelect(roomId) {
+  cancelAudit();
   selectedRoomId = roomId;
   elements.roomSelect.value = roomId;
   renderLayout();
@@ -377,7 +388,7 @@ function processCSVText(csvText) {
   selectedRoomId = null;
   elements.roomSelect.value = '';
   elements.auditorToggle.disabled = false;
-  elements.auditorToggle.textContent = 'Start Walkthrough';
+  elements.auditorToggle.textContent = 'Run auditor';
 
   // Update room dropdown
   elements.roomSelect.innerHTML = '<option value="">-- All Rooms --</option>';
@@ -405,6 +416,9 @@ function cancelAudit() {
   auditState.walk = null;
   auditState.dist = 0;
   auditState.prevTs = null;
+  elements.auditorToggle.textContent = 'Run auditor';
+  elements.auditorToggle.disabled = !currentLayout;
+  elements.auditorReset.disabled = !currentLayout;
   // Set dot to entrance center
   if (currentLayout) {
     const entrance = currentLayout.corridors.find(c => c.id === 'ENTRANCE');
@@ -429,7 +443,7 @@ function handleAuditorToggle() {
   elements.auditorToggle.textContent = 'Walking…';
   elements.auditorToggle.disabled = true;
 
-  updateAuditorInfo();
+  renderLayout();
   startAuditorRAF();
 }
 
@@ -438,7 +452,7 @@ function handleAuditorToggle() {
  */
 function handleAuditorReset() {
   cancelAudit();
-  elements.auditorToggle.textContent = 'Start Walkthrough';
+  elements.auditorToggle.textContent = 'Run auditor';
   elements.auditorToggle.disabled = !currentLayout;
   updateDotOnly();
   updateAuditorInfo();
@@ -520,7 +534,7 @@ function startAuditorRAF() {
 
 function finishAudit() {
   auditState.state = 'complete';
-  elements.auditorToggle.textContent = 'Start Walkthrough';
+  elements.auditorToggle.textContent = 'Run auditor';
   elements.auditorToggle.disabled = false;
   updateDotOnly();
   updateAuditorInfo();
@@ -545,8 +559,39 @@ function updateDotOnly() {
  * Handle room selection from dropdown
  */
 function handleRoomSelect(e) {
+  cancelAudit();
   selectedRoomId = e.target.value || null;
   renderLayout();
+}
+
+function selectedAccount() {
+  if (selectedRoomId === '1000') {
+    return { id: '1000', account: '1000', label: '1000 Operating bank', sealed: false,
+      cents: currentTransactions.filter(t => t.from === '1000' || t.to === '1000')
+        .reduce((sum, t) => sum + t.cents, 0) };
+  }
+  return currentLayout.rooms.find(r => r.id === selectedRoomId);
+}
+
+function updateMetrics() {
+  const accounts = new Set(currentTransactions.flatMap(t => [t.from, t.to]));
+  const sealed = currentLayout.rooms.filter(r => r.sealed);
+  const amount = sealed.reduce((sum, r) => sum + r.cents, 0);
+  const values = [
+    [currentTransactions.length, 'TRANSACTIONS'], [currentTransactions.length * 2, 'JOURNAL LINES'],
+    [accounts.size, 'ACCOUNTS'], [currentLayout.reachableRooms.size + 1, 'CONNECTED'],
+    [sealed.length, 'SEALED ROOMS'],
+    [new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(amount / 100), 'IN SEALED ROOMS'],
+  ];
+  const metrics = document.getElementById('metrics');
+  metrics.replaceChildren(...values.map(([value, label]) => {
+    const card = document.createElement('div');
+    const strong = document.createElement('strong'); strong.textContent = String(value);
+    const small = document.createElement('span'); small.textContent = label;
+    card.append(strong, small); return card;
+  }));
+  document.getElementById('layout-note').textContent =
+    `Bank space shows circulation, not value. ${currentLayout.unplacedConnections.length} documented connection(s) routed via bank. Drop a fictional journal CSV to redraw.`;
 }
 
 /**

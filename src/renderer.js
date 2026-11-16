@@ -65,6 +65,11 @@ export function renderFloorplan(layout, selectedId = null, onSelect = null, audi
       stroke: 'none',
       opacity: '0.08',
     });
+    if (corridor.account === '1000' && onSelect) {
+      rect.setAttribute('data-account-id', '1000');
+      rect.style.cursor = 'pointer';
+      rect.addEventListener('click', () => onSelect('1000'));
+    }
     g.appendChild(rect);
   }
 
@@ -116,8 +121,7 @@ export function renderFloorplan(layout, selectedId = null, onSelect = null, audi
   // Dimensions and scale
   renderDimensions(g, bounds, metadata);
 
-  // Metrics display
-  renderMetrics(g, layout, auditState, bounds);
+  renderAnnotations(g, layout);
 
   svg.appendChild(g);
   return svg;
@@ -185,21 +189,6 @@ function renderRoom(g, room, selectedId, onSelect) {
   });
   group.appendChild(rect);
 
-  // Teal accent border for selectable rooms
-  if (!sealed) {
-    const borderRect = svgElement('rect', {
-      x: String(x),
-      y: String(y),
-      width: String(w),
-      height: String(h),
-      fill: 'none',
-      stroke: TEAL,
-      'stroke-width': '1',
-      opacity: '0.3',
-    });
-    group.appendChild(borderRect);
-  }
-
   // Selection highlight
   if (id === selectedId) {
     const highlight = svgElement('rect', {
@@ -216,8 +205,8 @@ function renderRoom(g, room, selectedId, onSelect) {
 
   // Room label (wrapped, with account ID separate)
   const labelGroup = svgElement('g');
-  const lines = wrapText(label, w - 6);
-  let yOffset = y + 12;
+  const lines = wrapText(label.replace(/^\d+\s*/, ''), w - 6);
+  let yOffset = y + 24;
   for (const line of lines) {
     const text = svgElement('text', {
       x: String(x + w / 2),
@@ -235,7 +224,7 @@ function renderRoom(g, room, selectedId, onSelect) {
   // Account ID below label
   const accountText = svgElement('text', {
     x: String(x + w / 2),
-    y: String(yOffset + 2),
+    y: String(y + 11),
     'text-anchor': 'middle',
     'font-size': '8',
     'font-weight': '400',
@@ -257,7 +246,7 @@ function renderRoom(g, room, selectedId, onSelect) {
       fill: '#ffdd44',
       'font-weight': '700',
     });
-    amountText.textContent = `$${(cents / 100).toFixed(0)}`;
+    amountText.textContent = `$${(cents / 100).toLocaleString('en-US', { maximumFractionDigits: 0 })}`;
     group.appendChild(amountText);
   }
 
@@ -280,6 +269,8 @@ function renderRoom(g, room, selectedId, onSelect) {
  */
 function renderDoor(g, door) {
   const { arcCX, arcCY, arcR, gapX1, gapY1, gapX2, gapY2 } = door;
+  g.appendChild(svgElement('line', { x1: arcCX, y1: arcCY, x2: arcCX, y2: arcCY + arcR,
+    stroke: TEAL, 'stroke-width': 1.1 }));
 
   // Door swing arc (teal dashed)
   if (arcR && arcR > 0) {
@@ -299,9 +290,33 @@ function renderDoor(g, door) {
  * Generate door swing arc SVG path
  */
 function doorArcPath(x1, y1, x2, y2, cx, cy, r) {
-  const largeArc = Math.abs(r) > Math.hypot(x2 - x1, y2 - y1) / 2 ? 1 : 0;
-  const sweepFlag = 1;
-  return `M ${x1} ${y1} A ${r} ${r} 0 ${largeArc} ${sweepFlag} ${x2} ${y2}`;
+  return `M ${cx + r} ${cy} A ${r} ${r} 0 0 1 ${cx} ${cy + r}`;
+}
+
+function renderAnnotations(g, layout) {
+  const text = (x, y, label, size = 11, extra = {}) => {
+    const el = svgElement('text', { x, y, fill: CHALK, 'font-size': size,
+      'font-family': 'monospace', 'letter-spacing': 1.3, 'pointer-events': 'none', ...extra });
+    el.textContent = label; g.appendChild(el);
+  };
+  for (const [id, label] of [['HALL_W1', 'ASSET WING'], ['HALL_W2', 'LIABILITY WING'],
+    ['HALL_E1', 'INCOME WING'], ['HALL_E2', 'EXPENSE WING']]) {
+    const hall = layout.corridors.find(c => c.id === id);
+    if (hall) text(hall.x + 4, hall.y - 13, label);
+  }
+  const bank = layout.corridors.find(c => c.id === 'CORR_SPINE');
+  if (bank) {
+    const x = bank.x + bank.w / 2, y = bank.y + bank.h / 2;
+    text(x, y, '1000 / OPERATING BANK', 10,
+      { transform: `rotate(-90 ${x} ${y})`, 'text-anchor': 'middle' });
+  }
+  const entry = layout.corridors.find(c => c.id === 'ENTRANCE');
+  if (entry) {
+    text(entry.x + 22, entry.y + 32, 'OPENING BALANCES', 13);
+    text(entry.x + 22, entry.y + 49, 'ENTRANCE / AUDIT START', 9, { opacity: .65 });
+  }
+  text(layout.bounds.x + layout.bounds.w - 10, layout.bounds.y + 6, 'N ↑', 12,
+    { 'text-anchor': 'end' });
 }
 
 /**

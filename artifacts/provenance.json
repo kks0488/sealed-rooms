@@ -1,0 +1,66 @@
+{
+  "rawKiroCommit": "fcbef3beaae3c85f88b77fcb10389a4090840223",
+  "reusedData": [
+    "fixture.json",
+    "journal.csv"
+  ],
+  "sourceCodeCopiedFromProto": false,
+  "supervisorChanges": [
+    {
+      "file": "index.html",
+      "initialAuthor": "Kiro",
+      "supervisorAdded": 9,
+      "supervisorDeleted": 10
+    },
+    {
+      "file": "src/dxf.js",
+      "initialAuthor": "Kiro",
+      "supervisorAdded": 2,
+      "supervisorDeleted": 2
+    },
+    {
+      "file": "src/main.js",
+      "initialAuthor": "Kiro",
+      "supervisorAdded": 54,
+      "supervisorDeleted": 9
+    },
+    {
+      "file": "src/renderer.js",
+      "initialAuthor": "Kiro",
+      "supervisorAdded": 39,
+      "supervisorDeleted": 24
+    },
+    {
+      "file": "src/style.css",
+      "initialAuthor": "Kiro",
+      "supervisorAdded": 18,
+      "supervisorDeleted": 0
+    },
+    {
+      "file": ".gitignore",
+      "initialAuthor": "Codex supervisor",
+      "supervisorAdded": 2,
+      "supervisorDeleted": 0
+    },
+    {
+      "file": "scripts/capture.mjs",
+      "initialAuthor": "Codex supervisor",
+      "supervisorAdded": 148,
+      "supervisorDeleted": 0
+    },
+    {
+      "file": "scripts/verify.sh",
+      "initialAuthor": "Codex supervisor",
+      "supervisorAdded": 12,
+      "supervisorDeleted": 0
+    }
+  ],
+  "unitTests": {
+    "pass": 143,
+    "total": 143
+  },
+  "browserChecks": {
+    "pass": 23,
+    "total": 23
+  }
+}

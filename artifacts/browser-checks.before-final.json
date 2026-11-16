@@ -1,0 +1,107 @@
+[
+  {
+    "name": "23 leaf rooms plus bank = 24 accounts",
+    "pass": true
+  },
+  {
+    "name": "original ledger totals",
+    "pass": true,
+    "detail": [
+      "194",
+      "388",
+      "24",
+      "21",
+      "3",
+      "$27,600"
+    ]
+  },
+  {
+    "name": "auditor exists at entrance before running",
+    "pass": true
+  },
+  {
+    "name": "night paper",
+    "pass": true
+  },
+  {
+    "name": "entrance, bank and wings labelled",
+    "pass": true
+  },
+  {
+    "name": "entire plan fits 1440x900",
+    "pass": true
+  },
+  {
+    "name": "no page overflow",
+    "pass": true
+  },
+  {
+    "name": "auditor visibly moves on accessible floor without jumping",
+    "pass": true
+  },
+  {
+    "name": "original completion 3 / $27,600",
+    "pass": true
+  },
+  {
+    "name": "sealed room explains exact missing transaction",
+    "pass": true
+  },
+  {
+    "name": "room selection cancels and resets auditor",
+    "pass": true
+  },
+  {
+    "name": "room keyboard activation",
+    "pass": true
+  },
+  {
+    "name": "bank corridor opens its source transactions",
+    "pass": true
+  },
+  {
+    "name": "actual DXF download uses millimetres and required layers",
+    "pass": true
+  },
+  {
+    "name": "selection invalidates old animation callbacks",
+    "pass": true
+  },
+  {
+    "name": "sample import cancels old tour and opens all accounts",
+    "pass": true
+  },
+  {
+    "name": "reduced motion and repaired completion 0 / $0",
+    "pass": true
+  },
+  {
+    "name": "drag/drop reconstructs original plan",
+    "pass": true
+  },
+  {
+    "name": "new CSV amounts change actual room geometry",
+    "pass": true
+  },
+  {
+    "name": "invalid import preserves last valid plan",
+    "pass": true
+  },
+  {
+    "name": "CSV text cannot inject HTML",
+    "pass": true
+  },
+  {
+    "name": "no outside requests",
+    "pass": true,
+    "detail": []
+  },
+  {
+    "name": "no browser or HTTP errors",
+    "pass": true,
+    "detail": {
+      "errors": [],
+      "httpFailures": []
+    }
+  }
+]

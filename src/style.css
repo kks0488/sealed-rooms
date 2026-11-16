@@ -35,6 +35,24 @@ html, body {
   height: 100%;
 }
 
+.eyebrow { color: #8ba3af; font: 10px monospace; letter-spacing: 2.5px; margin-bottom: 5px; }
+.import-button { border: 1px solid #55717f; border-radius: 3px; padding: 7px 12px; cursor: pointer; }
+[hidden] { display: none !important; }
+.metrics { display: grid; grid-template-columns: repeat(6, 1fr); padding: 15px 28px 12px;
+  background: #101e2c; border-bottom: 1px solid #294151; gap: 20px; }
+.metrics strong { display: block; font: 25px monospace; color: #e4e9dd; }
+.metrics span { display: block; font: 9px monospace; letter-spacing: 1.4px; color: #9cb1bd; margin-top: 5px; }
+.metrics > div:nth-last-child(-n+2) strong { color: #e0aa8e; }
+.layout-note { padding: 8px 28px; font: 10px monospace; color: #a0b2be; background: #0b1526; }
+.main-content:not(.has-selection) .sidebar { display: none; }
+.has-selection .sidebar { display: block; width: 320px; min-width: 320px; }
+.tour-status { flex-shrink: 0; padding: 12px 28px; color: #bdd1cc; border-top: 1px solid #294151; font: 12px monospace; }
+.tour-status > div { display: flex; gap: 25px; align-items: center; }
+.tour-status[data-state="walking"] { color: #8ad7cc; }
+.transaction-row { line-height: 1.6; overflow-wrap: anywhere; }
+.transaction-row-label { font-size: 12px; }
+.room-group:focus { outline: none; filter: brightness(1.6); }
+
 header {
   padding: 16px 24px;
   background: linear-gradient(135deg, var(--navy) 0%, #0f1f2e 100%);
