@@ -1,0 +1,5308 @@
+{
+  "transactions": [
+    {
+      "id": "J0001",
+      "date": "2026-09-01",
+      "from": "1000",
+      "to": "1010",
+      "cents": 18000,
+      "evidence": "EV-0001",
+      "memo": "Scheduled posting / Petty cash"
+    },
+    {
+      "id": "J0002",
+      "date": "2026-09-01",
+      "from": "1000",
+      "to": "1020",
+      "cents": 25919,
+      "evidence": "EV-0002",
+      "memo": "Scheduled posting / Transfer clearing"
+    },
+    {
+      "id": "J0003",
+      "date": "2026-09-02",
+      "from": "1000",
+      "to": "1030",
+      "cents": 33838,
+      "evidence": "EV-0003",
+      "memo": "Scheduled posting / Inventory"
+    },
+    {
+      "id": "J0004",
+      "date": "2026-09-02",
+      "from": "1000",
+      "to": "1040",
+      "cents": 41757,
+      "evidence": "EV-0004",
+      "memo": "Scheduled posting / Receivables"
+    },
+    {
+      "id": "J0005",
+      "date": "2026-09-03",
+      "from": "1000",
+      "to": "1050",
+      "cents": 49676,
+      "evidence": "EV-0005",
+      "memo": "Scheduled posting / Equipment"
+    },
+    {
+      "id": "J0006",
+      "date": "2026-09-03",
+      "from": "1000",
+      "to": "1060",
+      "cents": 57595,
+      "evidence": "EV-0006",
+      "memo": "Scheduled posting / Prepaid rent"
+    },
+    {
+      "id": "J0007",
+      "date": "2026-09-04",
+      "from": "2000",
+      "to": "1000",
+      "cents": 65514,
+      "evidence": "EV-0007",
+      "memo": "Scheduled posting / Trade payables"
+    },
+    {
+      "id": "J0008",
+      "date": "2026-09-04",
+      "from": "1000",
+      "to": "2010",
+      "cents": 73433,
+      "evidence": "EV-0008",
+      "memo": "Scheduled posting / Sales tax"
+    },
+    {
+      "id": "J0009",
+      "date": "2026-09-05",
+      "from": "1000",
+      "to": "2020",
+      "cents": 81352,
+      "evidence": "EV-0009",
+      "memo": "Scheduled posting / Bridge loan"
+    },
+    {
+      "id": "J0010",
+      "date": "2026-09-05",
+      "from": "2030",
+      "to": "1000",
+      "cents": 89271,
+      "evidence": "EV-0010",
+      "memo": "Scheduled posting / Gift cards"
+    },
+    {
+      "id": "J0011",
+      "date": "2026-09-06",
+      "from": "1000",
+      "to": "2040",
+      "cents": 97190,
+      "evidence": "EV-0011",
+      "memo": "Scheduled posting / Customer deposits"
+    },
+    {
+      "id": "J0012",
+      "date": "2026-09-06",
+      "from": "4000",
+      "to": "1000",
+      "cents": 105109,
+      "evidence": "EV-0012",
+      "memo": "Daily settlement / Shop sales"
+    },
+    {
+      "id": "J0013",
+      "date": "2026-09-07",
+      "from": "4010",
+      "to": "1000",
+      "cents": 113028,
+      "evidence": "EV-0013",
+      "memo": "Daily settlement / Online sales"
+    },
+    {
+      "id": "J0014",
+      "date": "2026-09-07",
+      "from": "4020",
+      "to": "1000",
+      "cents": 120947,
+      "evidence": "EV-0014",
+      "memo": "Daily settlement / Workshop income"
+    },
+    {
+      "id": "J0015",
+      "date": "2026-09-08",
+      "from": "4030",
+      "to": "1000",
+      "cents": 128866,
+      "evidence": "EV-0015",
+      "memo": "Daily settlement / Other income"
+    },
+    {
+      "id": "J0016",
+      "date": "2026-09-08",
+      "from": "1000",
+      "to": "5000",
+      "cents": 136785,
+      "evidence": "EV-0016",
+      "memo": "Scheduled posting / Rent"
+    },
+    {
+      "id": "J0017",
+      "date": "2026-09-09",
+      "from": "1000",
+      "to": "5010",
+      "cents": 144704,
+      "evidence": "EV-0017",
+      "memo": "Scheduled posting / Payroll"
+    },
+    {
+      "id": "J0018",
+      "date": "2026-09-09",
+      "from": "1000",
+      "to": "5020",
+      "cents": 152623,
+      "evidence": "EV-0018",
+      "memo": "Scheduled posting / Utilities"
+    },
+    {
+      "id": "J0019",
+      "date": "2026-09-10",
+      "from": "1000",
+      "to": "5030",
+      "cents": 160542,
+      "evidence": "EV-0019",
+      "memo": "Scheduled posting / Shop supplies"
+    },
+    {
+      "id": "J0020",
+      "date": "2026-09-10",
+      "from": "1000",
+      "to": "5040",
+      "cents": 168461,
+      "evidence": "EV-0020",
+      "memo": "Scheduled posting / Marketing"
+    },
+    {
+      "id": "J0021",
+      "date": "2026-09-11",
+      "from": "1000",
+      "to": "1010",
+      "cents": 176380,
+      "evidence": "EV-0021",
+      "memo": "Scheduled posting / Petty cash"
+    },
+    {
+      "id": "J0022",
+      "date": "2026-09-11",
+      "from": "1000",
+      "to": "1020",
+      "cents": 184299,
+      "evidence": "EV-0022",
+      "memo": "Scheduled posting / Transfer clearing"
+    },
+    {
+      "id": "J0023",
+      "date": "2026-09-12",
+      "from": "1000",
+      "to": "1030",
+      "cents": 192218,
+      "evidence": "EV-0023",
+      "memo": "Scheduled posting / Inventory"
+    },
+    {
+      "id": "J0024",
+      "date": "2026-09-12",
+      "from": "1000",
+      "to": "1040",
+      "cents": 22137,
+      "evidence": "EV-0024",
+      "memo": "Scheduled posting / Receivables"
+    },
+    {
+      "id": "J0025",
+      "date": "2026-09-13",
+      "from": "1000",
+      "to": "1050",
+      "cents": 30056,
+      "evidence": "EV-0025",
+      "memo": "Scheduled posting / Equipment"
+    },
+    {
+      "id": "J0026",
+      "date": "2026-09-13",
+      "from": "1000",
+      "to": "1060",
+      "cents": 37975,
+      "evidence": "EV-0026",
+      "memo": "Scheduled posting / Prepaid rent"
+    },
+    {
+      "id": "J0027",
+      "date": "2026-09-14",
+      "from": "1000",
+      "to": "2000",
+      "cents": 45894,
+      "evidence": "EV-0027",
+      "memo": "Scheduled posting / Trade payables"
+    },
+    {
+      "id": "J0028",
+      "date": "2026-09-14",
+      "from": "2010",
+      "to": "1000",
+      "cents": 53813,
+      "evidence": "EV-0028",
+      "memo": "Scheduled posting / Sales tax"
+    },
+    {
+      "id": "J0029",
+      "date": "2026-09-15",
+      "from": "1000",
+      "to": "2020",
+      "cents": 61732,
+      "evidence": "EV-0029",
+      "memo": "Scheduled posting / Bridge loan"
+    },
+    {
+      "id": "J0030",
+      "date": "2026-09-15",
+      "from": "1000",
+      "to": "2030",
+      "cents": 69651,
+      "evidence": "EV-0030",
+      "memo": "Scheduled posting / Gift cards"
+    },
+    {
+      "id": "J0031",
+      "date": "2026-09-16",
+      "from": "2040",
+      "to": "1000",
+      "cents": 77570,
+      "evidence": "EV-0031",
+      "memo": "Scheduled posting / Customer deposits"
+    },
+    {
+      "id": "J0032",
+      "date": "2026-09-16",
+      "from": "4000",
+      "to": "1000",
+      "cents": 85489,
+      "evidence": "EV-0032",
+      "memo": "Daily settlement / Shop sales"
+    },
+    {
+      "id": "J0033",
+      "date": "2026-09-17",
+      "from": "4010",
+      "to": "1000",
+      "cents": 93408,
+      "evidence": "EV-0033",
+      "memo": "Daily settlement / Online sales"
+    },
+    {
+      "id": "J0034",
+      "date": "2026-09-17",
+      "from": "4020",
+      "to": "1000",
+      "cents": 101327,
+      "evidence": "EV-0034",
+      "memo": "Daily settlement / Workshop income"
+    },
+    {
+      "id": "J0035",
+      "date": "2026-09-18",
+      "from": "4030",
+      "to": "1000",
+      "cents": 109246,
+      "evidence": "EV-0035",
+      "memo": "Daily settlement / Other income"
+    },
+    {
+      "id": "J0036",
+      "date": "2026-09-18",
+      "from": "1000",
+      "to": "5000",
+      "cents": 117165,
+      "evidence": "EV-0036",
+      "memo": "Scheduled posting / Rent"
+    },
+    {
+      "id": "J0037",
+      "date": "2026-09-19",
+      "from": "1000",
+      "to": "5010",
+      "cents": 125084,
+      "evidence": "EV-0037",
+      "memo": "Scheduled posting / Payroll"
+    },
+    {
+      "id": "J0038",
+      "date": "2026-09-19",
+      "from": "1000",
+      "to": "5020",
+      "cents": 133003,
+      "evidence": "EV-0038",
+      "memo": "Scheduled posting / Utilities"
+    },
+    {
+      "id": "J0039",
+      "date": "2026-09-20",
+      "from": "1000",
+      "to": "5030",
+      "cents": 140922,
+      "evidence": "EV-0039",
+      "memo": "Scheduled posting / Shop supplies"
+    },
+    {
+      "id": "J0040",
+      "date": "2026-09-20",
+      "from": "1000",
+      "to": "5040",
+      "cents": 148841,
+      "evidence": "EV-0040",
+      "memo": "Scheduled posting / Marketing"
+    },
+    {
+      "id": "J0041",
+      "date": "2026-09-21",
+      "from": "1000",
+      "to": "1010",
+      "cents": 156760,
+      "evidence": "EV-0041",
+      "memo": "Scheduled posting / Petty cash"
+    },
+    {
+      "id": "J0042",
+      "date": "2026-09-21",
+      "from": "1000",
+      "to": "1020",
+      "cents": 164679,
+      "evidence": "EV-0042",
+      "memo": "Scheduled posting / Transfer clearing"
+    },
+    {
+      "id": "J0043",
+      "date": "2026-09-22",
+      "from": "1000",
+      "to": "1030",
+      "cents": 172598,
+      "evidence": "EV-0043",
+      "memo": "Scheduled posting / Inventory"
+    },
+    {
+      "id": "J0044",
+      "date": "2026-09-22",
+      "from": "1000",
+      "to": "1040",
+      "cents": 180517,
+      "evidence": "EV-0044",
+      "memo": "Scheduled posting / Receivables"
+    },
+    {
+      "id": "J0045",
+      "date": "2026-09-23",
+      "from": "1000",
+      "to": "1050",
+      "cents": 188436,
+      "evidence": "EV-0045",
+      "memo": "Scheduled posting / Equipment"
+    },
+    {
+      "id": "J0046",
+      "date": "2026-09-23",
+      "from": "1000",
+      "to": "1060",
+      "cents": 18355,
+      "evidence": "EV-0046",
+      "memo": "Scheduled posting / Prepaid rent"
+    },
+    {
+      "id": "J0047",
+      "date": "2026-09-24",
+      "from": "1000",
+      "to": "2000",
+      "cents": 26274,
+      "evidence": "EV-0047",
+      "memo": "Scheduled posting / Trade payables"
+    },
+    {
+      "id": "J0048",
+      "date": "2026-09-24",
+      "from": "1000",
+      "to": "2010",
+      "cents": 34193,
+      "evidence": "EV-0048",
+      "memo": "Scheduled posting / Sales tax"
+    },
+    {
+      "id": "J0049",
+      "date": "2026-09-25",
+      "from": "2020",
+      "to": "1000",
+      "cents": 42112,
+      "evidence": "EV-0049",
+      "memo": "Scheduled posting / Bridge loan"
+    },
+    {
+      "id": "J0050",
+      "date": "2026-09-25",
+      "from": "1000",
+      "to": "2030",
+      "cents": 50031,
+      "evidence": "EV-0050",
+      "memo": "Scheduled posting / Gift cards"
+    },
+    {
+      "id": "J0051",
+      "date": "2026-09-26",
+      "from": "1000",
+      "to": "2040",
+      "cents": 57950,
+      "evidence": "EV-0051",
+      "memo": "Scheduled posting / Customer deposits"
+    },
+    {
+      "id": "J0052",
+      "date": "2026-09-26",
+      "from": "4000",
+      "to": "1000",
+      "cents": 65869,
+      "evidence": "EV-0052",
+      "memo": "Daily settlement / Shop sales"
+    },
+    {
+      "id": "J0053",
+      "date": "2026-09-27",
+      "from": "4010",
+      "to": "1000",
+      "cents": 73788,
+      "evidence": "EV-0053",
+      "memo": "Daily settlement / Online sales"
+    },
+    {
+      "id": "J0054",
+      "date": "2026-09-27",
+      "from": "4020",
+      "to": "1000",
+      "cents": 81707,
+      "evidence": "EV-0054",
+      "memo": "Daily settlement / Workshop income"
+    },
+    {
+      "id": "J0055",
+      "date": "2026-09-28",
+      "from": "4030",
+      "to": "1000",
+      "cents": 89626,
+      "evidence": "EV-0055",
+      "memo": "Daily settlement / Other income"
+    },
+    {
+      "id": "J0056",
+      "date": "2026-09-28",
+      "from": "1000",
+      "to": "5000",
+      "cents": 97545,
+      "evidence": "EV-0056",
+      "memo": "Scheduled posting / Rent"
+    },
+    {
+      "id": "J0057",
+      "date": "2026-09-29",
+      "from": "1000",
+      "to": "5010",
+      "cents": 105464,
+      "evidence": "EV-0057",
+      "memo": "Scheduled posting / Payroll"
+    },
+    {
+      "id": "J0058",
+      "date": "2026-09-29",
+      "from": "1000",
+      "to": "5020",
+      "cents": 113383,
+      "evidence": "EV-0058",
+      "memo": "Scheduled posting / Utilities"
+    },
+    {
+      "id": "J0059",
+      "date": "2026-09-30",
+      "from": "1000",
+      "to": "5030",
+      "cents": 121302,
+      "evidence": "EV-0059",
+      "memo": "Scheduled posting / Shop supplies"
+    },
+    {
+      "id": "J0060",
+      "date": "2026-09-30",
+      "from": "1000",
+      "to": "5040",
+      "cents": 129221,
+      "evidence": "EV-0060",
+      "memo": "Scheduled posting / Marketing"
+    },
+    {
+      "id": "J0061",
+      "date": "2026-10-01",
+      "from": "1000",
+      "to": "1010",
+      "cents": 137140,
+      "evidence": "EV-0061",
+      "memo": "Scheduled posting / Petty cash"
+    },
+    {
+      "id": "J0062",
+      "date": "2026-10-01",
+      "from": "1000",
+      "to": "1020",
+      "cents": 145059,
+      "evidence": "EV-0062",
+      "memo": "Scheduled posting / Transfer clearing"
+    },
+    {
+      "id": "J0063",
+      "date": "2026-10-02",
+      "from": "1000",
+      "to": "1030",
+      "cents": 152978,
+      "evidence": "EV-0063",
+      "memo": "Scheduled posting / Inventory"
+    },
+    {
+      "id": "J0064",
+      "date": "2026-10-02",
+      "from": "1000",
+      "to": "1040",
+      "cents": 160897,
+      "evidence": "EV-0064",
+      "memo": "Scheduled posting / Receivables"
+    },
+    {
+      "id": "J0065",
+      "date": "2026-10-03",
+      "from": "1000",
+      "to": "1050",
+      "cents": 168816,
+      "evidence": "EV-0065",
+      "memo": "Scheduled posting / Equipment"
+    },
+    {
+      "id": "J0066",
+      "date": "2026-10-03",
+      "from": "1000",
+      "to": "1060",
+      "cents": 176735,
+      "evidence": "EV-0066",
+      "memo": "Scheduled posting / Prepaid rent"
+    },
+    {
+      "id": "J0067",
+      "date": "2026-10-04",
+      "from": "2000",
+      "to": "1000",
+      "cents": 184654,
+      "evidence": "EV-0067",
+      "memo": "Scheduled posting / Trade payables"
+    },
+    {
+      "id": "J0068",
+      "date": "2026-10-04",
+      "from": "1000",
+      "to": "2010",
+      "cents": 192573,
+      "evidence": "EV-0068",
+      "memo": "Scheduled posting / Sales tax"
+    },
+    {
+      "id": "J0069",
+      "date": "2026-10-05",
+      "from": "1000",
+      "to": "2020",
+      "cents": 22492,
+      "evidence": "EV-0069",
+      "memo": "Scheduled posting / Bridge loan"
+    },
+    {
+      "id": "J0070",
+      "date": "2026-10-05",
+      "from": "2030",
+      "to": "1000",
+      "cents": 30411,
+      "evidence": "EV-0070",
+      "memo": "Scheduled posting / Gift cards"
+    },
+    {
+      "id": "J0071",
+      "date": "2026-10-06",
+      "from": "1000",
+      "to": "2040",
+      "cents": 38330,
+      "evidence": "EV-0071",
+      "memo": "Scheduled posting / Customer deposits"
+    },
+    {
+      "id": "J0072",
+      "date": "2026-10-06",
+      "from": "4000",
+      "to": "1000",
+      "cents": 46249,
+      "evidence": "EV-0072",
+      "memo": "Daily settlement / Shop sales"
+    },
+    {
+      "id": "J0073",
+      "date": "2026-10-07",
+      "from": "4010",
+      "to": "1000",
+      "cents": 54168,
+      "evidence": "EV-0073",
+      "memo": "Daily settlement / Online sales"
+    },
+    {
+      "id": "J0074",
+      "date": "2026-10-07",
+      "from": "4020",
+      "to": "1000",
+      "cents": 62087,
+      "evidence": "EV-0074",
+      "memo": "Daily settlement / Workshop income"
+    },
+    {
+      "id": "J0075",
+      "date": "2026-10-08",
+      "from": "4030",
+      "to": "1000",
+      "cents": 70006,
+      "evidence": "EV-0075",
+      "memo": "Daily settlement / Other income"
+    },
+    {
+      "id": "J0076",
+      "date": "2026-10-08",
+      "from": "1000",
+      "to": "5000",
+      "cents": 77925,
+      "evidence": "EV-0076",
+      "memo": "Scheduled posting / Rent"
+    },
+    {
+      "id": "J0077",
+      "date": "2026-10-09",
+      "from": "1000",
+      "to": "5010",
+      "cents": 85844,
+      "evidence": "EV-0077",
+      "memo": "Scheduled posting / Payroll"
+    },
+    {
+      "id": "J0078",
+      "date": "2026-10-09",
+      "from": "1000",
+      "to": "5020",
+      "cents": 93763,
+      "evidence": "EV-0078",
+      "memo": "Scheduled posting / Utilities"
+    },
+    {
+      "id": "J0079",
+      "date": "2026-10-10",
+      "from": "1000",
+      "to": "5030",
+      "cents": 101682,
+      "evidence": "EV-0079",
+      "memo": "Scheduled posting / Shop supplies"
+    },
+    {
+      "id": "J0080",
+      "date": "2026-10-10",
+      "from": "1000",
+      "to": "5040",
+      "cents": 109601,
+      "evidence": "EV-0080",
+      "memo": "Scheduled posting / Marketing"
+    },
+    {
+      "id": "J0081",
+      "date": "2026-10-11",
+      "from": "1000",
+      "to": "1010",
+      "cents": 117520,
+      "evidence": "EV-0081",
+      "memo": "Scheduled posting / Petty cash"
+    },
+    {
+      "id": "J0082",
+      "date": "2026-10-11",
+      "from": "1000",
+      "to": "1020",
+      "cents": 125439,
+      "evidence": "EV-0082",
+      "memo": "Scheduled posting / Transfer clearing"
+    },
+    {
+      "id": "J0083",
+      "date": "2026-10-12",
+      "from": "1000",
+      "to": "1030",
+      "cents": 133358,
+      "evidence": "EV-0083",
+      "memo": "Scheduled posting / Inventory"
+    },
+    {
+      "id": "J0084",
+      "date": "2026-10-12",
+      "from": "1000",
+      "to": "1040",
+      "cents": 141277,
+      "evidence": "EV-0084",
+      "memo": "Scheduled posting / Receivables"
+    },
+    {
+      "id": "J0085",
+      "date": "2026-10-13",
+      "from": "1000",
+      "to": "1050",
+      "cents": 149196,
+      "evidence": "EV-0085",
+      "memo": "Scheduled posting / Equipment"
+    },
+    {
+      "id": "J0086",
+      "date": "2026-10-13",
+      "from": "1000",
+      "to": "1060",
+      "cents": 157115,
+      "evidence": "EV-0086",
+      "memo": "Scheduled posting / Prepaid rent"
+    },
+    {
+      "id": "J0087",
+      "date": "2026-10-14",
+      "from": "1000",
+      "to": "2000",
+      "cents": 165034,
+      "evidence": "EV-0087",
+      "memo": "Scheduled posting / Trade payables"
+    },
+    {
+      "id": "J0088",
+      "date": "2026-10-14",
+      "from": "2010",
+      "to": "1000",
+      "cents": 172953,
+      "evidence": "EV-0088",
+      "memo": "Scheduled posting / Sales tax"
+    },
+    {
+      "id": "J0089",
+      "date": "2026-10-15",
+      "from": "1000",
+      "to": "2020",
+      "cents": 180872,
+      "evidence": "EV-0089",
+      "memo": "Scheduled posting / Bridge loan"
+    },
+    {
+      "id": "J0090",
+      "date": "2026-10-15",
+      "from": "1000",
+      "to": "2030",
+      "cents": 188791,
+      "evidence": "EV-0090",
+      "memo": "Scheduled posting / Gift cards"
+    },
+    {
+      "id": "J0091",
+      "date": "2026-10-16",
+      "from": "2040",
+      "to": "1000",
+      "cents": 18710,
+      "evidence": "EV-0091",
+      "memo": "Scheduled posting / Customer deposits"
+    },
+    {
+      "id": "J0092",
+      "date": "2026-10-16",
+      "from": "4000",
+      "to": "1000",
+      "cents": 26629,
+      "evidence": "EV-0092",
+      "memo": "Daily settlement / Shop sales"
+    },
+    {
+      "id": "J0093",
+      "date": "2026-10-17",
+      "from": "4010",
+      "to": "1000",
+      "cents": 34548,
+      "evidence": "EV-0093",
+      "memo": "Daily settlement / Online sales"
+    },
+    {
+      "id": "J0094",
+      "date": "2026-10-17",
+      "from": "4020",
+      "to": "1000",
+      "cents": 42467,
+      "evidence": "EV-0094",
+      "memo": "Daily settlement / Workshop income"
+    },
+    {
+      "id": "J0095",
+      "date": "2026-10-18",
+      "from": "4030",
+      "to": "1000",
+      "cents": 50386,
+      "evidence": "EV-0095",
+      "memo": "Daily settlement / Other income"
+    },
+    {
+      "id": "J0096",
+      "date": "2026-10-18",
+      "from": "1000",
+      "to": "5000",
+      "cents": 58305,
+      "evidence": "EV-0096",
+      "memo": "Scheduled posting / Rent"
+    },
+    {
+      "id": "J0097",
+      "date": "2026-10-19",
+      "from": "1000",
+      "to": "5010",
+      "cents": 66224,
+      "evidence": "EV-0097",
+      "memo": "Scheduled posting / Payroll"
+    },
+    {
+      "id": "J0098",
+      "date": "2026-10-19",
+      "from": "1000",
+      "to": "5020",
+      "cents": 74143,
+      "evidence": "EV-0098",
+      "memo": "Scheduled posting / Utilities"
+    },
+    {
+      "id": "J0099",
+      "date": "2026-10-20",
+      "from": "1000",
+      "to": "5030",
+      "cents": 82062,
+      "evidence": "EV-0099",
+      "memo": "Scheduled posting / Shop supplies"
+    },
+    {
+      "id": "J0100",
+      "date": "2026-10-20",
+      "from": "1000",
+      "to": "5040",
+      "cents": 89981,
+      "evidence": "EV-0100",
+      "memo": "Scheduled posting / Marketing"
+    },
+    {
+      "id": "J0101",
+      "date": "2026-10-21",
+      "from": "1000",
+      "to": "1010",
+      "cents": 97900,
+      "evidence": "EV-0101",
+      "memo": "Scheduled posting / Petty cash"
+    },
+    {
+      "id": "J0102",
+      "date": "2026-10-21",
+      "from": "1000",
+      "to": "1020",
+      "cents": 105819,
+      "evidence": "EV-0102",
+      "memo": "Scheduled posting / Transfer clearing"
+    },
+    {
+      "id": "J0103",
+      "date": "2026-10-22",
+      "from": "1000",
+      "to": "1030",
+      "cents": 113738,
+      "evidence": "EV-0103",
+      "memo": "Scheduled posting / Inventory"
+    },
+    {
+      "id": "J0104",
+      "date": "2026-10-22",
+      "from": "1000",
+      "to": "1040",
+      "cents": 121657,
+      "evidence": "EV-0104",
+      "memo": "Scheduled posting / Receivables"
+    },
+    {
+      "id": "J0105",
+      "date": "2026-10-23",
+      "from": "1000",
+      "to": "1050",
+      "cents": 129576,
+      "evidence": "EV-0105",
+      "memo": "Scheduled posting / Equipment"
+    },
+    {
+      "id": "J0106",
+      "date": "2026-10-23",
+      "from": "1000",
+      "to": "1060",
+      "cents": 137495,
+      "evidence": "EV-0106",
+      "memo": "Scheduled posting / Prepaid rent"
+    },
+    {
+      "id": "J0188",
+      "date": "2026-10-23",
+      "from": "1000",
+      "to": "1090",
+      "cents": 1280000,
+      "evidence": null,
+      "memo": "Unreconciled reserve transfer"
+    },
+    {
+      "id": "J0107",
+      "date": "2026-10-24",
+      "from": "1000",
+      "to": "2000",
+      "cents": 145414,
+      "evidence": "EV-0107",
+      "memo": "Scheduled posting / Trade payables"
+    },
+    {
+      "id": "J0108",
+      "date": "2026-10-24",
+      "from": "1000",
+      "to": "2010",
+      "cents": 153333,
+      "evidence": "EV-0108",
+      "memo": "Scheduled posting / Sales tax"
+    },
+    {
+      "id": "J0109",
+      "date": "2026-10-25",
+      "from": "2020",
+      "to": "1000",
+      "cents": 161252,
+      "evidence": "EV-0109",
+      "memo": "Scheduled posting / Bridge loan"
+    },
+    {
+      "id": "J0110",
+      "date": "2026-10-25",
+      "from": "1000",
+      "to": "2030",
+      "cents": 169171,
+      "evidence": "EV-0110",
+      "memo": "Scheduled posting / Gift cards"
+    },
+    {
+      "id": "J0111",
+      "date": "2026-10-26",
+      "from": "1000",
+      "to": "2040",
+      "cents": 177090,
+      "evidence": "EV-0111",
+      "memo": "Scheduled posting / Customer deposits"
+    },
+    {
+      "id": "J0112",
+      "date": "2026-10-26",
+      "from": "4000",
+      "to": "1000",
+      "cents": 185009,
+      "evidence": "EV-0112",
+      "memo": "Daily settlement / Shop sales"
+    },
+    {
+      "id": "J0113",
+      "date": "2026-10-27",
+      "from": "4010",
+      "to": "1000",
+      "cents": 192928,
+      "evidence": "EV-0113",
+      "memo": "Daily settlement / Online sales"
+    },
+    {
+      "id": "J0114",
+      "date": "2026-10-27",
+      "from": "4020",
+      "to": "1000",
+      "cents": 22847,
+      "evidence": "EV-0114",
+      "memo": "Daily settlement / Workshop income"
+    },
+    {
+      "id": "J0115",
+      "date": "2026-10-28",
+      "from": "4030",
+      "to": "1000",
+      "cents": 30766,
+      "evidence": "EV-0115",
+      "memo": "Daily settlement / Other income"
+    },
+    {
+      "id": "J0116",
+      "date": "2026-10-28",
+      "from": "1000",
+      "to": "5000",
+      "cents": 38685,
+      "evidence": "EV-0116",
+      "memo": "Scheduled posting / Rent"
+    },
+    {
+      "id": "J0117",
+      "date": "2026-10-29",
+      "from": "1000",
+      "to": "5010",
+      "cents": 46604,
+      "evidence": "EV-0117",
+      "memo": "Scheduled posting / Payroll"
+    },
+    {
+      "id": "J0118",
+      "date": "2026-10-29",
+      "from": "1000",
+      "to": "5020",
+      "cents": 54523,
+      "evidence": "EV-0118",
+      "memo": "Scheduled posting / Utilities"
+    },
+    {
+      "id": "J0119",
+      "date": "2026-10-30",
+      "from": "1000",
+      "to": "5030",
+      "cents": 62442,
+      "evidence": "EV-0119",
+      "memo": "Scheduled posting / Shop supplies"
+    },
+    {
+      "id": "J0120",
+      "date": "2026-10-30",
+      "from": "1000",
+      "to": "5040",
+      "cents": 70361,
+      "evidence": "EV-0120",
+      "memo": "Scheduled posting / Marketing"
+    },
+    {
+      "id": "J0121",
+      "date": "2026-10-31",
+      "from": "1000",
+      "to": "1010",
+      "cents": 78280,
+      "evidence": "EV-0121",
+      "memo": "Scheduled posting / Petty cash"
+    },
+    {
+      "id": "J0122",
+      "date": "2026-10-31",
+      "from": "1000",
+      "to": "1020",
+      "cents": 86199,
+      "evidence": "EV-0122",
+      "memo": "Scheduled posting / Transfer clearing"
+    },
+    {
+      "id": "J0123",
+      "date": "2026-11-01",
+      "from": "1000",
+      "to": "1030",
+      "cents": 94118,
+      "evidence": "EV-0123",
+      "memo": "Scheduled posting / Inventory"
+    },
+    {
+      "id": "J0124",
+      "date": "2026-11-01",
+      "from": "1000",
+      "to": "1040",
+      "cents": 102037,
+      "evidence": "EV-0124",
+      "memo": "Scheduled posting / Receivables"
+    },
+    {
+      "id": "J0125",
+      "date": "2026-11-02",
+      "from": "1000",
+      "to": "1050",
+      "cents": 109956,
+      "evidence": "EV-0125",
+      "memo": "Scheduled posting / Equipment"
+    },
+    {
+      "id": "J0126",
+      "date": "2026-11-02",
+      "from": "1000",
+      "to": "1060",
+      "cents": 117875,
+      "evidence": "EV-0126",
+      "memo": "Scheduled posting / Prepaid rent"
+    },
+    {
+      "id": "J0127",
+      "date": "2026-11-03",
+      "from": "2000",
+      "to": "1000",
+      "cents": 125794,
+      "evidence": "EV-0127",
+      "memo": "Scheduled posting / Trade payables"
+    },
+    {
+      "id": "J0128",
+      "date": "2026-11-03",
+      "from": "1000",
+      "to": "2010",
+      "cents": 133713,
+      "evidence": "EV-0128",
+      "memo": "Scheduled posting / Sales tax"
+    },
+    {
+      "id": "J0129",
+      "date": "2026-11-04",
+      "from": "1000",
+      "to": "2020",
+      "cents": 141632,
+      "evidence": "EV-0129",
+      "memo": "Scheduled posting / Bridge loan"
+    },
+    {
+      "id": "J0130",
+      "date": "2026-11-04",
+      "from": "2030",
+      "to": "1000",
+      "cents": 149551,
+      "evidence": "EV-0130",
+      "memo": "Scheduled posting / Gift cards"
+    },
+    {
+      "id": "J0131",
+      "date": "2026-11-05",
+      "from": "1000",
+      "to": "2040",
+      "cents": 157470,
+      "evidence": "EV-0131",
+      "memo": "Scheduled posting / Customer deposits"
+    },
+    {
+      "id": "J0132",
+      "date": "2026-11-05",
+      "from": "4000",
+      "to": "1000",
+      "cents": 165389,
+      "evidence": "EV-0132",
+      "memo": "Daily settlement / Shop sales"
+    },
+    {
+      "id": "J0133",
+      "date": "2026-11-06",
+      "from": "4010",
+      "to": "1000",
+      "cents": 173308,
+      "evidence": "EV-0133",
+      "memo": "Daily settlement / Online sales"
+    },
+    {
+      "id": "J0134",
+      "date": "2026-11-06",
+      "from": "4020",
+      "to": "1000",
+      "cents": 181227,
+      "evidence": "EV-0134",
+      "memo": "Daily settlement / Workshop income"
+    },
+    {
+      "id": "J0181",
+      "date": "2026-11-06",
+      "from": "1000",
+      "to": "5090",
+      "cents": 870000,
+      "evidence": null,
+      "memo": "Services payment with no supporting document"
+    },
+    {
+      "id": "J0135",
+      "date": "2026-11-07",
+      "from": "4030",
+      "to": "1000",
+      "cents": 189146,
+      "evidence": "EV-0135",
+      "memo": "Daily settlement / Other income"
+    },
+    {
+      "id": "J0136",
+      "date": "2026-11-07",
+      "from": "1000",
+      "to": "5000",
+      "cents": 19065,
+      "evidence": "EV-0136",
+      "memo": "Scheduled posting / Rent"
+    },
+    {
+      "id": "J0137",
+      "date": "2026-11-08",
+      "from": "1000",
+      "to": "5010",
+      "cents": 26984,
+      "evidence": "EV-0137",
+      "memo": "Scheduled posting / Payroll"
+    },
+    {
+      "id": "J0138",
+      "date": "2026-11-08",
+      "from": "1000",
+      "to": "5020",
+      "cents": 34903,
+      "evidence": "EV-0138",
+      "memo": "Scheduled posting / Utilities"
+    },
+    {
+      "id": "J0139",
+      "date": "2026-11-09",
+      "from": "1000",
+      "to": "5030",
+      "cents": 42822,
+      "evidence": "EV-0139",
+      "memo": "Scheduled posting / Shop supplies"
+    },
+    {
+      "id": "J0140",
+      "date": "2026-11-09",
+      "from": "1000",
+      "to": "5040",
+      "cents": 50741,
+      "evidence": "EV-0140",
+      "memo": "Scheduled posting / Marketing"
+    },
+    {
+      "id": "J0182",
+      "date": "2026-11-09",
+      "from": "1000",
+      "to": "5020",
+      "cents": 264000,
+      "evidence": "EV-DUP",
+      "memo": "Utility invoice"
+    },
+    {
+      "id": "J0141",
+      "date": "2026-11-10",
+      "from": "1000",
+      "to": "1010",
+      "cents": 58660,
+      "evidence": "EV-0141",
+      "memo": "Scheduled posting / Petty cash"
+    },
+    {
+      "id": "J0142",
+      "date": "2026-11-10",
+      "from": "1000",
+      "to": "1020",
+      "cents": 66579,
+      "evidence": "EV-0142",
+      "memo": "Scheduled posting / Transfer clearing"
+    },
+    {
+      "id": "J0183",
+      "date": "2026-11-10",
+      "from": "1000",
+      "to": "5020",
+      "cents": 264000,
+      "evidence": "EV-DUP",
+      "memo": "Utility invoice posted again"
+    },
+    {
+      "id": "J0143",
+      "date": "2026-11-11",
+      "from": "1000",
+      "to": "1030",
+      "cents": 74498,
+      "evidence": "EV-0143",
+      "memo": "Scheduled posting / Inventory"
+    },
+    {
+      "id": "J0144",
+      "date": "2026-11-11",
+      "from": "1000",
+      "to": "1040",
+      "cents": 82417,
+      "evidence": "EV-0144",
+      "memo": "Scheduled posting / Receivables"
+    },
+    {
+      "id": "J0184",
+      "date": "2026-11-11",
+      "from": "1000",
+      "to": "1010",
+      "cents": 345600,
+      "evidence": "EV-C1",
+      "memo": "Cash advanced"
+    },
+    {
+      "id": "J0185",
+      "date": "2026-11-11",
+      "from": "1010",
+      "to": "1020",
+      "cents": 345600,
+      "evidence": "EV-C2",
+      "memo": "Cash transferred to clearing"
+    },
+    {
+      "id": "J0186",
+      "date": "2026-11-11",
+      "from": "1020",
+      "to": "1000",
+      "cents": 345600,
+      "evidence": "EV-C3",
+      "memo": "Clearing returned to bank"
+    },
+    {
+      "id": "J0145",
+      "date": "2026-11-12",
+      "from": "1000",
+      "to": "1050",
+      "cents": 90336,
+      "evidence": "EV-0145",
+      "memo": "Scheduled posting / Equipment"
+    },
+    {
+      "id": "J0146",
+      "date": "2026-11-12",
+      "from": "1000",
+      "to": "1060",
+      "cents": 98255,
+      "evidence": "EV-0146",
+      "memo": "Scheduled posting / Prepaid rent"
+    },
+    {
+      "id": "J0147",
+      "date": "2026-11-13",
+      "from": "1000",
+      "to": "2000",
+      "cents": 106174,
+      "evidence": "EV-0147",
+      "memo": "Scheduled posting / Trade payables"
+    },
+    {
+      "id": "J0148",
+      "date": "2026-11-13",
+      "from": "2010",
+      "to": "1000",
+      "cents": 114093,
+      "evidence": "EV-0148",
+      "memo": "Scheduled posting / Sales tax"
+    },
+    {
+      "id": "J0149",
+      "date": "2026-11-14",
+      "from": "1000",
+      "to": "2020",
+      "cents": 122012,
+      "evidence": "EV-0149",
+      "memo": "Scheduled posting / Bridge loan"
+    },
+    {
+      "id": "J0150",
+      "date": "2026-11-14",
+      "from": "1000",
+      "to": "2030",
+      "cents": 129931,
+      "evidence": "EV-0150",
+      "memo": "Scheduled posting / Gift cards"
+    },
+    {
+      "id": "J0187",
+      "date": "2026-11-14",
+      "from": "1000",
+      "to": "1010",
+      "cents": 940000,
+      "evidence": "EV-WK",
+      "memo": "Saturday cash withdrawal"
+    },
+    {
+      "id": "J0151",
+      "date": "2026-11-15",
+      "from": "2040",
+      "to": "1000",
+      "cents": 137850,
+      "evidence": "EV-0151",
+      "memo": "Scheduled posting / Customer deposits"
+    },
+    {
+      "id": "J0152",
+      "date": "2026-11-15",
+      "from": "4000",
+      "to": "1000",
+      "cents": 145769,
+      "evidence": "EV-0152",
+      "memo": "Daily settlement / Shop sales"
+    },
+    {
+      "id": "J0153",
+      "date": "2026-11-16",
+      "from": "4010",
+      "to": "1000",
+      "cents": 153688,
+      "evidence": "EV-0153",
+      "memo": "Daily settlement / Online sales"
+    },
+    {
+      "id": "J0154",
+      "date": "2026-11-16",
+      "from": "4020",
+      "to": "1000",
+      "cents": 161607,
+      "evidence": "EV-0154",
+      "memo": "Daily settlement / Workshop income"
+    },
+    {
+      "id": "J0189",
+      "date": "2026-11-16",
+      "from": "1000",
+      "to": "5030",
+      "cents": 490000,
+      "evidence": "EV-S1",
+      "memo": "Supply purchase, part 1"
+    },
+    {
+      "id": "J0190",
+      "date": "2026-11-16",
+      "from": "1000",
+      "to": "5030",
+      "cents": 485000,
+      "evidence": "EV-S2",
+      "memo": "Supply purchase, part 2"
+    },
+    {
+      "id": "J0191",
+      "date": "2026-11-16",
+      "from": "1000",
+      "to": "5030",
+      "cents": 480000,
+      "evidence": "EV-S3",
+      "memo": "Supply purchase, part 3"
+    },
+    {
+      "id": "J0155",
+      "date": "2026-11-17",
+      "from": "4030",
+      "to": "1000",
+      "cents": 169526,
+      "evidence": "EV-0155",
+      "memo": "Daily settlement / Other income"
+    },
+    {
+      "id": "J0156",
+      "date": "2026-11-17",
+      "from": "1000",
+      "to": "5000",
+      "cents": 177445,
+      "evidence": "EV-0156",
+      "memo": "Scheduled posting / Rent"
+    },
+    {
+      "id": "J0157",
+      "date": "2026-11-18",
+      "from": "1000",
+      "to": "5010",
+      "cents": 185364,
+      "evidence": "EV-0157",
+      "memo": "Scheduled posting / Payroll"
+    },
+    {
+      "id": "J0158",
+      "date": "2026-11-18",
+      "from": "1000",
+      "to": "5020",
+      "cents": 193283,
+      "evidence": "EV-0158",
+      "memo": "Scheduled posting / Utilities"
+    },
+    {
+      "id": "J0159",
+      "date": "2026-11-19",
+      "from": "1000",
+      "to": "5030",
+      "cents": 23202,
+      "evidence": "EV-0159",
+      "memo": "Scheduled posting / Shop supplies"
+    },
+    {
+      "id": "J0160",
+      "date": "2026-11-19",
+      "from": "1000",
+      "to": "5040",
+      "cents": 31121,
+      "evidence": "EV-0160",
+      "memo": "Scheduled posting / Marketing"
+    },
+    {
+      "id": "J0192",
+      "date": "2026-11-19",
+      "from": "1000",
+      "to": "2020",
+      "cents": 678900,
+      "evidence": "EV-R1",
+      "memo": "Temporary loan movement"
+    },
+    {
+      "id": "J0161",
+      "date": "2026-11-20",
+      "from": "1000",
+      "to": "1010",
+      "cents": 39040,
+      "evidence": "EV-0161",
+      "memo": "Scheduled posting / Petty cash"
+    },
+    {
+      "id": "J0162",
+      "date": "2026-11-20",
+      "from": "1000",
+      "to": "1020",
+      "cents": 46959,
+      "evidence": "EV-0162",
+      "memo": "Scheduled posting / Transfer clearing"
+    },
+    {
+      "id": "J0193",
+      "date": "2026-11-20",
+      "from": "2020",
+      "to": "1000",
+      "cents": 678900,
+      "evidence": "EV-R2",
+      "memo": "Temporary loan reversal"
+    },
+    {
+      "id": "J0163",
+      "date": "2026-11-21",
+      "from": "1000",
+      "to": "1030",
+      "cents": 54878,
+      "evidence": "EV-0163",
+      "memo": "Scheduled posting / Inventory"
+    },
+    {
+      "id": "J0164",
+      "date": "2026-11-21",
+      "from": "1000",
+      "to": "1040",
+      "cents": 62797,
+      "evidence": "EV-0164",
+      "memo": "Scheduled posting / Receivables"
+    },
+    {
+      "id": "J0165",
+      "date": "2026-11-22",
+      "from": "1000",
+      "to": "1050",
+      "cents": 70716,
+      "evidence": "EV-0165",
+      "memo": "Scheduled posting / Equipment"
+    },
+    {
+      "id": "J0166",
+      "date": "2026-11-22",
+      "from": "1000",
+      "to": "1060",
+      "cents": 78635,
+      "evidence": "EV-0166",
+      "memo": "Scheduled posting / Prepaid rent"
+    },
+    {
+      "id": "J0167",
+      "date": "2026-11-23",
+      "from": "1000",
+      "to": "2000",
+      "cents": 86554,
+      "evidence": "EV-0167",
+      "memo": "Scheduled posting / Trade payables"
+    },
+    {
+      "id": "J0168",
+      "date": "2026-11-23",
+      "from": "1000",
+      "to": "2010",
+      "cents": 94473,
+      "evidence": "EV-0168",
+      "memo": "Scheduled posting / Sales tax"
+    },
+    {
+      "id": "J0169",
+      "date": "2026-11-24",
+      "from": "2020",
+      "to": "1000",
+      "cents": 102392,
+      "evidence": "EV-0169",
+      "memo": "Scheduled posting / Bridge loan"
+    },
+    {
+      "id": "J0170",
+      "date": "2026-11-24",
+      "from": "1000",
+      "to": "2030",
+      "cents": 110311,
+      "evidence": "EV-0170",
+      "memo": "Scheduled posting / Gift cards"
+    },
+    {
+      "id": "J0171",
+      "date": "2026-11-25",
+      "from": "1000",
+      "to": "2040",
+      "cents": 118230,
+      "evidence": "EV-0171",
+      "memo": "Scheduled posting / Customer deposits"
+    },
+    {
+      "id": "J0172",
+      "date": "2026-11-25",
+      "from": "4000",
+      "to": "1000",
+      "cents": 126149,
+      "evidence": "EV-0172",
+      "memo": "Daily settlement / Shop sales"
+    },
+    {
+      "id": "J0173",
+      "date": "2026-11-26",
+      "from": "4010",
+      "to": "1000",
+      "cents": 134068,
+      "evidence": "EV-0173",
+      "memo": "Daily settlement / Online sales"
+    },
+    {
+      "id": "J0174",
+      "date": "2026-11-26",
+      "from": "4020",
+      "to": "1000",
+      "cents": 141987,
+      "evidence": "EV-0174",
+      "memo": "Daily settlement / Workshop income"
+    },
+    {
+      "id": "J0175",
+      "date": "2026-11-27",
+      "from": "4030",
+      "to": "1000",
+      "cents": 149906,
+      "evidence": "EV-0175",
+      "memo": "Daily settlement / Other income"
+    },
+    {
+      "id": "J0176",
+      "date": "2026-11-27",
+      "from": "1000",
+      "to": "5000",
+      "cents": 157825,
+      "evidence": "EV-0176",
+      "memo": "Scheduled posting / Rent"
+    },
+    {
+      "id": "J0194",
+      "date": "2026-11-27",
+      "from": "1000",
+      "to": "5080",
+      "cents": 610000,
+      "evidence": null,
+      "memo": "First maintenance posting after a dormant period"
+    },
+    {
+      "id": "J0177",
+      "date": "2026-11-28",
+      "from": "1000",
+      "to": "5010",
+      "cents": 165744,
+      "evidence": "EV-0177",
+      "memo": "Scheduled posting / Payroll"
+    },
+    {
+      "id": "J0178",
+      "date": "2026-11-28",
+      "from": "1000",
+      "to": "5020",
+      "cents": 173663,
+      "evidence": "EV-0178",
+      "memo": "Scheduled posting / Utilities"
+    },
+    {
+      "id": "J0179",
+      "date": "2026-11-29",
+      "from": "1000",
+      "to": "5030",
+      "cents": 181582,
+      "evidence": "EV-0179",
+      "memo": "Scheduled posting / Shop supplies"
+    },
+    {
+      "id": "J0180",
+      "date": "2026-11-29",
+      "from": "1000",
+      "to": "5040",
+      "cents": 189501,
+      "evidence": "EV-0180",
+      "memo": "Scheduled posting / Marketing"
+    }
+  ],
+  "entries": [
+    {
+      "transaction": "J0001",
+      "date": "2026-09-01",
+      "account": "1010",
+      "debit": 18000,
+      "credit": 0,
+      "evidence": "EV-0001",
+      "memo": "Scheduled posting / Petty cash"
+    },
+    {
+      "transaction": "J0001",
+      "date": "2026-09-01",
+      "account": "1000",
+      "debit": 0,
+      "credit": 18000,
+      "evidence": "EV-0001",
+      "memo": "Scheduled posting / Petty cash"
+    },
+    {
+      "transaction": "J0002",
+      "date": "2026-09-01",
+      "account": "1020",
+      "debit": 25919,
+      "credit": 0,
+      "evidence": "EV-0002",
+      "memo": "Scheduled posting / Transfer clearing"
+    },
+    {
+      "transaction": "J0002",
+      "date": "2026-09-01",
+      "account": "1000",
+      "debit": 0,
+      "credit": 25919,
+      "evidence": "EV-0002",
+      "memo": "Scheduled posting / Transfer clearing"
+    },
+    {
+      "transaction": "J0003",
+      "date": "2026-09-02",
+      "account": "1030",
+      "debit": 33838,
+      "credit": 0,
+      "evidence": "EV-0003",
+      "memo": "Scheduled posting / Inventory"
+    },
+    {
+      "transaction": "J0003",
+      "date": "2026-09-02",
+      "account": "1000",
+      "debit": 0,
+      "credit": 33838,
+      "evidence": "EV-0003",
+      "memo": "Scheduled posting / Inventory"
+    },
+    {
+      "transaction": "J0004",
+      "date": "2026-09-02",
+      "account": "1040",
+      "debit": 41757,
+      "credit": 0,
+      "evidence": "EV-0004",
+      "memo": "Scheduled posting / Receivables"
+    },
+    {
+      "transaction": "J0004",
+      "date": "2026-09-02",
+      "account": "1000",
+      "debit": 0,
+      "credit": 41757,
+      "evidence": "EV-0004",
+      "memo": "Scheduled posting / Receivables"
+    },
+    {
+      "transaction": "J0005",
+      "date": "2026-09-03",
+      "account": "1050",
+      "debit": 49676,
+      "credit": 0,
+      "evidence": "EV-0005",
+      "memo": "Scheduled posting / Equipment"
+    },
+    {
+      "transaction": "J0005",
+      "date": "2026-09-03",
+      "account": "1000",
+      "debit": 0,
+      "credit": 49676,
+      "evidence": "EV-0005",
+      "memo": "Scheduled posting / Equipment"
+    },
+    {
+      "transaction": "J0006",
+      "date": "2026-09-03",
+      "account": "1060",
+      "debit": 57595,
+      "credit": 0,
+      "evidence": "EV-0006",
+      "memo": "Scheduled posting / Prepaid rent"
+    },
+    {
+      "transaction": "J0006",
+      "date": "2026-09-03",
+      "account": "1000",
+      "debit": 0,
+      "credit": 57595,
+      "evidence": "EV-0006",
+      "memo": "Scheduled posting / Prepaid rent"
+    },
+    {
+      "transaction": "J0007",
+      "date": "2026-09-04",
+      "account": "1000",
+      "debit": 65514,
+      "credit": 0,
+      "evidence": "EV-0007",
+      "memo": "Scheduled posting / Trade payables"
+    },
+    {
+      "transaction": "J0007",
+      "date": "2026-09-04",
+      "account": "2000",
+      "debit": 0,
+      "credit": 65514,
+      "evidence": "EV-0007",
+      "memo": "Scheduled posting / Trade payables"
+    },
+    {
+      "transaction": "J0008",
+      "date": "2026-09-04",
+      "account": "2010",
+      "debit": 73433,
+      "credit": 0,
+      "evidence": "EV-0008",
+      "memo": "Scheduled posting / Sales tax"
+    },
+    {
+      "transaction": "J0008",
+      "date": "2026-09-04",
+      "account": "1000",
+      "debit": 0,
+      "credit": 73433,
+      "evidence": "EV-0008",
+      "memo": "Scheduled posting / Sales tax"
+    },
+    {
+      "transaction": "J0009",
+      "date": "2026-09-05",
+      "account": "2020",
+      "debit": 81352,
+      "credit": 0,
+      "evidence": "EV-0009",
+      "memo": "Scheduled posting / Bridge loan"
+    },
+    {
+      "transaction": "J0009",
+      "date": "2026-09-05",
+      "account": "1000",
+      "debit": 0,
+      "credit": 81352,
+      "evidence": "EV-0009",
+      "memo": "Scheduled posting / Bridge loan"
+    },
+    {
+      "transaction": "J0010",
+      "date": "2026-09-05",
+      "account": "1000",
+      "debit": 89271,
+      "credit": 0,
+      "evidence": "EV-0010",
+      "memo": "Scheduled posting / Gift cards"
+    },
+    {
+      "transaction": "J0010",
+      "date": "2026-09-05",
+      "account": "2030",
+      "debit": 0,
+      "credit": 89271,
+      "evidence": "EV-0010",
+      "memo": "Scheduled posting / Gift cards"
+    },
+    {
+      "transaction": "J0011",
+      "date": "2026-09-06",
+      "account": "2040",
+      "debit": 97190,
+      "credit": 0,
+      "evidence": "EV-0011",
+      "memo": "Scheduled posting / Customer deposits"
+    },
+    {
+      "transaction": "J0011",
+      "date": "2026-09-06",
+      "account": "1000",
+      "debit": 0,
+      "credit": 97190,
+      "evidence": "EV-0011",
+      "memo": "Scheduled posting / Customer deposits"
+    },
+    {
+      "transaction": "J0012",
+      "date": "2026-09-06",
+      "account": "1000",
+      "debit": 105109,
+      "credit": 0,
+      "evidence": "EV-0012",
+      "memo": "Daily settlement / Shop sales"
+    },
+    {
+      "transaction": "J0012",
+      "date": "2026-09-06",
+      "account": "4000",
+      "debit": 0,
+      "credit": 105109,
+      "evidence": "EV-0012",
+      "memo": "Daily settlement / Shop sales"
+    },
+    {
+      "transaction": "J0013",
+      "date": "2026-09-07",
+      "account": "1000",
+      "debit": 113028,
+      "credit": 0,
+      "evidence": "EV-0013",
+      "memo": "Daily settlement / Online sales"
+    },
+    {
+      "transaction": "J0013",
+      "date": "2026-09-07",
+      "account": "4010",
+      "debit": 0,
+      "credit": 113028,
+      "evidence": "EV-0013",
+      "memo": "Daily settlement / Online sales"
+    },
+    {
+      "transaction": "J0014",
+      "date": "2026-09-07",
+      "account": "1000",
+      "debit": 120947,
+      "credit": 0,
+      "evidence": "EV-0014",
+      "memo": "Daily settlement / Workshop income"
+    },
+    {
+      "transaction": "J0014",
+      "date": "2026-09-07",
+      "account": "4020",
+      "debit": 0,
+      "credit": 120947,
+      "evidence": "EV-0014",
+      "memo": "Daily settlement / Workshop income"
+    },
+    {
+      "transaction": "J0015",
+      "date": "2026-09-08",
+      "account": "1000",
+      "debit": 128866,
+      "credit": 0,
+      "evidence": "EV-0015",
+      "memo": "Daily settlement / Other income"
+    },
+    {
+      "transaction": "J0015",
+      "date": "2026-09-08",
+      "account": "4030",
+      "debit": 0,
+      "credit": 128866,
+      "evidence": "EV-0015",
+      "memo": "Daily settlement / Other income"
+    },
+    {
+      "transaction": "J0016",
+      "date": "2026-09-08",
+      "account": "5000",
+      "debit": 136785,
+      "credit": 0,
+      "evidence": "EV-0016",
+      "memo": "Scheduled posting / Rent"
+    },
+    {
+      "transaction": "J0016",
+      "date": "2026-09-08",
+      "account": "1000",
+      "debit": 0,
+      "credit": 136785,
+      "evidence": "EV-0016",
+      "memo": "Scheduled posting / Rent"
+    },
+    {
+      "transaction": "J0017",
+      "date": "2026-09-09",
+      "account": "5010",
+      "debit": 144704,
+      "credit": 0,
+      "evidence": "EV-0017",
+      "memo": "Scheduled posting / Payroll"
+    },
+    {
+      "transaction": "J0017",
+      "date": "2026-09-09",
+      "account": "1000",
+      "debit": 0,
+      "credit": 144704,
+      "evidence": "EV-0017",
+      "memo": "Scheduled posting / Payroll"
+    },
+    {
+      "transaction": "J0018",
+      "date": "2026-09-09",
+      "account": "5020",
+      "debit": 152623,
+      "credit": 0,
+      "evidence": "EV-0018",
+      "memo": "Scheduled posting / Utilities"
+    },
+    {
+      "transaction": "J0018",
+      "date": "2026-09-09",
+      "account": "1000",
+      "debit": 0,
+      "credit": 152623,
+      "evidence": "EV-0018",
+      "memo": "Scheduled posting / Utilities"
+    },
+    {
+      "transaction": "J0019",
+      "date": "2026-09-10",
+      "account": "5030",
+      "debit": 160542,
+      "credit": 0,
+      "evidence": "EV-0019",
+      "memo": "Scheduled posting / Shop supplies"
+    },
+    {
+      "transaction": "J0019",
+      "date": "2026-09-10",
+      "account": "1000",
+      "debit": 0,
+      "credit": 160542,
+      "evidence": "EV-0019",
+      "memo": "Scheduled posting / Shop supplies"
+    },
+    {
+      "transaction": "J0020",
+      "date": "2026-09-10",
+      "account": "5040",
+      "debit": 168461,
+      "credit": 0,
+      "evidence": "EV-0020",
+      "memo": "Scheduled posting / Marketing"
+    },
+    {
+      "transaction": "J0020",
+      "date": "2026-09-10",
+      "account": "1000",
+      "debit": 0,
+      "credit": 168461,
+      "evidence": "EV-0020",
+      "memo": "Scheduled posting / Marketing"
+    },
+    {
+      "transaction": "J0021",
+      "date": "2026-09-11",
+      "account": "1010",
+      "debit": 176380,
+      "credit": 0,
+      "evidence": "EV-0021",
+      "memo": "Scheduled posting / Petty cash"
+    },
+    {
+      "transaction": "J0021",
+      "date": "2026-09-11",
+      "account": "1000",
+      "debit": 0,
+      "credit": 176380,
+      "evidence": "EV-0021",
+      "memo": "Scheduled posting / Petty cash"
+    },
+    {
+      "transaction": "J0022",
+      "date": "2026-09-11",
+      "account": "1020",
+      "debit": 184299,
+      "credit": 0,
+      "evidence": "EV-0022",
+      "memo": "Scheduled posting / Transfer clearing"
+    },
+    {
+      "transaction": "J0022",
+      "date": "2026-09-11",
+      "account": "1000",
+      "debit": 0,
+      "credit": 184299,
+      "evidence": "EV-0022",
+      "memo": "Scheduled posting / Transfer clearing"
+    },
+    {
+      "transaction": "J0023",
+      "date": "2026-09-12",
+      "account": "1030",
+      "debit": 192218,
+      "credit": 0,
+      "evidence": "EV-0023",
+      "memo": "Scheduled posting / Inventory"
+    },
+    {
+      "transaction": "J0023",
+      "date": "2026-09-12",
+      "account": "1000",
+      "debit": 0,
+      "credit": 192218,
+      "evidence": "EV-0023",
+      "memo": "Scheduled posting / Inventory"
+    },
+    {
+      "transaction": "J0024",
+      "date": "2026-09-12",
+      "account": "1040",
+      "debit": 22137,
+      "credit": 0,
+      "evidence": "EV-0024",
+      "memo": "Scheduled posting / Receivables"
+    },
+    {
+      "transaction": "J0024",
+      "date": "2026-09-12",
+      "account": "1000",
+      "debit": 0,
+      "credit": 22137,
+      "evidence": "EV-0024",
+      "memo": "Scheduled posting / Receivables"
+    },
+    {
+      "transaction": "J0025",
+      "date": "2026-09-13",
+      "account": "1050",
+      "debit": 30056,
+      "credit": 0,
+      "evidence": "EV-0025",
+      "memo": "Scheduled posting / Equipment"
+    },
+    {
+      "transaction": "J0025",
+      "date": "2026-09-13",
+      "account": "1000",
+      "debit": 0,
+      "credit": 30056,
+      "evidence": "EV-0025",
+      "memo": "Scheduled posting / Equipment"
+    },
+    {
+      "transaction": "J0026",
+      "date": "2026-09-13",
+      "account": "1060",
+      "debit": 37975,
+      "credit": 0,
+      "evidence": "EV-0026",
+      "memo": "Scheduled posting / Prepaid rent"
+    },
+    {
+      "transaction": "J0026",
+      "date": "2026-09-13",
+      "account": "1000",
+      "debit": 0,
+      "credit": 37975,
+      "evidence": "EV-0026",
+      "memo": "Scheduled posting / Prepaid rent"
+    },
+    {
+      "transaction": "J0027",
+      "date": "2026-09-14",
+      "account": "2000",
+      "debit": 45894,
+      "credit": 0,
+      "evidence": "EV-0027",
+      "memo": "Scheduled posting / Trade payables"
+    },
+    {
+      "transaction": "J0027",
+      "date": "2026-09-14",
+      "account": "1000",
+      "debit": 0,
+      "credit": 45894,
+      "evidence": "EV-0027",
+      "memo": "Scheduled posting / Trade payables"
+    },
+    {
+      "transaction": "J0028",
+      "date": "2026-09-14",
+      "account": "1000",
+      "debit": 53813,
+      "credit": 0,
+      "evidence": "EV-0028",
+      "memo": "Scheduled posting / Sales tax"
+    },
+    {
+      "transaction": "J0028",
+      "date": "2026-09-14",
+      "account": "2010",
+      "debit": 0,
+      "credit": 53813,
+      "evidence": "EV-0028",
+      "memo": "Scheduled posting / Sales tax"
+    },
+    {
+      "transaction": "J0029",
+      "date": "2026-09-15",
+      "account": "2020",
+      "debit": 61732,
+      "credit": 0,
+      "evidence": "EV-0029",
+      "memo": "Scheduled posting / Bridge loan"
+    },
+    {
+      "transaction": "J0029",
+      "date": "2026-09-15",
+      "account": "1000",
+      "debit": 0,
+      "credit": 61732,
+      "evidence": "EV-0029",
+      "memo": "Scheduled posting / Bridge loan"
+    },
+    {
+      "transaction": "J0030",
+      "date": "2026-09-15",
+      "account": "2030",
+      "debit": 69651,
+      "credit": 0,
+      "evidence": "EV-0030",
+      "memo": "Scheduled posting / Gift cards"
+    },
+    {
+      "transaction": "J0030",
+      "date": "2026-09-15",
+      "account": "1000",
+      "debit": 0,
+      "credit": 69651,
+      "evidence": "EV-0030",
+      "memo": "Scheduled posting / Gift cards"
+    },
+    {
+      "transaction": "J0031",
+      "date": "2026-09-16",
+      "account": "1000",
+      "debit": 77570,
+      "credit": 0,
+      "evidence": "EV-0031",
+      "memo": "Scheduled posting / Customer deposits"
+    },
+    {
+      "transaction": "J0031",
+      "date": "2026-09-16",
+      "account": "2040",
+      "debit": 0,
+      "credit": 77570,
+      "evidence": "EV-0031",
+      "memo": "Scheduled posting / Customer deposits"
+    },
+    {
+      "transaction": "J0032",
+      "date": "2026-09-16",
+      "account": "1000",
+      "debit": 85489,
+      "credit": 0,
+      "evidence": "EV-0032",
+      "memo": "Daily settlement / Shop sales"
+    },
+    {
+      "transaction": "J0032",
+      "date": "2026-09-16",
+      "account": "4000",
+      "debit": 0,
+      "credit": 85489,
+      "evidence": "EV-0032",
+      "memo": "Daily settlement / Shop sales"
+    },
+    {
+      "transaction": "J0033",
+      "date": "2026-09-17",
+      "account": "1000",
+      "debit": 93408,
+      "credit": 0,
+      "evidence": "EV-0033",
+      "memo": "Daily settlement / Online sales"
+    },
+    {
+      "transaction": "J0033",
+      "date": "2026-09-17",
+      "account": "4010",
+      "debit": 0,
+      "credit": 93408,
+      "evidence": "EV-0033",
+      "memo": "Daily settlement / Online sales"
+    },
+    {
+      "transaction": "J0034",
+      "date": "2026-09-17",
+      "account": "1000",
+      "debit": 101327,
+      "credit": 0,
+      "evidence": "EV-0034",
+      "memo": "Daily settlement / Workshop income"
+    },
+    {
+      "transaction": "J0034",
+      "date": "2026-09-17",
+      "account": "4020",
+      "debit": 0,
+      "credit": 101327,
+      "evidence": "EV-0034",
+      "memo": "Daily settlement / Workshop income"
+    },
+    {
+      "transaction": "J0035",
+      "date": "2026-09-18",
+      "account": "1000",
+      "debit": 109246,
+      "credit": 0,
+      "evidence": "EV-0035",
+      "memo": "Daily settlement / Other income"
+    },
+    {
+      "transaction": "J0035",
+      "date": "2026-09-18",
+      "account": "4030",
+      "debit": 0,
+      "credit": 109246,
+      "evidence": "EV-0035",
+      "memo": "Daily settlement / Other income"
+    },
+    {
+      "transaction": "J0036",
+      "date": "2026-09-18",
+      "account": "5000",
+      "debit": 117165,
+      "credit": 0,
+      "evidence": "EV-0036",
+      "memo": "Scheduled posting / Rent"
+    },
+    {
+      "transaction": "J0036",
+      "date": "2026-09-18",
+      "account": "1000",
+      "debit": 0,
+      "credit": 117165,
+      "evidence": "EV-0036",
+      "memo": "Scheduled posting / Rent"
+    },
+    {
+      "transaction": "J0037",
+      "date": "2026-09-19",
+      "account": "5010",
+      "debit": 125084,
+      "credit": 0,
+      "evidence": "EV-0037",
+      "memo": "Scheduled posting / Payroll"
+    },
+    {
+      "transaction": "J0037",
+      "date": "2026-09-19",
+      "account": "1000",
+      "debit": 0,
+      "credit": 125084,
+      "evidence": "EV-0037",
+      "memo": "Scheduled posting / Payroll"
+    },
+    {
+      "transaction": "J0038",
+      "date": "2026-09-19",
+      "account": "5020",
+      "debit": 133003,
+      "credit": 0,
+      "evidence": "EV-0038",
+      "memo": "Scheduled posting / Utilities"
+    },
+    {
+      "transaction": "J0038",
+      "date": "2026-09-19",
+      "account": "1000",
+      "debit": 0,
+      "credit": 133003,
+      "evidence": "EV-0038",
+      "memo": "Scheduled posting / Utilities"
+    },
+    {
+      "transaction": "J0039",
+      "date": "2026-09-20",
+      "account": "5030",
+      "debit": 140922,
+      "credit": 0,
+      "evidence": "EV-0039",
+      "memo": "Scheduled posting / Shop supplies"
+    },
+    {
+      "transaction": "J0039",
+      "date": "2026-09-20",
+      "account": "1000",
+      "debit": 0,
+      "credit": 140922,
+      "evidence": "EV-0039",
+      "memo": "Scheduled posting / Shop supplies"
+    },
+    {
+      "transaction": "J0040",
+      "date": "2026-09-20",
+      "account": "5040",
+      "debit": 148841,
+      "credit": 0,
+      "evidence": "EV-0040",
+      "memo": "Scheduled posting / Marketing"
+    },
+    {
+      "transaction": "J0040",
+      "date": "2026-09-20",
+      "account": "1000",
+      "debit": 0,
+      "credit": 148841,
+      "evidence": "EV-0040",
+      "memo": "Scheduled posting / Marketing"
+    },
+    {
+      "transaction": "J0041",
+      "date": "2026-09-21",
+      "account": "1010",
+      "debit": 156760,
+      "credit": 0,
+      "evidence": "EV-0041",
+      "memo": "Scheduled posting / Petty cash"
+    },
+    {
+      "transaction": "J0041",
+      "date": "2026-09-21",
+      "account": "1000",
+      "debit": 0,
+      "credit": 156760,
+      "evidence": "EV-0041",
+      "memo": "Scheduled posting / Petty cash"
+    },
+    {
+      "transaction": "J0042",
+      "date": "2026-09-21",
+      "account": "1020",
+      "debit": 164679,
+      "credit": 0,
+      "evidence": "EV-0042",
+      "memo": "Scheduled posting / Transfer clearing"
+    },
+    {
+      "transaction": "J0042",
+      "date": "2026-09-21",
+      "account": "1000",
+      "debit": 0,
+      "credit": 164679,
+      "evidence": "EV-0042",
+      "memo": "Scheduled posting / Transfer clearing"
+    },
+    {
+      "transaction": "J0043",
+      "date": "2026-09-22",
+      "account": "1030",
+      "debit": 172598,
+      "credit": 0,
+      "evidence": "EV-0043",
+      "memo": "Scheduled posting / Inventory"
+    },
+    {
+      "transaction": "J0043",
+      "date": "2026-09-22",
+      "account": "1000",
+      "debit": 0,
+      "credit": 172598,
+      "evidence": "EV-0043",
+      "memo": "Scheduled posting / Inventory"
+    },
+    {
+      "transaction": "J0044",
+      "date": "2026-09-22",
+      "account": "1040",
+      "debit": 180517,
+      "credit": 0,
+      "evidence": "EV-0044",
+      "memo": "Scheduled posting / Receivables"
+    },
+    {
+      "transaction": "J0044",
+      "date": "2026-09-22",
+      "account": "1000",
+      "debit": 0,
+      "credit": 180517,
+      "evidence": "EV-0044",
+      "memo": "Scheduled posting / Receivables"
+    },
+    {
+      "transaction": "J0045",
+      "date": "2026-09-23",
+      "account": "1050",
+      "debit": 188436,
+      "credit": 0,
+      "evidence": "EV-0045",
+      "memo": "Scheduled posting / Equipment"
+    },
+    {
+      "transaction": "J0045",
+      "date": "2026-09-23",
+      "account": "1000",
+      "debit": 0,
+      "credit": 188436,
+      "evidence": "EV-0045",
+      "memo": "Scheduled posting / Equipment"
+    },
+    {
+      "transaction": "J0046",
+      "date": "2026-09-23",
+      "account": "1060",
+      "debit": 18355,
+      "credit": 0,
+      "evidence": "EV-0046",
+      "memo": "Scheduled posting / Prepaid rent"
+    },
+    {
+      "transaction": "J0046",
+      "date": "2026-09-23",
+      "account": "1000",
+      "debit": 0,
+      "credit": 18355,
+      "evidence": "EV-0046",
+      "memo": "Scheduled posting / Prepaid rent"
+    },
+    {
+      "transaction": "J0047",
+      "date": "2026-09-24",
+      "account": "2000",
+      "debit": 26274,
+      "credit": 0,
+      "evidence": "EV-0047",
+      "memo": "Scheduled posting / Trade payables"
+    },
+    {
+      "transaction": "J0047",
+      "date": "2026-09-24",
+      "account": "1000",
+      "debit": 0,
+      "credit": 26274,
+      "evidence": "EV-0047",
+      "memo": "Scheduled posting / Trade payables"
+    },
+    {
+      "transaction": "J0048",
+      "date": "2026-09-24",
+      "account": "2010",
+      "debit": 34193,
+      "credit": 0,
+      "evidence": "EV-0048",
+      "memo": "Scheduled posting / Sales tax"
+    },
+    {
+      "transaction": "J0048",
+      "date": "2026-09-24",
+      "account": "1000",
+      "debit": 0,
+      "credit": 34193,
+      "evidence": "EV-0048",
+      "memo": "Scheduled posting / Sales tax"
+    },
+    {
+      "transaction": "J0049",
+      "date": "2026-09-25",
+      "account": "1000",
+      "debit": 42112,
+      "credit": 0,
+      "evidence": "EV-0049",
+      "memo": "Scheduled posting / Bridge loan"
+    },
+    {
+      "transaction": "J0049",
+      "date": "2026-09-25",
+      "account": "2020",
+      "debit": 0,
+      "credit": 42112,
+      "evidence": "EV-0049",
+      "memo": "Scheduled posting / Bridge loan"
+    },
+    {
+      "transaction": "J0050",
+      "date": "2026-09-25",
+      "account": "2030",
+      "debit": 50031,
+      "credit": 0,
+      "evidence": "EV-0050",
+      "memo": "Scheduled posting / Gift cards"
+    },
+    {
+      "transaction": "J0050",
+      "date": "2026-09-25",
+      "account": "1000",
+      "debit": 0,
+      "credit": 50031,
+      "evidence": "EV-0050",
+      "memo": "Scheduled posting / Gift cards"
+    },
+    {
+      "transaction": "J0051",
+      "date": "2026-09-26",
+      "account": "2040",
+      "debit": 57950,
+      "credit": 0,
+      "evidence": "EV-0051",
+      "memo": "Scheduled posting / Customer deposits"
+    },
+    {
+      "transaction": "J0051",
+      "date": "2026-09-26",
+      "account": "1000",
+      "debit": 0,
+      "credit": 57950,
+      "evidence": "EV-0051",
+      "memo": "Scheduled posting / Customer deposits"
+    },
+    {
+      "transaction": "J0052",
+      "date": "2026-09-26",
+      "account": "1000",
+      "debit": 65869,
+      "credit": 0,
+      "evidence": "EV-0052",
+      "memo": "Daily settlement / Shop sales"
+    },
+    {
+      "transaction": "J0052",
+      "date": "2026-09-26",
+      "account": "4000",
+      "debit": 0,
+      "credit": 65869,
+      "evidence": "EV-0052",
+      "memo": "Daily settlement / Shop sales"
+    },
+    {
+      "transaction": "J0053",
+      "date": "2026-09-27",
+      "account": "1000",
+      "debit": 73788,
+      "credit": 0,
+      "evidence": "EV-0053",
+      "memo": "Daily settlement / Online sales"
+    },
+    {
+      "transaction": "J0053",
+      "date": "2026-09-27",
+      "account": "4010",
+      "debit": 0,
+      "credit": 73788,
+      "evidence": "EV-0053",
+      "memo": "Daily settlement / Online sales"
+    },
+    {
+      "transaction": "J0054",
+      "date": "2026-09-27",
+      "account": "1000",
+      "debit": 81707,
+      "credit": 0,
+      "evidence": "EV-0054",
+      "memo": "Daily settlement / Workshop income"
+    },
+    {
+      "transaction": "J0054",
+      "date": "2026-09-27",
+      "account": "4020",
+      "debit": 0,
+      "credit": 81707,
+      "evidence": "EV-0054",
+      "memo": "Daily settlement / Workshop income"
+    },
+    {
+      "transaction": "J0055",
+      "date": "2026-09-28",
+      "account": "1000",
+      "debit": 89626,
+      "credit": 0,
+      "evidence": "EV-0055",
+      "memo": "Daily settlement / Other income"
+    },
+    {
+      "transaction": "J0055",
+      "date": "2026-09-28",
+      "account": "4030",
+      "debit": 0,
+      "credit": 89626,
+      "evidence": "EV-0055",
+      "memo": "Daily settlement / Other income"
+    },
+    {
+      "transaction": "J0056",
+      "date": "2026-09-28",
+      "account": "5000",
+      "debit": 97545,
+      "credit": 0,
+      "evidence": "EV-0056",
+      "memo": "Scheduled posting / Rent"
+    },
+    {
+      "transaction": "J0056",
+      "date": "2026-09-28",
+      "account": "1000",
+      "debit": 0,
+      "credit": 97545,
+      "evidence": "EV-0056",
+      "memo": "Scheduled posting / Rent"
+    },
+    {
+      "transaction": "J0057",
+      "date": "2026-09-29",
+      "account": "5010",
+      "debit": 105464,
+      "credit": 0,
+      "evidence": "EV-0057",
+      "memo": "Scheduled posting / Payroll"
+    },
+    {
+      "transaction": "J0057",
+      "date": "2026-09-29",
+      "account": "1000",
+      "debit": 0,
+      "credit": 105464,
+      "evidence": "EV-0057",
+      "memo": "Scheduled posting / Payroll"
+    },
+    {
+      "transaction": "J0058",
+      "date": "2026-09-29",
+      "account": "5020",
+      "debit": 113383,
+      "credit": 0,
+      "evidence": "EV-0058",
+      "memo": "Scheduled posting / Utilities"
+    },
+    {
+      "transaction": "J0058",
+      "date": "2026-09-29",
+      "account": "1000",
+      "debit": 0,
+      "credit": 113383,
+      "evidence": "EV-0058",
+      "memo": "Scheduled posting / Utilities"
+    },
+    {
+      "transaction": "J0059",
+      "date": "2026-09-30",
+      "account": "5030",
+      "debit": 121302,
+      "credit": 0,
+      "evidence": "EV-0059",
+      "memo": "Scheduled posting / Shop supplies"
+    },
+    {
+      "transaction": "J0059",
+      "date": "2026-09-30",
+      "account": "1000",
+      "debit": 0,
+      "credit": 121302,
+      "evidence": "EV-0059",
+      "memo": "Scheduled posting / Shop supplies"
+    },
+    {
+      "transaction": "J0060",
+      "date": "2026-09-30",
+      "account": "5040",
+      "debit": 129221,
+      "credit": 0,
+      "evidence": "EV-0060",
+      "memo": "Scheduled posting / Marketing"
+    },
+    {
+      "transaction": "J0060",
+      "date": "2026-09-30",
+      "account": "1000",
+      "debit": 0,
+      "credit": 129221,
+      "evidence": "EV-0060",
+      "memo": "Scheduled posting / Marketing"
+    },
+    {
+      "transaction": "J0061",
+      "date": "2026-10-01",
+      "account": "1010",
+      "debit": 137140,
+      "credit": 0,
+      "evidence": "EV-0061",
+      "memo": "Scheduled posting / Petty cash"
+    },
+    {
+      "transaction": "J0061",
+      "date": "2026-10-01",
+      "account": "1000",
+      "debit": 0,
+      "credit": 137140,
+      "evidence": "EV-0061",
+      "memo": "Scheduled posting / Petty cash"
+    },
+    {
+      "transaction": "J0062",
+      "date": "2026-10-01",
+      "account": "1020",
+      "debit": 145059,
+      "credit": 0,
+      "evidence": "EV-0062",
+      "memo": "Scheduled posting / Transfer clearing"
+    },
+    {
+      "transaction": "J0062",
+      "date": "2026-10-01",
+      "account": "1000",
+      "debit": 0,
+      "credit": 145059,
+      "evidence": "EV-0062",
+      "memo": "Scheduled posting / Transfer clearing"
+    },
+    {
+      "transaction": "J0063",
+      "date": "2026-10-02",
+      "account": "1030",
+      "debit": 152978,
+      "credit": 0,
+      "evidence": "EV-0063",
+      "memo": "Scheduled posting / Inventory"
+    },
+    {
+      "transaction": "J0063",
+      "date": "2026-10-02",
+      "account": "1000",
+      "debit": 0,
+      "credit": 152978,
+      "evidence": "EV-0063",
+      "memo": "Scheduled posting / Inventory"
+    },
+    {
+      "transaction": "J0064",
+      "date": "2026-10-02",
+      "account": "1040",
+      "debit": 160897,
+      "credit": 0,
+      "evidence": "EV-0064",
+      "memo": "Scheduled posting / Receivables"
+    },
+    {
+      "transaction": "J0064",
+      "date": "2026-10-02",
+      "account": "1000",
+      "debit": 0,
+      "credit": 160897,
+      "evidence": "EV-0064",
+      "memo": "Scheduled posting / Receivables"
+    },
+    {
+      "transaction": "J0065",
+      "date": "2026-10-03",
+      "account": "1050",
+      "debit": 168816,
+      "credit": 0,
+      "evidence": "EV-0065",
+      "memo": "Scheduled posting / Equipment"
+    },
+    {
+      "transaction": "J0065",
+      "date": "2026-10-03",
+      "account": "1000",
+      "debit": 0,
+      "credit": 168816,
+      "evidence": "EV-0065",
+      "memo": "Scheduled posting / Equipment"
+    },
+    {
+      "transaction": "J0066",
+      "date": "2026-10-03",
+      "account": "1060",
+      "debit": 176735,
+      "credit": 0,
+      "evidence": "EV-0066",
+      "memo": "Scheduled posting / Prepaid rent"
+    },
+    {
+      "transaction": "J0066",
+      "date": "2026-10-03",
+      "account": "1000",
+      "debit": 0,
+      "credit": 176735,
+      "evidence": "EV-0066",
+      "memo": "Scheduled posting / Prepaid rent"
+    },
+    {
+      "transaction": "J0067",
+      "date": "2026-10-04",
+      "account": "1000",
+      "debit": 184654,
+      "credit": 0,
+      "evidence": "EV-0067",
+      "memo": "Scheduled posting / Trade payables"
+    },
+    {
+      "transaction": "J0067",
+      "date": "2026-10-04",
+      "account": "2000",
+      "debit": 0,
+      "credit": 184654,
+      "evidence": "EV-0067",
+      "memo": "Scheduled posting / Trade payables"
+    },
+    {
+      "transaction": "J0068",
+      "date": "2026-10-04",
+      "account": "2010",
+      "debit": 192573,
+      "credit": 0,
+      "evidence": "EV-0068",
+      "memo": "Scheduled posting / Sales tax"
+    },
+    {
+      "transaction": "J0068",
+      "date": "2026-10-04",
+      "account": "1000",
+      "debit": 0,
+      "credit": 192573,
+      "evidence": "EV-0068",
+      "memo": "Scheduled posting / Sales tax"
+    },
+    {
+      "transaction": "J0069",
+      "date": "2026-10-05",
+      "account": "2020",
+      "debit": 22492,
+      "credit": 0,
+      "evidence": "EV-0069",
+      "memo": "Scheduled posting / Bridge loan"
+    },
+    {
+      "transaction": "J0069",
+      "date": "2026-10-05",
+      "account": "1000",
+      "debit": 0,
+      "credit": 22492,
+      "evidence": "EV-0069",
+      "memo": "Scheduled posting / Bridge loan"
+    },
+    {
+      "transaction": "J0070",
+      "date": "2026-10-05",
+      "account": "1000",
+      "debit": 30411,
+      "credit": 0,
+      "evidence": "EV-0070",
+      "memo": "Scheduled posting / Gift cards"
+    },
+    {
+      "transaction": "J0070",
+      "date": "2026-10-05",
+      "account": "2030",
+      "debit": 0,
+      "credit": 30411,
+      "evidence": "EV-0070",
+      "memo": "Scheduled posting / Gift cards"
+    },
+    {
+      "transaction": "J0071",
+      "date": "2026-10-06",
+      "account": "2040",
+      "debit": 38330,
+      "credit": 0,
+      "evidence": "EV-0071",
+      "memo": "Scheduled posting / Customer deposits"
+    },
+    {
+      "transaction": "J0071",
+      "date": "2026-10-06",
+      "account": "1000",
+      "debit": 0,
+      "credit": 38330,
+      "evidence": "EV-0071",
+      "memo": "Scheduled posting / Customer deposits"
+    },
+    {
+      "transaction": "J0072",
+      "date": "2026-10-06",
+      "account": "1000",
+      "debit": 46249,
+      "credit": 0,
+      "evidence": "EV-0072",
+      "memo": "Daily settlement / Shop sales"
+    },
+    {
+      "transaction": "J0072",
+      "date": "2026-10-06",
+      "account": "4000",
+      "debit": 0,
+      "credit": 46249,
+      "evidence": "EV-0072",
+      "memo": "Daily settlement / Shop sales"
+    },
+    {
+      "transaction": "J0073",
+      "date": "2026-10-07",
+      "account": "1000",
+      "debit": 54168,
+      "credit": 0,
+      "evidence": "EV-0073",
+      "memo": "Daily settlement / Online sales"
+    },
+    {
+      "transaction": "J0073",
+      "date": "2026-10-07",
+      "account": "4010",
+      "debit": 0,
+      "credit": 54168,
+      "evidence": "EV-0073",
+      "memo": "Daily settlement / Online sales"
+    },
+    {
+      "transaction": "J0074",
+      "date": "2026-10-07",
+      "account": "1000",
+      "debit": 62087,
+      "credit": 0,
+      "evidence": "EV-0074",
+      "memo": "Daily settlement / Workshop income"
+    },
+    {
+      "transaction": "J0074",
+      "date": "2026-10-07",
+      "account": "4020",
+      "debit": 0,
+      "credit": 62087,
+      "evidence": "EV-0074",
+      "memo": "Daily settlement / Workshop income"
+    },
+    {
+      "transaction": "J0075",
+      "date": "2026-10-08",
+      "account": "1000",
+      "debit": 70006,
+      "credit": 0,
+      "evidence": "EV-0075",
+      "memo": "Daily settlement / Other income"
+    },
+    {
+      "transaction": "J0075",
+      "date": "2026-10-08",
+      "account": "4030",
+      "debit": 0,
+      "credit": 70006,
+      "evidence": "EV-0075",
+      "memo": "Daily settlement / Other income"
+    },
+    {
+      "transaction": "J0076",
+      "date": "2026-10-08",
+      "account": "5000",
+      "debit": 77925,
+      "credit": 0,
+      "evidence": "EV-0076",
+      "memo": "Scheduled posting / Rent"
+    },
+    {
+      "transaction": "J0076",
+      "date": "2026-10-08",
+      "account": "1000",
+      "debit": 0,
+      "credit": 77925,
+      "evidence": "EV-0076",
+      "memo": "Scheduled posting / Rent"
+    },
+    {
+      "transaction": "J0077",
+      "date": "2026-10-09",
+      "account": "5010",
+      "debit": 85844,
+      "credit": 0,
+      "evidence": "EV-0077",
+      "memo": "Scheduled posting / Payroll"
+    },
+    {
+      "transaction": "J0077",
+      "date": "2026-10-09",
+      "account": "1000",
+      "debit": 0,
+      "credit": 85844,
+      "evidence": "EV-0077",
+      "memo": "Scheduled posting / Payroll"
+    },
+    {
+      "transaction": "J0078",
+      "date": "2026-10-09",
+      "account": "5020",
+      "debit": 93763,
+      "credit": 0,
+      "evidence": "EV-0078",
+      "memo": "Scheduled posting / Utilities"
+    },
+    {
+      "transaction": "J0078",
+      "date": "2026-10-09",
+      "account": "1000",
+      "debit": 0,
+      "credit": 93763,
+      "evidence": "EV-0078",
+      "memo": "Scheduled posting / Utilities"
+    },
+    {
+      "transaction": "J0079",
+      "date": "2026-10-10",
+      "account": "5030",
+      "debit": 101682,
+      "credit": 0,
+      "evidence": "EV-0079",
+      "memo": "Scheduled posting / Shop supplies"
+    },
+    {
+      "transaction": "J0079",
+      "date": "2026-10-10",
+      "account": "1000",
+      "debit": 0,
+      "credit": 101682,
+      "evidence": "EV-0079",
+      "memo": "Scheduled posting / Shop supplies"
+    },
+    {
+      "transaction": "J0080",
+      "date": "2026-10-10",
+      "account": "5040",
+      "debit": 109601,
+      "credit": 0,
+      "evidence": "EV-0080",
+      "memo": "Scheduled posting / Marketing"
+    },
+    {
+      "transaction": "J0080",
+      "date": "2026-10-10",
+      "account": "1000",
+      "debit": 0,
+      "credit": 109601,
+      "evidence": "EV-0080",
+      "memo": "Scheduled posting / Marketing"
+    },
+    {
+      "transaction": "J0081",
+      "date": "2026-10-11",
+      "account": "1010",
+      "debit": 117520,
+      "credit": 0,
+      "evidence": "EV-0081",
+      "memo": "Scheduled posting / Petty cash"
+    },
+    {
+      "transaction": "J0081",
+      "date": "2026-10-11",
+      "account": "1000",
+      "debit": 0,
+      "credit": 117520,
+      "evidence": "EV-0081",
+      "memo": "Scheduled posting / Petty cash"
+    },
+    {
+      "transaction": "J0082",
+      "date": "2026-10-11",
+      "account": "1020",
+      "debit": 125439,
+      "credit": 0,
+      "evidence": "EV-0082",
+      "memo": "Scheduled posting / Transfer clearing"
+    },
+    {
+      "transaction": "J0082",
+      "date": "2026-10-11",
+      "account": "1000",
+      "debit": 0,
+      "credit": 125439,
+      "evidence": "EV-0082",
+      "memo": "Scheduled posting / Transfer clearing"
+    },
+    {
+      "transaction": "J0083",
+      "date": "2026-10-12",
+      "account": "1030",
+      "debit": 133358,
+      "credit": 0,
+      "evidence": "EV-0083",
+      "memo": "Scheduled posting / Inventory"
+    },
+    {
+      "transaction": "J0083",
+      "date": "2026-10-12",
+      "account": "1000",
+      "debit": 0,
+      "credit": 133358,
+      "evidence": "EV-0083",
+      "memo": "Scheduled posting / Inventory"
+    },
+    {
+      "transaction": "J0084",
+      "date": "2026-10-12",
+      "account": "1040",
+      "debit": 141277,
+      "credit": 0,
+      "evidence": "EV-0084",
+      "memo": "Scheduled posting / Receivables"
+    },
+    {
+      "transaction": "J0084",
+      "date": "2026-10-12",
+      "account": "1000",
+      "debit": 0,
+      "credit": 141277,
+      "evidence": "EV-0084",
+      "memo": "Scheduled posting / Receivables"
+    },
+    {
+      "transaction": "J0085",
+      "date": "2026-10-13",
+      "account": "1050",
+      "debit": 149196,
+      "credit": 0,
+      "evidence": "EV-0085",
+      "memo": "Scheduled posting / Equipment"
+    },
+    {
+      "transaction": "J0085",
+      "date": "2026-10-13",
+      "account": "1000",
+      "debit": 0,
+      "credit": 149196,
+      "evidence": "EV-0085",
+      "memo": "Scheduled posting / Equipment"
+    },
+    {
+      "transaction": "J0086",
+      "date": "2026-10-13",
+      "account": "1060",
+      "debit": 157115,
+      "credit": 0,
+      "evidence": "EV-0086",
+      "memo": "Scheduled posting / Prepaid rent"
+    },
+    {
+      "transaction": "J0086",
+      "date": "2026-10-13",
+      "account": "1000",
+      "debit": 0,
+      "credit": 157115,
+      "evidence": "EV-0086",
+      "memo": "Scheduled posting / Prepaid rent"
+    },
+    {
+      "transaction": "J0087",
+      "date": "2026-10-14",
+      "account": "2000",
+      "debit": 165034,
+      "credit": 0,
+      "evidence": "EV-0087",
+      "memo": "Scheduled posting / Trade payables"
+    },
+    {
+      "transaction": "J0087",
+      "date": "2026-10-14",
+      "account": "1000",
+      "debit": 0,
+      "credit": 165034,
+      "evidence": "EV-0087",
+      "memo": "Scheduled posting / Trade payables"
+    },
+    {
+      "transaction": "J0088",
+      "date": "2026-10-14",
+      "account": "1000",
+      "debit": 172953,
+      "credit": 0,
+      "evidence": "EV-0088",
+      "memo": "Scheduled posting / Sales tax"
+    },
+    {
+      "transaction": "J0088",
+      "date": "2026-10-14",
+      "account": "2010",
+      "debit": 0,
+      "credit": 172953,
+      "evidence": "EV-0088",
+      "memo": "Scheduled posting / Sales tax"
+    },
+    {
+      "transaction": "J0089",
+      "date": "2026-10-15",
+      "account": "2020",
+      "debit": 180872,
+      "credit": 0,
+      "evidence": "EV-0089",
+      "memo": "Scheduled posting / Bridge loan"
+    },
+    {
+      "transaction": "J0089",
+      "date": "2026-10-15",
+      "account": "1000",
+      "debit": 0,
+      "credit": 180872,
+      "evidence": "EV-0089",
+      "memo": "Scheduled posting / Bridge loan"
+    },
+    {
+      "transaction": "J0090",
+      "date": "2026-10-15",
+      "account": "2030",
+      "debit": 188791,
+      "credit": 0,
+      "evidence": "EV-0090",
+      "memo": "Scheduled posting / Gift cards"
+    },
+    {
+      "transaction": "J0090",
+      "date": "2026-10-15",
+      "account": "1000",
+      "debit": 0,
+      "credit": 188791,
+      "evidence": "EV-0090",
+      "memo": "Scheduled posting / Gift cards"
+    },
+    {
+      "transaction": "J0091",
+      "date": "2026-10-16",
+      "account": "1000",
+      "debit": 18710,
+      "credit": 0,
+      "evidence": "EV-0091",
+      "memo": "Scheduled posting / Customer deposits"
+    },
+    {
+      "transaction": "J0091",
+      "date": "2026-10-16",
+      "account": "2040",
+      "debit": 0,
+      "credit": 18710,
+      "evidence": "EV-0091",
+      "memo": "Scheduled posting / Customer deposits"
+    },
+    {
+      "transaction": "J0092",
+      "date": "2026-10-16",
+      "account": "1000",
+      "debit": 26629,
+      "credit": 0,
+      "evidence": "EV-0092",
+      "memo": "Daily settlement / Shop sales"
+    },
+    {
+      "transaction": "J0092",
+      "date": "2026-10-16",
+      "account": "4000",
+      "debit": 0,
+      "credit": 26629,
+      "evidence": "EV-0092",
+      "memo": "Daily settlement / Shop sales"
+    },
+    {
+      "transaction": "J0093",
+      "date": "2026-10-17",
+      "account": "1000",
+      "debit": 34548,
+      "credit": 0,
+      "evidence": "EV-0093",
+      "memo": "Daily settlement / Online sales"
+    },
+    {
+      "transaction": "J0093",
+      "date": "2026-10-17",
+      "account": "4010",
+      "debit": 0,
+      "credit": 34548,
+      "evidence": "EV-0093",
+      "memo": "Daily settlement / Online sales"
+    },
+    {
+      "transaction": "J0094",
+      "date": "2026-10-17",
+      "account": "1000",
+      "debit": 42467,
+      "credit": 0,
+      "evidence": "EV-0094",
+      "memo": "Daily settlement / Workshop income"
+    },
+    {
+      "transaction": "J0094",
+      "date": "2026-10-17",
+      "account": "4020",
+      "debit": 0,
+      "credit": 42467,
+      "evidence": "EV-0094",
+      "memo": "Daily settlement / Workshop income"
+    },
+    {
+      "transaction": "J0095",
+      "date": "2026-10-18",
+      "account": "1000",
+      "debit": 50386,
+      "credit": 0,
+      "evidence": "EV-0095",
+      "memo": "Daily settlement / Other income"
+    },
+    {
+      "transaction": "J0095",
+      "date": "2026-10-18",
+      "account": "4030",
+      "debit": 0,
+      "credit": 50386,
+      "evidence": "EV-0095",
+      "memo": "Daily settlement / Other income"
+    },
+    {
+      "transaction": "J0096",
+      "date": "2026-10-18",
+      "account": "5000",
+      "debit": 58305,
+      "credit": 0,
+      "evidence": "EV-0096",
+      "memo": "Scheduled posting / Rent"
+    },
+    {
+      "transaction": "J0096",
+      "date": "2026-10-18",
+      "account": "1000",
+      "debit": 0,
+      "credit": 58305,
+      "evidence": "EV-0096",
+      "memo": "Scheduled posting / Rent"
+    },
+    {
+      "transaction": "J0097",
+      "date": "2026-10-19",
+      "account": "5010",
+      "debit": 66224,
+      "credit": 0,
+      "evidence": "EV-0097",
+      "memo": "Scheduled posting / Payroll"
+    },
+    {
+      "transaction": "J0097",
+      "date": "2026-10-19",
+      "account": "1000",
+      "debit": 0,
+      "credit": 66224,
+      "evidence": "EV-0097",
+      "memo": "Scheduled posting / Payroll"
+    },
+    {
+      "transaction": "J0098",
+      "date": "2026-10-19",
+      "account": "5020",
+      "debit": 74143,
+      "credit": 0,
+      "evidence": "EV-0098",
+      "memo": "Scheduled posting / Utilities"
+    },
+    {
+      "transaction": "J0098",
+      "date": "2026-10-19",
+      "account": "1000",
+      "debit": 0,
+      "credit": 74143,
+      "evidence": "EV-0098",
+      "memo": "Scheduled posting / Utilities"
+    },
+    {
+      "transaction": "J0099",
+      "date": "2026-10-20",
+      "account": "5030",
+      "debit": 82062,
+      "credit": 0,
+      "evidence": "EV-0099",
+      "memo": "Scheduled posting / Shop supplies"
+    },
+    {
+      "transaction": "J0099",
+      "date": "2026-10-20",
+      "account": "1000",
+      "debit": 0,
+      "credit": 82062,
+      "evidence": "EV-0099",
+      "memo": "Scheduled posting / Shop supplies"
+    },
+    {
+      "transaction": "J0100",
+      "date": "2026-10-20",
+      "account": "5040",
+      "debit": 89981,
+      "credit": 0,
+      "evidence": "EV-0100",
+      "memo": "Scheduled posting / Marketing"
+    },
+    {
+      "transaction": "J0100",
+      "date": "2026-10-20",
+      "account": "1000",
+      "debit": 0,
+      "credit": 89981,
+      "evidence": "EV-0100",
+      "memo": "Scheduled posting / Marketing"
+    },
+    {
+      "transaction": "J0101",
+      "date": "2026-10-21",
+      "account": "1010",
+      "debit": 97900,
+      "credit": 0,
+      "evidence": "EV-0101",
+      "memo": "Scheduled posting / Petty cash"
+    },
+    {
+      "transaction": "J0101",
+      "date": "2026-10-21",
+      "account": "1000",
+      "debit": 0,
+      "credit": 97900,
+      "evidence": "EV-0101",
+      "memo": "Scheduled posting / Petty cash"
+    },
+    {
+      "transaction": "J0102",
+      "date": "2026-10-21",
+      "account": "1020",
+      "debit": 105819,
+      "credit": 0,
+      "evidence": "EV-0102",
+      "memo": "Scheduled posting / Transfer clearing"
+    },
+    {
+      "transaction": "J0102",
+      "date": "2026-10-21",
+      "account": "1000",
+      "debit": 0,
+      "credit": 105819,
+      "evidence": "EV-0102",
+      "memo": "Scheduled posting / Transfer clearing"
+    },
+    {
+      "transaction": "J0103",
+      "date": "2026-10-22",
+      "account": "1030",
+      "debit": 113738,
+      "credit": 0,
+      "evidence": "EV-0103",
+      "memo": "Scheduled posting / Inventory"
+    },
+    {
+      "transaction": "J0103",
+      "date": "2026-10-22",
+      "account": "1000",
+      "debit": 0,
+      "credit": 113738,
+      "evidence": "EV-0103",
+      "memo": "Scheduled posting / Inventory"
+    },
+    {
+      "transaction": "J0104",
+      "date": "2026-10-22",
+      "account": "1040",
+      "debit": 121657,
+      "credit": 0,
+      "evidence": "EV-0104",
+      "memo": "Scheduled posting / Receivables"
+    },
+    {
+      "transaction": "J0104",
+      "date": "2026-10-22",
+      "account": "1000",
+      "debit": 0,
+      "credit": 121657,
+      "evidence": "EV-0104",
+      "memo": "Scheduled posting / Receivables"
+    },
+    {
+      "transaction": "J0105",
+      "date": "2026-10-23",
+      "account": "1050",
+      "debit": 129576,
+      "credit": 0,
+      "evidence": "EV-0105",
+      "memo": "Scheduled posting / Equipment"
+    },
+    {
+      "transaction": "J0105",
+      "date": "2026-10-23",
+      "account": "1000",
+      "debit": 0,
+      "credit": 129576,
+      "evidence": "EV-0105",
+      "memo": "Scheduled posting / Equipment"
+    },
+    {
+      "transaction": "J0106",
+      "date": "2026-10-23",
+      "account": "1060",
+      "debit": 137495,
+      "credit": 0,
+      "evidence": "EV-0106",
+      "memo": "Scheduled posting / Prepaid rent"
+    },
+    {
+      "transaction": "J0106",
+      "date": "2026-10-23",
+      "account": "1000",
+      "debit": 0,
+      "credit": 137495,
+      "evidence": "EV-0106",
+      "memo": "Scheduled posting / Prepaid rent"
+    },
+    {
+      "transaction": "J0188",
+      "date": "2026-10-23",
+      "account": "1090",
+      "debit": 1280000,
+      "credit": 0,
+      "evidence": null,
+      "memo": "Unreconciled reserve transfer"
+    },
+    {
+      "transaction": "J0188",
+      "date": "2026-10-23",
+      "account": "1000",
+      "debit": 0,
+      "credit": 1280000,
+      "evidence": null,
+      "memo": "Unreconciled reserve transfer"
+    },
+    {
+      "transaction": "J0107",
+      "date": "2026-10-24",
+      "account": "2000",
+      "debit": 145414,
+      "credit": 0,
+      "evidence": "EV-0107",
+      "memo": "Scheduled posting / Trade payables"
+    },
+    {
+      "transaction": "J0107",
+      "date": "2026-10-24",
+      "account": "1000",
+      "debit": 0,
+      "credit": 145414,
+      "evidence": "EV-0107",
+      "memo": "Scheduled posting / Trade payables"
+    },
+    {
+      "transaction": "J0108",
+      "date": "2026-10-24",
+      "account": "2010",
+      "debit": 153333,
+      "credit": 0,
+      "evidence": "EV-0108",
+      "memo": "Scheduled posting / Sales tax"
+    },
+    {
+      "transaction": "J0108",
+      "date": "2026-10-24",
+      "account": "1000",
+      "debit": 0,
+      "credit": 153333,
+      "evidence": "EV-0108",
+      "memo": "Scheduled posting / Sales tax"
+    },
+    {
+      "transaction": "J0109",
+      "date": "2026-10-25",
+      "account": "1000",
+      "debit": 161252,
+      "credit": 0,
+      "evidence": "EV-0109",
+      "memo": "Scheduled posting / Bridge loan"
+    },
+    {
+      "transaction": "J0109",
+      "date": "2026-10-25",
+      "account": "2020",
+      "debit": 0,
+      "credit": 161252,
+      "evidence": "EV-0109",
+      "memo": "Scheduled posting / Bridge loan"
+    },
+    {
+      "transaction": "J0110",
+      "date": "2026-10-25",
+      "account": "2030",
+      "debit": 169171,
+      "credit": 0,
+      "evidence": "EV-0110",
+      "memo": "Scheduled posting / Gift cards"
+    },
+    {
+      "transaction": "J0110",
+      "date": "2026-10-25",
+      "account": "1000",
+      "debit": 0,
+      "credit": 169171,
+      "evidence": "EV-0110",
+      "memo": "Scheduled posting / Gift cards"
+    },
+    {
+      "transaction": "J0111",
+      "date": "2026-10-26",
+      "account": "2040",
+      "debit": 177090,
+      "credit": 0,
+      "evidence": "EV-0111",
+      "memo": "Scheduled posting / Customer deposits"
+    },
+    {
+      "transaction": "J0111",
+      "date": "2026-10-26",
+      "account": "1000",
+      "debit": 0,
+      "credit": 177090,
+      "evidence": "EV-0111",
+      "memo": "Scheduled posting / Customer deposits"
+    },
+    {
+      "transaction": "J0112",
+      "date": "2026-10-26",
+      "account": "1000",
+      "debit": 185009,
+      "credit": 0,
+      "evidence": "EV-0112",
+      "memo": "Daily settlement / Shop sales"
+    },
+    {
+      "transaction": "J0112",
+      "date": "2026-10-26",
+      "account": "4000",
+      "debit": 0,
+      "credit": 185009,
+      "evidence": "EV-0112",
+      "memo": "Daily settlement / Shop sales"
+    },
+    {
+      "transaction": "J0113",
+      "date": "2026-10-27",
+      "account": "1000",
+      "debit": 192928,
+      "credit": 0,
+      "evidence": "EV-0113",
+      "memo": "Daily settlement / Online sales"
+    },
+    {
+      "transaction": "J0113",
+      "date": "2026-10-27",
+      "account": "4010",
+      "debit": 0,
+      "credit": 192928,
+      "evidence": "EV-0113",
+      "memo": "Daily settlement / Online sales"
+    },
+    {
+      "transaction": "J0114",
+      "date": "2026-10-27",
+      "account": "1000",
+      "debit": 22847,
+      "credit": 0,
+      "evidence": "EV-0114",
+      "memo": "Daily settlement / Workshop income"
+    },
+    {
+      "transaction": "J0114",
+      "date": "2026-10-27",
+      "account": "4020",
+      "debit": 0,
+      "credit": 22847,
+      "evidence": "EV-0114",
+      "memo": "Daily settlement / Workshop income"
+    },
+    {
+      "transaction": "J0115",
+      "date": "2026-10-28",
+      "account": "1000",
+      "debit": 30766,
+      "credit": 0,
+      "evidence": "EV-0115",
+      "memo": "Daily settlement / Other income"
+    },
+    {
+      "transaction": "J0115",
+      "date": "2026-10-28",
+      "account": "4030",
+      "debit": 0,
+      "credit": 30766,
+      "evidence": "EV-0115",
+      "memo": "Daily settlement / Other income"
+    },
+    {
+      "transaction": "J0116",
+      "date": "2026-10-28",
+      "account": "5000",
+      "debit": 38685,
+      "credit": 0,
+      "evidence": "EV-0116",
+      "memo": "Scheduled posting / Rent"
+    },
+    {
+      "transaction": "J0116",
+      "date": "2026-10-28",
+      "account": "1000",
+      "debit": 0,
+      "credit": 38685,
+      "evidence": "EV-0116",
+      "memo": "Scheduled posting / Rent"
+    },
+    {
+      "transaction": "J0117",
+      "date": "2026-10-29",
+      "account": "5010",
+      "debit": 46604,
+      "credit": 0,
+      "evidence": "EV-0117",
+      "memo": "Scheduled posting / Payroll"
+    },
+    {
+      "transaction": "J0117",
+      "date": "2026-10-29",
+      "account": "1000",
+      "debit": 0,
+      "credit": 46604,
+      "evidence": "EV-0117",
+      "memo": "Scheduled posting / Payroll"
+    },
+    {
+      "transaction": "J0118",
+      "date": "2026-10-29",
+      "account": "5020",
+      "debit": 54523,
+      "credit": 0,
+      "evidence": "EV-0118",
+      "memo": "Scheduled posting / Utilities"
+    },
+    {
+      "transaction": "J0118",
+      "date": "2026-10-29",
+      "account": "1000",
+      "debit": 0,
+      "credit": 54523,
+      "evidence": "EV-0118",
+      "memo": "Scheduled posting / Utilities"
+    },
+    {
+      "transaction": "J0119",
+      "date": "2026-10-30",
+      "account": "5030",
+      "debit": 62442,
+      "credit": 0,
+      "evidence": "EV-0119",
+      "memo": "Scheduled posting / Shop supplies"
+    },
+    {
+      "transaction": "J0119",
+      "date": "2026-10-30",
+      "account": "1000",
+      "debit": 0,
+      "credit": 62442,
+      "evidence": "EV-0119",
+      "memo": "Scheduled posting / Shop supplies"
+    },
+    {
+      "transaction": "J0120",
+      "date": "2026-10-30",
+      "account": "5040",
+      "debit": 70361,
+      "credit": 0,
+      "evidence": "EV-0120",
+      "memo": "Scheduled posting / Marketing"
+    },
+    {
+      "transaction": "J0120",
+      "date": "2026-10-30",
+      "account": "1000",
+      "debit": 0,
+      "credit": 70361,
+      "evidence": "EV-0120",
+      "memo": "Scheduled posting / Marketing"
+    },
+    {
+      "transaction": "J0121",
+      "date": "2026-10-31",
+      "account": "1010",
+      "debit": 78280,
+      "credit": 0,
+      "evidence": "EV-0121",
+      "memo": "Scheduled posting / Petty cash"
+    },
+    {
+      "transaction": "J0121",
+      "date": "2026-10-31",
+      "account": "1000",
+      "debit": 0,
+      "credit": 78280,
+      "evidence": "EV-0121",
+      "memo": "Scheduled posting / Petty cash"
+    },
+    {
+      "transaction": "J0122",
+      "date": "2026-10-31",
+      "account": "1020",
+      "debit": 86199,
+      "credit": 0,
+      "evidence": "EV-0122",
+      "memo": "Scheduled posting / Transfer clearing"
+    },
+    {
+      "transaction": "J0122",
+      "date": "2026-10-31",
+      "account": "1000",
+      "debit": 0,
+      "credit": 86199,
+      "evidence": "EV-0122",
+      "memo": "Scheduled posting / Transfer clearing"
+    },
+    {
+      "transaction": "J0123",
+      "date": "2026-11-01",
+      "account": "1030",
+      "debit": 94118,
+      "credit": 0,
+      "evidence": "EV-0123",
+      "memo": "Scheduled posting / Inventory"
+    },
+    {
+      "transaction": "J0123",
+      "date": "2026-11-01",
+      "account": "1000",
+      "debit": 0,
+      "credit": 94118,
+      "evidence": "EV-0123",
+      "memo": "Scheduled posting / Inventory"
+    },
+    {
+      "transaction": "J0124",
+      "date": "2026-11-01",
+      "account": "1040",
+      "debit": 102037,
+      "credit": 0,
+      "evidence": "EV-0124",
+      "memo": "Scheduled posting / Receivables"
+    },
+    {
+      "transaction": "J0124",
+      "date": "2026-11-01",
+      "account": "1000",
+      "debit": 0,
+      "credit": 102037,
+      "evidence": "EV-0124",
+      "memo": "Scheduled posting / Receivables"
+    },
+    {
+      "transaction": "J0125",
+      "date": "2026-11-02",
+      "account": "1050",
+      "debit": 109956,
+      "credit": 0,
+      "evidence": "EV-0125",
+      "memo": "Scheduled posting / Equipment"
+    },
+    {
+      "transaction": "J0125",
+      "date": "2026-11-02",
+      "account": "1000",
+      "debit": 0,
+      "credit": 109956,
+      "evidence": "EV-0125",
+      "memo": "Scheduled posting / Equipment"
+    },
+    {
+      "transaction": "J0126",
+      "date": "2026-11-02",
+      "account": "1060",
+      "debit": 117875,
+      "credit": 0,
+      "evidence": "EV-0126",
+      "memo": "Scheduled posting / Prepaid rent"
+    },
+    {
+      "transaction": "J0126",
+      "date": "2026-11-02",
+      "account": "1000",
+      "debit": 0,
+      "credit": 117875,
+      "evidence": "EV-0126",
+      "memo": "Scheduled posting / Prepaid rent"
+    },
+    {
+      "transaction": "J0127",
+      "date": "2026-11-03",
+      "account": "1000",
+      "debit": 125794,
+      "credit": 0,
+      "evidence": "EV-0127",
+      "memo": "Scheduled posting / Trade payables"
+    },
+    {
+      "transaction": "J0127",
+      "date": "2026-11-03",
+      "account": "2000",
+      "debit": 0,
+      "credit": 125794,
+      "evidence": "EV-0127",
+      "memo": "Scheduled posting / Trade payables"
+    },
+    {
+      "transaction": "J0128",
+      "date": "2026-11-03",
+      "account": "2010",
+      "debit": 133713,
+      "credit": 0,
+      "evidence": "EV-0128",
+      "memo": "Scheduled posting / Sales tax"
+    },
+    {
+      "transaction": "J0128",
+      "date": "2026-11-03",
+      "account": "1000",
+      "debit": 0,
+      "credit": 133713,
+      "evidence": "EV-0128",
+      "memo": "Scheduled posting / Sales tax"
+    },
+    {
+      "transaction": "J0129",
+      "date": "2026-11-04",
+      "account": "2020",
+      "debit": 141632,
+      "credit": 0,
+      "evidence": "EV-0129",
+      "memo": "Scheduled posting / Bridge loan"
+    },
+    {
+      "transaction": "J0129",
+      "date": "2026-11-04",
+      "account": "1000",
+      "debit": 0,
+      "credit": 141632,
+      "evidence": "EV-0129",
+      "memo": "Scheduled posting / Bridge loan"
+    },
+    {
+      "transaction": "J0130",
+      "date": "2026-11-04",
+      "account": "1000",
+      "debit": 149551,
+      "credit": 0,
+      "evidence": "EV-0130",
+      "memo": "Scheduled posting / Gift cards"
+    },
+    {
+      "transaction": "J0130",
+      "date": "2026-11-04",
+      "account": "2030",
+      "debit": 0,
+      "credit": 149551,
+      "evidence": "EV-0130",
+      "memo": "Scheduled posting / Gift cards"
+    },
+    {
+      "transaction": "J0131",
+      "date": "2026-11-05",
+      "account": "2040",
+      "debit": 157470,
+      "credit": 0,
+      "evidence": "EV-0131",
+      "memo": "Scheduled posting / Customer deposits"
+    },
+    {
+      "transaction": "J0131",
+      "date": "2026-11-05",
+      "account": "1000",
+      "debit": 0,
+      "credit": 157470,
+      "evidence": "EV-0131",
+      "memo": "Scheduled posting / Customer deposits"
+    },
+    {
+      "transaction": "J0132",
+      "date": "2026-11-05",
+      "account": "1000",
+      "debit": 165389,
+      "credit": 0,
+      "evidence": "EV-0132",
+      "memo": "Daily settlement / Shop sales"
+    },
+    {
+      "transaction": "J0132",
+      "date": "2026-11-05",
+      "account": "4000",
+      "debit": 0,
+      "credit": 165389,
+      "evidence": "EV-0132",
+      "memo": "Daily settlement / Shop sales"
+    },
+    {
+      "transaction": "J0133",
+      "date": "2026-11-06",
+      "account": "1000",
+      "debit": 173308,
+      "credit": 0,
+      "evidence": "EV-0133",
+      "memo": "Daily settlement / Online sales"
+    },
+    {
+      "transaction": "J0133",
+      "date": "2026-11-06",
+      "account": "4010",
+      "debit": 0,
+      "credit": 173308,
+      "evidence": "EV-0133",
+      "memo": "Daily settlement / Online sales"
+    },
+    {
+      "transaction": "J0134",
+      "date": "2026-11-06",
+      "account": "1000",
+      "debit": 181227,
+      "credit": 0,
+      "evidence": "EV-0134",
+      "memo": "Daily settlement / Workshop income"
+    },
+    {
+      "transaction": "J0134",
+      "date": "2026-11-06",
+      "account": "4020",
+      "debit": 0,
+      "credit": 181227,
+      "evidence": "EV-0134",
+      "memo": "Daily settlement / Workshop income"
+    },
+    {
+      "transaction": "J0181",
+      "date": "2026-11-06",
+      "account": "5090",
+      "debit": 870000,
+      "credit": 0,
+      "evidence": null,
+      "memo": "Services payment with no supporting document"
+    },
+    {
+      "transaction": "J0181",
+      "date": "2026-11-06",
+      "account": "1000",
+      "debit": 0,
+      "credit": 870000,
+      "evidence": null,
+      "memo": "Services payment with no supporting document"
+    },
+    {
+      "transaction": "J0135",
+      "date": "2026-11-07",
+      "account": "1000",
+      "debit": 189146,
+      "credit": 0,
+      "evidence": "EV-0135",
+      "memo": "Daily settlement / Other income"
+    },
+    {
+      "transaction": "J0135",
+      "date": "2026-11-07",
+      "account": "4030",
+      "debit": 0,
+      "credit": 189146,
+      "evidence": "EV-0135",
+      "memo": "Daily settlement / Other income"
+    },
+    {
+      "transaction": "J0136",
+      "date": "2026-11-07",
+      "account": "5000",
+      "debit": 19065,
+      "credit": 0,
+      "evidence": "EV-0136",
+      "memo": "Scheduled posting / Rent"
+    },
+    {
+      "transaction": "J0136",
+      "date": "2026-11-07",
+      "account": "1000",
+      "debit": 0,
+      "credit": 19065,
+      "evidence": "EV-0136",
+      "memo": "Scheduled posting / Rent"
+    },
+    {
+      "transaction": "J0137",
+      "date": "2026-11-08",
+      "account": "5010",
+      "debit": 26984,
+      "credit": 0,
+      "evidence": "EV-0137",
+      "memo": "Scheduled posting / Payroll"
+    },
+    {
+      "transaction": "J0137",
+      "date": "2026-11-08",
+      "account": "1000",
+      "debit": 0,
+      "credit": 26984,
+      "evidence": "EV-0137",
+      "memo": "Scheduled posting / Payroll"
+    },
+    {
+      "transaction": "J0138",
+      "date": "2026-11-08",
+      "account": "5020",
+      "debit": 34903,
+      "credit": 0,
+      "evidence": "EV-0138",
+      "memo": "Scheduled posting / Utilities"
+    },
+    {
+      "transaction": "J0138",
+      "date": "2026-11-08",
+      "account": "1000",
+      "debit": 0,
+      "credit": 34903,
+      "evidence": "EV-0138",
+      "memo": "Scheduled posting / Utilities"
+    },
+    {
+      "transaction": "J0139",
+      "date": "2026-11-09",
+      "account": "5030",
+      "debit": 42822,
+      "credit": 0,
+      "evidence": "EV-0139",
+      "memo": "Scheduled posting / Shop supplies"
+    },
+    {
+      "transaction": "J0139",
+      "date": "2026-11-09",
+      "account": "1000",
+      "debit": 0,
+      "credit": 42822,
+      "evidence": "EV-0139",
+      "memo": "Scheduled posting / Shop supplies"
+    },
+    {
+      "transaction": "J0140",
+      "date": "2026-11-09",
+      "account": "5040",
+      "debit": 50741,
+      "credit": 0,
+      "evidence": "EV-0140",
+      "memo": "Scheduled posting / Marketing"
+    },
+    {
+      "transaction": "J0140",
+      "date": "2026-11-09",
+      "account": "1000",
+      "debit": 0,
+      "credit": 50741,
+      "evidence": "EV-0140",
+      "memo": "Scheduled posting / Marketing"
+    },
+    {
+      "transaction": "J0182",
+      "date": "2026-11-09",
+      "account": "5020",
+      "debit": 264000,
+      "credit": 0,
+      "evidence": "EV-DUP",
+      "memo": "Utility invoice"
+    },
+    {
+      "transaction": "J0182",
+      "date": "2026-11-09",
+      "account": "1000",
+      "debit": 0,
+      "credit": 264000,
+      "evidence": "EV-DUP",
+      "memo": "Utility invoice"
+    },
+    {
+      "transaction": "J0141",
+      "date": "2026-11-10",
+      "account": "1010",
+      "debit": 58660,
+      "credit": 0,
+      "evidence": "EV-0141",
+      "memo": "Scheduled posting / Petty cash"
+    },
+    {
+      "transaction": "J0141",
+      "date": "2026-11-10",
+      "account": "1000",
+      "debit": 0,
+      "credit": 58660,
+      "evidence": "EV-0141",
+      "memo": "Scheduled posting / Petty cash"
+    },
+    {
+      "transaction": "J0142",
+      "date": "2026-11-10",
+      "account": "1020",
+      "debit": 66579,
+      "credit": 0,
+      "evidence": "EV-0142",
+      "memo": "Scheduled posting / Transfer clearing"
+    },
+    {
+      "transaction": "J0142",
+      "date": "2026-11-10",
+      "account": "1000",
+      "debit": 0,
+      "credit": 66579,
+      "evidence": "EV-0142",
+      "memo": "Scheduled posting / Transfer clearing"
+    },
+    {
+      "transaction": "J0183",
+      "date": "2026-11-10",
+      "account": "5020",
+      "debit": 264000,
+      "credit": 0,
+      "evidence": "EV-DUP",
+      "memo": "Utility invoice posted again"
+    },
+    {
+      "transaction": "J0183",
+      "date": "2026-11-10",
+      "account": "1000",
+      "debit": 0,
+      "credit": 264000,
+      "evidence": "EV-DUP",
+      "memo": "Utility invoice posted again"
+    },
+    {
+      "transaction": "J0143",
+      "date": "2026-11-11",
+      "account": "1030",
+      "debit": 74498,
+      "credit": 0,
+      "evidence": "EV-0143",
+      "memo": "Scheduled posting / Inventory"
+    },
+    {
+      "transaction": "J0143",
+      "date": "2026-11-11",
+      "account": "1000",
+      "debit": 0,
+      "credit": 74498,
+      "evidence": "EV-0143",
+      "memo": "Scheduled posting / Inventory"
+    },
+    {
+      "transaction": "J0144",
+      "date": "2026-11-11",
+      "account": "1040",
+      "debit": 82417,
+      "credit": 0,
+      "evidence": "EV-0144",
+      "memo": "Scheduled posting / Receivables"
+    },
+    {
+      "transaction": "J0144",
+      "date": "2026-11-11",
+      "account": "1000",
+      "debit": 0,
+      "credit": 82417,
+      "evidence": "EV-0144",
+      "memo": "Scheduled posting / Receivables"
+    },
+    {
+      "transaction": "J0184",
+      "date": "2026-11-11",
+      "account": "1010",
+      "debit": 345600,
+      "credit": 0,
+      "evidence": "EV-C1",
+      "memo": "Cash advanced"
+    },
+    {
+      "transaction": "J0184",
+      "date": "2026-11-11",
+      "account": "1000",
+      "debit": 0,
+      "credit": 345600,
+      "evidence": "EV-C1",
+      "memo": "Cash advanced"
+    },
+    {
+      "transaction": "J0185",
+      "date": "2026-11-11",
+      "account": "1020",
+      "debit": 345600,
+      "credit": 0,
+      "evidence": "EV-C2",
+      "memo": "Cash transferred to clearing"
+    },
+    {
+      "transaction": "J0185",
+      "date": "2026-11-11",
+      "account": "1010",
+      "debit": 0,
+      "credit": 345600,
+      "evidence": "EV-C2",
+      "memo": "Cash transferred to clearing"
+    },
+    {
+      "transaction": "J0186",
+      "date": "2026-11-11",
+      "account": "1000",
+      "debit": 345600,
+      "credit": 0,
+      "evidence": "EV-C3",
+      "memo": "Clearing returned to bank"
+    },
+    {
+      "transaction": "J0186",
+      "date": "2026-11-11",
+      "account": "1020",
+      "debit": 0,
+      "credit": 345600,
+      "evidence": "EV-C3",
+      "memo": "Clearing returned to bank"
+    },
+    {
+      "transaction": "J0145",
+      "date": "2026-11-12",
+      "account": "1050",
+      "debit": 90336,
+      "credit": 0,
+      "evidence": "EV-0145",
+      "memo": "Scheduled posting / Equipment"
+    },
+    {
+      "transaction": "J0145",
+      "date": "2026-11-12",
+      "account": "1000",
+      "debit": 0,
+      "credit": 90336,
+      "evidence": "EV-0145",
+      "memo": "Scheduled posting / Equipment"
+    },
+    {
+      "transaction": "J0146",
+      "date": "2026-11-12",
+      "account": "1060",
+      "debit": 98255,
+      "credit": 0,
+      "evidence": "EV-0146",
+      "memo": "Scheduled posting / Prepaid rent"
+    },
+    {
+      "transaction": "J0146",
+      "date": "2026-11-12",
+      "account": "1000",
+      "debit": 0,
+      "credit": 98255,
+      "evidence": "EV-0146",
+      "memo": "Scheduled posting / Prepaid rent"
+    },
+    {
+      "transaction": "J0147",
+      "date": "2026-11-13",
+      "account": "2000",
+      "debit": 106174,
+      "credit": 0,
+      "evidence": "EV-0147",
+      "memo": "Scheduled posting / Trade payables"
+    },
+    {
+      "transaction": "J0147",
+      "date": "2026-11-13",
+      "account": "1000",
+      "debit": 0,
+      "credit": 106174,
+      "evidence": "EV-0147",
+      "memo": "Scheduled posting / Trade payables"
+    },
+    {
+      "transaction": "J0148",
+      "date": "2026-11-13",
+      "account": "1000",
+      "debit": 114093,
+      "credit": 0,
+      "evidence": "EV-0148",
+      "memo": "Scheduled posting / Sales tax"
+    },
+    {
+      "transaction": "J0148",
+      "date": "2026-11-13",
+      "account": "2010",
+      "debit": 0,
+      "credit": 114093,
+      "evidence": "EV-0148",
+      "memo": "Scheduled posting / Sales tax"
+    },
+    {
+      "transaction": "J0149",
+      "date": "2026-11-14",
+      "account": "2020",
+      "debit": 122012,
+      "credit": 0,
+      "evidence": "EV-0149",
+      "memo": "Scheduled posting / Bridge loan"
+    },
+    {
+      "transaction": "J0149",
+      "date": "2026-11-14",
+      "account": "1000",
+      "debit": 0,
+      "credit": 122012,
+      "evidence": "EV-0149",
+      "memo": "Scheduled posting / Bridge loan"
+    },
+    {
+      "transaction": "J0150",
+      "date": "2026-11-14",
+      "account": "2030",
+      "debit": 129931,
+      "credit": 0,
+      "evidence": "EV-0150",
+      "memo": "Scheduled posting / Gift cards"
+    },
+    {
+      "transaction": "J0150",
+      "date": "2026-11-14",
+      "account": "1000",
+      "debit": 0,
+      "credit": 129931,
+      "evidence": "EV-0150",
+      "memo": "Scheduled posting / Gift cards"
+    },
+    {
+      "transaction": "J0187",
+      "date": "2026-11-14",
+      "account": "1010",
+      "debit": 940000,
+      "credit": 0,
+      "evidence": "EV-WK",
+      "memo": "Saturday cash withdrawal"
+    },
+    {
+      "transaction": "J0187",
+      "date": "2026-11-14",
+      "account": "1000",
+      "debit": 0,
+      "credit": 940000,
+      "evidence": "EV-WK",
+      "memo": "Saturday cash withdrawal"
+    },
+    {
+      "transaction": "J0151",
+      "date": "2026-11-15",
+      "account": "1000",
+      "debit": 137850,
+      "credit": 0,
+      "evidence": "EV-0151",
+      "memo": "Scheduled posting / Customer deposits"
+    },
+    {
+      "transaction": "J0151",
+      "date": "2026-11-15",
+      "account": "2040",
+      "debit": 0,
+      "credit": 137850,
+      "evidence": "EV-0151",
+      "memo": "Scheduled posting / Customer deposits"
+    },
+    {
+      "transaction": "J0152",
+      "date": "2026-11-15",
+      "account": "1000",
+      "debit": 145769,
+      "credit": 0,
+      "evidence": "EV-0152",
+      "memo": "Daily settlement / Shop sales"
+    },
+    {
+      "transaction": "J0152",
+      "date": "2026-11-15",
+      "account": "4000",
+      "debit": 0,
+      "credit": 145769,
+      "evidence": "EV-0152",
+      "memo": "Daily settlement / Shop sales"
+    },
+    {
+      "transaction": "J0153",
+      "date": "2026-11-16",
+      "account": "1000",
+      "debit": 153688,
+      "credit": 0,
+      "evidence": "EV-0153",
+      "memo": "Daily settlement / Online sales"
+    },
+    {
+      "transaction": "J0153",
+      "date": "2026-11-16",
+      "account": "4010",
+      "debit": 0,
+      "credit": 153688,
+      "evidence": "EV-0153",
+      "memo": "Daily settlement / Online sales"
+    },
+    {
+      "transaction": "J0154",
+      "date": "2026-11-16",
+      "account": "1000",
+      "debit": 161607,
+      "credit": 0,
+      "evidence": "EV-0154",
+      "memo": "Daily settlement / Workshop income"
+    },
+    {
+      "transaction": "J0154",
+      "date": "2026-11-16",
+      "account": "4020",
+      "debit": 0,
+      "credit": 161607,
+      "evidence": "EV-0154",
+      "memo": "Daily settlement / Workshop income"
+    },
+    {
+      "transaction": "J0189",
+      "date": "2026-11-16",
+      "account": "5030",
+      "debit": 490000,
+      "credit": 0,
+      "evidence": "EV-S1",
+      "memo": "Supply purchase, part 1"
+    },
+    {
+      "transaction": "J0189",
+      "date": "2026-11-16",
+      "account": "1000",
+      "debit": 0,
+      "credit": 490000,
+      "evidence": "EV-S1",
+      "memo": "Supply purchase, part 1"
+    },
+    {
+      "transaction": "J0190",
+      "date": "2026-11-16",
+      "account": "5030",
+      "debit": 485000,
+      "credit": 0,
+      "evidence": "EV-S2",
+      "memo": "Supply purchase, part 2"
+    },
+    {
+      "transaction": "J0190",
+      "date": "2026-11-16",
+      "account": "1000",
+      "debit": 0,
+      "credit": 485000,
+      "evidence": "EV-S2",
+      "memo": "Supply purchase, part 2"
+    },
+    {
+      "transaction": "J0191",
+      "date": "2026-11-16",
+      "account": "5030",
+      "debit": 480000,
+      "credit": 0,
+      "evidence": "EV-S3",
+      "memo": "Supply purchase, part 3"
+    },
+    {
+      "transaction": "J0191",
+      "date": "2026-11-16",
+      "account": "1000",
+      "debit": 0,
+      "credit": 480000,
+      "evidence": "EV-S3",
+      "memo": "Supply purchase, part 3"
+    },
+    {
+      "transaction": "J0155",
+      "date": "2026-11-17",
+      "account": "1000",
+      "debit": 169526,
+      "credit": 0,
+      "evidence": "EV-0155",
+      "memo": "Daily settlement / Other income"
+    },
+    {
+      "transaction": "J0155",
+      "date": "2026-11-17",
+      "account": "4030",
+      "debit": 0,
+      "credit": 169526,
+      "evidence": "EV-0155",
+      "memo": "Daily settlement / Other income"
+    },
+    {
+      "transaction": "J0156",
+      "date": "2026-11-17",
+      "account": "5000",
+      "debit": 177445,
+      "credit": 0,
+      "evidence": "EV-0156",
+      "memo": "Scheduled posting / Rent"
+    },
+    {
+      "transaction": "J0156",
+      "date": "2026-11-17",
+      "account": "1000",
+      "debit": 0,
+      "credit": 177445,
+      "evidence": "EV-0156",
+      "memo": "Scheduled posting / Rent"
+    },
+    {
+      "transaction": "J0157",
+      "date": "2026-11-18",
+      "account": "5010",
+      "debit": 185364,
+      "credit": 0,
+      "evidence": "EV-0157",
+      "memo": "Scheduled posting / Payroll"
+    },
+    {
+      "transaction": "J0157",
+      "date": "2026-11-18",
+      "account": "1000",
+      "debit": 0,
+      "credit": 185364,
+      "evidence": "EV-0157",
+      "memo": "Scheduled posting / Payroll"
+    },
+    {
+      "transaction": "J0158",
+      "date": "2026-11-18",
+      "account": "5020",
+      "debit": 193283,
+      "credit": 0,
+      "evidence": "EV-0158",
+      "memo": "Scheduled posting / Utilities"
+    },
+    {
+      "transaction": "J0158",
+      "date": "2026-11-18",
+      "account": "1000",
+      "debit": 0,
+      "credit": 193283,
+      "evidence": "EV-0158",
+      "memo": "Scheduled posting / Utilities"
+    },
+    {
+      "transaction": "J0159",
+      "date": "2026-11-19",
+      "account": "5030",
+      "debit": 23202,
+      "credit": 0,
+      "evidence": "EV-0159",
+      "memo": "Scheduled posting / Shop supplies"
+    },
+    {
+      "transaction": "J0159",
+      "date": "2026-11-19",
+      "account": "1000",
+      "debit": 0,
+      "credit": 23202,
+      "evidence": "EV-0159",
+      "memo": "Scheduled posting / Shop supplies"
+    },
+    {
+      "transaction": "J0160",
+      "date": "2026-11-19",
+      "account": "5040",
+      "debit": 31121,
+      "credit": 0,
+      "evidence": "EV-0160",
+      "memo": "Scheduled posting / Marketing"
+    },
+    {
+      "transaction": "J0160",
+      "date": "2026-11-19",
+      "account": "1000",
+      "debit": 0,
+      "credit": 31121,
+      "evidence": "EV-0160",
+      "memo": "Scheduled posting / Marketing"
+    },
+    {
+      "transaction": "J0192",
+      "date": "2026-11-19",
+      "account": "2020",
+      "debit": 678900,
+      "credit": 0,
+      "evidence": "EV-R1",
+      "memo": "Temporary loan movement"
+    },
+    {
+      "transaction": "J0192",
+      "date": "2026-11-19",
+      "account": "1000",
+      "debit": 0,
+      "credit": 678900,
+      "evidence": "EV-R1",
+      "memo": "Temporary loan movement"
+    },
+    {
+      "transaction": "J0161",
+      "date": "2026-11-20",
+      "account": "1010",
+      "debit": 39040,
+      "credit": 0,
+      "evidence": "EV-0161",
+      "memo": "Scheduled posting / Petty cash"
+    },
+    {
+      "transaction": "J0161",
+      "date": "2026-11-20",
+      "account": "1000",
+      "debit": 0,
+      "credit": 39040,
+      "evidence": "EV-0161",
+      "memo": "Scheduled posting / Petty cash"
+    },
+    {
+      "transaction": "J0162",
+      "date": "2026-11-20",
+      "account": "1020",
+      "debit": 46959,
+      "credit": 0,
+      "evidence": "EV-0162",
+      "memo": "Scheduled posting / Transfer clearing"
+    },
+    {
+      "transaction": "J0162",
+      "date": "2026-11-20",
+      "account": "1000",
+      "debit": 0,
+      "credit": 46959,
+      "evidence": "EV-0162",
+      "memo": "Scheduled posting / Transfer clearing"
+    },
+    {
+      "transaction": "J0193",
+      "date": "2026-11-20",
+      "account": "1000",
+      "debit": 678900,
+      "credit": 0,
+      "evidence": "EV-R2",
+      "memo": "Temporary loan reversal"
+    },
+    {
+      "transaction": "J0193",
+      "date": "2026-11-20",
+      "account": "2020",
+      "debit": 0,
+      "credit": 678900,
+      "evidence": "EV-R2",
+      "memo": "Temporary loan reversal"
+    },
+    {
+      "transaction": "J0163",
+      "date": "2026-11-21",
+      "account": "1030",
+      "debit": 54878,
+      "credit": 0,
+      "evidence": "EV-0163",
+      "memo": "Scheduled posting / Inventory"
+    },
+    {
+      "transaction": "J0163",
+      "date": "2026-11-21",
+      "account": "1000",
+      "debit": 0,
+      "credit": 54878,
+      "evidence": "EV-0163",
+      "memo": "Scheduled posting / Inventory"
+    },
+    {
+      "transaction": "J0164",
+      "date": "2026-11-21",
+      "account": "1040",
+      "debit": 62797,
+      "credit": 0,
+      "evidence": "EV-0164",
+      "memo": "Scheduled posting / Receivables"
+    },
+    {
+      "transaction": "J0164",
+      "date": "2026-11-21",
+      "account": "1000",
+      "debit": 0,
+      "credit": 62797,
+      "evidence": "EV-0164",
+      "memo": "Scheduled posting / Receivables"
+    },
+    {
+      "transaction": "J0165",
+      "date": "2026-11-22",
+      "account": "1050",
+      "debit": 70716,
+      "credit": 0,
+      "evidence": "EV-0165",
+      "memo": "Scheduled posting / Equipment"
+    },
+    {
+      "transaction": "J0165",
+      "date": "2026-11-22",
+      "account": "1000",
+      "debit": 0,
+      "credit": 70716,
+      "evidence": "EV-0165",
+      "memo": "Scheduled posting / Equipment"
+    },
+    {
+      "transaction": "J0166",
+      "date": "2026-11-22",
+      "account": "1060",
+      "debit": 78635,
+      "credit": 0,
+      "evidence": "EV-0166",
+      "memo": "Scheduled posting / Prepaid rent"
+    },
+    {
+      "transaction": "J0166",
+      "date": "2026-11-22",
+      "account": "1000",
+      "debit": 0,
+      "credit": 78635,
+      "evidence": "EV-0166",
+      "memo": "Scheduled posting / Prepaid rent"
+    },
+    {
+      "transaction": "J0167",
+      "date": "2026-11-23",
+      "account": "2000",
+      "debit": 86554,
+      "credit": 0,
+      "evidence": "EV-0167",
+      "memo": "Scheduled posting / Trade payables"
+    },
+    {
+      "transaction": "J0167",
+      "date": "2026-11-23",
+      "account": "1000",
+      "debit": 0,
+      "credit": 86554,
+      "evidence": "EV-0167",
+      "memo": "Scheduled posting / Trade payables"
+    },
+    {
+      "transaction": "J0168",
+      "date": "2026-11-23",
+      "account": "2010",
+      "debit": 94473,
+      "credit": 0,
+      "evidence": "EV-0168",
+      "memo": "Scheduled posting / Sales tax"
+    },
+    {
+      "transaction": "J0168",
+      "date": "2026-11-23",
+      "account": "1000",
+      "debit": 0,
+      "credit": 94473,
+      "evidence": "EV-0168",
+      "memo": "Scheduled posting / Sales tax"
+    },
+    {
+      "transaction": "J0169",
+      "date": "2026-11-24",
+      "account": "1000",
+      "debit": 102392,
+      "credit": 0,
+      "evidence": "EV-0169",
+      "memo": "Scheduled posting / Bridge loan"
+    },
+    {
+      "transaction": "J0169",
+      "date": "2026-11-24",
+      "account": "2020",
+      "debit": 0,
+      "credit": 102392,
+      "evidence": "EV-0169",
+      "memo": "Scheduled posting / Bridge loan"
+    },
+    {
+      "transaction": "J0170",
+      "date": "2026-11-24",
+      "account": "2030",
+      "debit": 110311,
+      "credit": 0,
+      "evidence": "EV-0170",
+      "memo": "Scheduled posting / Gift cards"
+    },
+    {
+      "transaction": "J0170",
+      "date": "2026-11-24",
+      "account": "1000",
+      "debit": 0,
+      "credit": 110311,
+      "evidence": "EV-0170",
+      "memo": "Scheduled posting / Gift cards"
+    },
+    {
+      "transaction": "J0171",
+      "date": "2026-11-25",
+      "account": "2040",
+      "debit": 118230,
+      "credit": 0,
+      "evidence": "EV-0171",
+      "memo": "Scheduled posting / Customer deposits"
+    },
+    {
+      "transaction": "J0171",
+      "date": "2026-11-25",
+      "account": "1000",
+      "debit": 0,
+      "credit": 118230,
+      "evidence": "EV-0171",
+      "memo": "Scheduled posting / Customer deposits"
+    },
+    {
+      "transaction": "J0172",
+      "date": "2026-11-25",
+      "account": "1000",
+      "debit": 126149,
+      "credit": 0,
+      "evidence": "EV-0172",
+      "memo": "Daily settlement / Shop sales"
+    },
+    {
+      "transaction": "J0172",
+      "date": "2026-11-25",
+      "account": "4000",
+      "debit": 0,
+      "credit": 126149,
+      "evidence": "EV-0172",
+      "memo": "Daily settlement / Shop sales"
+    },
+    {
+      "transaction": "J0173",
+      "date": "2026-11-26",
+      "account": "1000",
+      "debit": 134068,
+      "credit": 0,
+      "evidence": "EV-0173",
+      "memo": "Daily settlement / Online sales"
+    },
+    {
+      "transaction": "J0173",
+      "date": "2026-11-26",
+      "account": "4010",
+      "debit": 0,
+      "credit": 134068,
+      "evidence": "EV-0173",
+      "memo": "Daily settlement / Online sales"
+    },
+    {
+      "transaction": "J0174",
+      "date": "2026-11-26",
+      "account": "1000",
+      "debit": 141987,
+      "credit": 0,
+      "evidence": "EV-0174",
+      "memo": "Daily settlement / Workshop income"
+    },
+    {
+      "transaction": "J0174",
+      "date": "2026-11-26",
+      "account": "4020",
+      "debit": 0,
+      "credit": 141987,
+      "evidence": "EV-0174",
+      "memo": "Daily settlement / Workshop income"
+    },
+    {
+      "transaction": "J0175",
+      "date": "2026-11-27",
+      "account": "1000",
+      "debit": 149906,
+      "credit": 0,
+      "evidence": "EV-0175",
+      "memo": "Daily settlement / Other income"
+    },
+    {
+      "transaction": "J0175",
+      "date": "2026-11-27",
+      "account": "4030",
+      "debit": 0,
+      "credit": 149906,
+      "evidence": "EV-0175",
+      "memo": "Daily settlement / Other income"
+    },
+    {
+      "transaction": "J0176",
+      "date": "2026-11-27",
+      "account": "5000",
+      "debit": 157825,
+      "credit": 0,
+      "evidence": "EV-0176",
+      "memo": "Scheduled posting / Rent"
+    },
+    {
+      "transaction": "J0176",
+      "date": "2026-11-27",
+      "account": "1000",
+      "debit": 0,
+      "credit": 157825,
+      "evidence": "EV-0176",
+      "memo": "Scheduled posting / Rent"
+    },
+    {
+      "transaction": "J0194",
+      "date": "2026-11-27",
+      "account": "5080",
+      "debit": 610000,
+      "credit": 0,
+      "evidence": null,
+      "memo": "First maintenance posting after a dormant period"
+    },
+    {
+      "transaction": "J0194",
+      "date": "2026-11-27",
+      "account": "1000",
+      "debit": 0,
+      "credit": 610000,
+      "evidence": null,
+      "memo": "First maintenance posting after a dormant period"
+    },
+    {
+      "transaction": "J0177",
+      "date": "2026-11-28",
+      "account": "5010",
+      "debit": 165744,
+      "credit": 0,
+      "evidence": "EV-0177",
+      "memo": "Scheduled posting / Payroll"
+    },
+    {
+      "transaction": "J0177",
+      "date": "2026-11-28",
+      "account": "1000",
+      "debit": 0,
+      "credit": 165744,
+      "evidence": "EV-0177",
+      "memo": "Scheduled posting / Payroll"
+    },
+    {
+      "transaction": "J0178",
+      "date": "2026-11-28",
+      "account": "5020",
+      "debit": 173663,
+      "credit": 0,
+      "evidence": "EV-0178",
+      "memo": "Scheduled posting / Utilities"
+    },
+    {
+      "transaction": "J0178",
+      "date": "2026-11-28",
+      "account": "1000",
+      "debit": 0,
+      "credit": 173663,
+      "evidence": "EV-0178",
+      "memo": "Scheduled posting / Utilities"
+    },
+    {
+      "transaction": "J0179",
+      "date": "2026-11-29",
+      "account": "5030",
+      "debit": 181582,
+      "credit": 0,
+      "evidence": "EV-0179",
+      "memo": "Scheduled posting / Shop supplies"
+    },
+    {
+      "transaction": "J0179",
+      "date": "2026-11-29",
+      "account": "1000",
+      "debit": 0,
+      "credit": 181582,
+      "evidence": "EV-0179",
+      "memo": "Scheduled posting / Shop supplies"
+    },
+    {
+      "transaction": "J0180",
+      "date": "2026-11-29",
+      "account": "5040",
+      "debit": 189501,
+      "credit": 0,
+      "evidence": "EV-0180",
+      "memo": "Scheduled posting / Marketing"
+    },
+    {
+      "transaction": "J0180",
+      "date": "2026-11-29",
+      "account": "1000",
+      "debit": 0,
+      "credit": 189501,
+      "evidence": "EV-0180",
+      "memo": "Scheduled posting / Marketing"
+    }
+  ],
+  "cases": [
+    {
+      "type": "missing-expense",
+      "title": "Missing expenditure evidence",
+      "ids": [
+        "J0181"
+      ]
+    },
+    {
+      "type": "duplicate-evidence",
+      "title": "One document, two postings",
+      "ids": [
+        "J0182",
+        "J0183"
+      ]
+    },
+    {
+      "type": "circular-flow",
+      "title": "Three-account circulation",
+      "ids": [
+        "J0184",
+        "J0185",
+        "J0186"
+      ]
+    },
+    {
+      "type": "weekend-cash",
+      "title": "Large weekend cash withdrawal",
+      "ids": [
+        "J0187"
+      ]
+    },
+    {
+      "type": "one-way-sink",
+      "title": "Value enters; nothing leaves",
+      "ids": [
+        "J0188"
+      ]
+    },
+    {
+      "type": "split-payment",
+      "title": "Payments below a review threshold",
+      "ids": [
+        "J0189",
+        "J0190",
+        "J0191"
+      ]
+    },
+    {
+      "type": "rapid-roundtrip",
+      "title": "Borrowed value returns within a day",
+      "ids": [
+        "J0192",
+        "J0193"
+      ]
+    },
+    {
+      "type": "dormant-revival",
+      "title": "A dormant account wakes without evidence",
+      "ids": [
+        "J0194"
+      ]
+    }
+  ]
+}
