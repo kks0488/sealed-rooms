@@ -1,0 +1,4 @@
+{"timestamp":"2026-11-16T22:42:19.111Z","filename":"unknown","payloadKeys":"session_id,hook_event_name,cwd,file_path"}
+{"timestamp":"2026-11-16T22:42:19.111Z","filename":"unknown","testExitCode":0}
+{"timestamp":"2026-11-16T22:46:47.200Z","filename":"test/auditor.test.js","eventName":"PostFileSave","payloadKeys":"session_id,hook_event_name,cwd,file_path"}
+{"timestamp":"2026-11-16T22:46:47.200Z","filename":"test/auditor.test.js","testExitCode":0}

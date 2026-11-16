@@ -1,0 +1,14 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "run-tests-on-js-save",
+      "trigger": "PostFileSave",
+      "matcher": "(^|/)(src|test)/.*\\.js$",
+      "action": {
+        "type": "command",
+        "command": "node scripts/post-save.mjs"
+      }
+    }
+  ]
+}

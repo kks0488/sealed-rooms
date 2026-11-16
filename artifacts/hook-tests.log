@@ -1,0 +1,1748 @@
+
+--- 2026-11-16T22:42:19.111Z unknown (exit 0) ---
+
+> sealed-rooms@1.0.0 test
+> node --test test/*.test.js
+
+TAP version 13
+# Subtest: isPointInRect
+ok 1 - isPointInRect
+  ---
+  duration_ms: 0.652025
+  type: 'test'
+  ...
+# Subtest: isSegmentInside uses both endpoints in same rect
+ok 2 - isSegmentInside uses both endpoints in same rect
+  ---
+  duration_ms: 0.193651
+  type: 'test'
+  ...
+# Subtest: original: exactly 20 visited rooms
+ok 3 - original: exactly 20 visited rooms
+  ---
+  duration_ms: 0.854993
+  type: 'test'
+  ...
+# Subtest: repaired: exactly 23 visited rooms
+ok 4 - repaired: exactly 23 visited rooms
+  ---
+  duration_ms: 0.331418
+  type: 'test'
+  ...
+# Subtest: no-evidence: 0 visited rooms, 1 waypoint (entrance)
+ok 5 - no-evidence: 0 visited rooms, 1 waypoint (entrance)
+  ---
+  duration_ms: 0.185856
+  type: 'test'
+  ...
+# Subtest: no sealed rooms in visitedRooms
+ok 6 - no sealed rooms in visitedRooms
+  ---
+  duration_ms: 0.345363
+  type: 'test'
+  ...
+# Subtest: start and end waypoints are inside ENTRANCE rect
+ok 7 - start and end waypoints are inside ENTRANCE rect
+  ---
+  duration_ms: 0.253292
+  type: 'test'
+  ...
+# Subtest: every consecutive waypoint pair is inside the same convex rect
+ok 8 - every consecutive waypoint pair is inside the same convex rect
+  ---
+  duration_ms: 0.551087
+  type: 'test'
+  ...
+# Subtest: parseCSV: quoted field with comma inside
+ok 9 - parseCSV: quoted field with comma inside
+  ---
+  duration_ms: 1.220645
+  type: 'test'
+  ...
+# Subtest: parseCSV: escaped double-quote inside quoted field
+ok 10 - parseCSV: escaped double-quote inside quoted field
+  ---
+  duration_ms: 0.087222
+  type: 'test'
+  ...
+# Subtest: parseCSV: embedded newline in quoted field
+ok 11 - parseCSV: embedded newline in quoted field
+  ---
+  duration_ms: 0.09111
+  type: 'test'
+  ...
+# Subtest: parseCSV: unterminated quote throws
+ok 12 - parseCSV: unterminated quote throws
+  ---
+  duration_ms: 0.273981
+  type: 'test'
+  ...
+# Subtest: parseCSV: empty string throws
+ok 13 - parseCSV: empty string throws
+  ---
+  duration_ms: 0.097311
+  type: 'test'
+  ...
+# Subtest: parseCSV: whitespace-only throws
+ok 14 - parseCSV: whitespace-only throws
+  ---
+  duration_ms: 0.088785
+  type: 'test'
+  ...
+# Subtest: parseCents: accepts zero
+ok 15 - parseCents: accepts zero
+  ---
+  duration_ms: 0.381772
+  type: 'test'
+  ...
+# Subtest: parseCents: accepts normal integer
+ok 16 - parseCents: accepts normal integer
+  ---
+  duration_ms: 0.092512
+  type: 'test'
+  ...
+# Subtest: parseCents: rejects float string "12.5"
+ok 17 - parseCents: rejects float string "12.5"
+  ---
+  duration_ms: 0.178954
+  type: 'test'
+  ...
+# Subtest: parseCents: rejects junk suffix "12junk"
+ok 18 - parseCents: rejects junk suffix "12junk"
+  ---
+  duration_ms: 0.196355
+  type: 'test'
+  ...
+# Subtest: parseCents: rejects negative "-1"
+ok 19 - parseCents: rejects negative "-1"
+  ---
+  duration_ms: 0.089978
+  type: 'test'
+  ...
+# Subtest: parseCents: rejects unsafe integer
+ok 20 - parseCents: rejects unsafe integer
+  ---
+  duration_ms: 0.05352
+  type: 'test'
+  ...
+# Subtest: parseCents: rejects empty string
+ok 21 - parseCents: rejects empty string
+  ---
+  duration_ms: 0.046016
+  type: 'test'
+  ...
+# Subtest: parseDate: accepts valid date
+ok 22 - parseDate: accepts valid date
+  ---
+  duration_ms: 0.208288
+  type: 'test'
+  ...
+# Subtest: parseDate: rejects phantom date 2026-02-30
+ok 23 - parseDate: rejects phantom date 2026-02-30
+  ---
+  duration_ms: 0.076562
+  type: 'test'
+  ...
+# Subtest: parseDate: rejects bad format "09-01-2026"
+ok 24 - parseDate: rejects bad format "09-01-2026"
+  ---
+  duration_ms: 0.055683
+  type: 'test'
+  ...
+# Subtest: parseDate: rejects month 13
+ok 25 - parseDate: rejects month 13
+  ---
+  duration_ms: 0.046266
+  type: 'test'
+  ...
+# Subtest: parseDate: rejects day 00
+ok 26 - parseDate: rejects day 00
+  ---
+  duration_ms: 0.041788
+  type: 'test'
+  ...
+# Subtest: validateHeader: accepts correct header
+ok 27 - validateHeader: accepts correct header
+  ---
+  duration_ms: 0.056035
+  type: 'test'
+  ...
+# Subtest: validateHeader: rejects wrong column name
+ok 28 - validateHeader: rejects wrong column name
+  ---
+  duration_ms: 0.091411
+  type: 'test'
+  ...
+# Subtest: validateHeader: rejects wrong column count
+ok 29 - validateHeader: rejects wrong column count
+  ---
+  duration_ms: 0.045144
+  type: 'test'
+  ...
+# Subtest: validateDataRow: rejects row where both sides zero
+ok 30 - validateDataRow: rejects row where both sides zero
+  ---
+  duration_ms: 0.132847
+  type: 'test'
+  ...
+# Subtest: validateDataRow: rejects row where both sides non-zero
+ok 31 - validateDataRow: rejects row where both sides non-zero
+  ---
+  duration_ms: 0.099535
+  type: 'test'
+  ...
+# Subtest: validateDataRow: rejects invalid account
+ok 32 - validateDataRow: rejects invalid account
+  ---
+  duration_ms: 0.069379
+  type: 'test'
+  ...
+# Subtest: validateDataRow: rejects phantom date
+ok 33 - validateDataRow: rejects phantom date
+  ---
+  duration_ms: 0.062757
+  type: 'test'
+  ...
+# Subtest: validateDataRow: rejects empty memo
+ok 34 - validateDataRow: rejects empty memo
+  ---
+  duration_ms: 0.072786
+  type: 'test'
+  ...
+# Subtest: validateGroups: rejects inconsistent date within group
+ok 35 - validateGroups: rejects inconsistent date within group
+  ---
+  duration_ms: 0.18239
+  type: 'test'
+  ...
+# Subtest: validateGroups: rejects inconsistent evidence within group
+ok 36 - validateGroups: rejects inconsistent evidence within group
+  ---
+  duration_ms: 0.082043
+  type: 'test'
+  ...
+# Subtest: validateGroups: rejects inconsistent memo within group
+ok 37 - validateGroups: rejects inconsistent memo within group
+  ---
+  duration_ms: 0.08013
+  type: 'test'
+  ...
+# Subtest: validateGroups: rejects same account on both sides
+ok 38 - validateGroups: rejects same account on both sides
+  ---
+  duration_ms: 0.077985
+  type: 'test'
+  ...
+# Subtest: validateGroups: rejects unbalanced amounts
+ok 39 - validateGroups: rejects unbalanced amounts
+  ---
+  duration_ms: 0.166921
+  type: 'test'
+  ...
+# Subtest: validateGroups: rejects group with 3 rows
+ok 40 - validateGroups: rejects group with 3 rows
+  ---
+  duration_ms: 0.100197
+  type: 'test'
+  ...
+# Subtest: deriveTransactions: from=credit account, to=debit account
+ok 41 - deriveTransactions: from=credit account, to=debit account
+  ---
+  duration_ms: 0.116878
+  type: 'test'
+  ...
+# Subtest: deriveTransactions: bankMatched defaults to false
+ok 42 - deriveTransactions: bankMatched defaults to false
+  ---
+  duration_ms: 0.054031
+  type: 'test'
+  ...
+# Subtest: buildGraph: excludes edges with null evidence
+ok 43 - buildGraph: excludes edges with null evidence
+  ---
+  duration_ms: 0.100066
+  type: 'test'
+  ...
+# Subtest: fixture: processData is valid
+ok 44 - fixture: processData is valid
+  ---
+  duration_ms: 2.432432
+  type: 'test'
+  ...
+# Subtest: fixture: 194 transactions
+ok 45 - fixture: 194 transactions
+  ---
+  duration_ms: 1.805795
+  type: 'test'
+  ...
+# Subtest: fixture: 388 data rows
+ok 46 - fixture: 388 data rows
+  ---
+  duration_ms: 1.268433
+  type: 'test'
+  ...
+# Subtest: fixture: 24 accounts total
+ok 47 - fixture: 24 accounts total
+  ---
+  duration_ms: 1.25041
+  type: 'test'
+  ...
+# Subtest: fixture: 21 reachable accounts (evidence graph from 1000)
+ok 48 - fixture: 21 reachable accounts (evidence graph from 1000)
+  ---
+  duration_ms: 1.147067
+  type: 'test'
+  ...
+# Subtest: fixture: 3 unreachable accounts
+ok 49 - fixture: 3 unreachable accounts
+  ---
+  duration_ms: 1.231485
+  type: 'test'
+  ...
+# Subtest: fixture: unreachable accounts are 1090, 5080, 5090
+ok 50 - fixture: unreachable accounts are 1090, 5080, 5090
+  ---
+  duration_ms: 1.227497
+  type: 'test'
+  ...
+# Subtest: fixture: 2760000 cents in unreachable transactions
+ok 51 - fixture: 2760000 cents in unreachable transactions
+  ---
+  duration_ms: 1.444602
+  type: 'test'
+  ...
+# Subtest: repaired: processData is valid
+ok 52 - repaired: processData is valid
+  ---
+  duration_ms: 1.447607
+  type: 'test'
+  ...
+# Subtest: repaired: 24 accounts total
+ok 53 - repaired: 24 accounts total
+  ---
+  duration_ms: 1.537415
+  type: 'test'
+  ...
+# Subtest: repaired: 0 unreachable accounts
+ok 54 - repaired: 0 unreachable accounts
+  ---
+  duration_ms: 1.084441
+  type: 'test'
+  ...
+# Subtest: repaired: 0 unreachable cents
+ok 55 - repaired: 0 unreachable cents
+  ---
+  duration_ms: 1.41162
+  type: 'test'
+  ...
+# Subtest: negative: empty CSV
+ok 56 - negative: empty CSV
+  ---
+  duration_ms: 0.078286
+  type: 'test'
+  ...
+# Subtest: negative: header-only CSV
+ok 57 - negative: header-only CSV
+  ---
+  duration_ms: 0.094697
+  type: 'test'
+  ...
+# Subtest: negative: unterminated quoted field
+ok 58 - negative: unterminated quoted field
+  ---
+  duration_ms: 0.063819
+  type: 'test'
+  ...
+# Subtest: negative: float debit_cents rejected
+ok 59 - negative: float debit_cents rejected
+  ---
+  duration_ms: 0.150841
+  type: 'test'
+  ...
+# Subtest: negative: junk suffix in credit_cents rejected
+ok 60 - negative: junk suffix in credit_cents rejected
+  ---
+  duration_ms: 0.124061
+  type: 'test'
+  ...
+# Subtest: negative: phantom date 2026-02-30 rejected
+ok 61 - negative: phantom date 2026-02-30 rejected
+  ---
+  duration_ms: 0.093103
+  type: 'test'
+  ...
+# Subtest: negative: both debit and credit non-zero rejected
+ok 62 - negative: both debit and credit non-zero rejected
+  ---
+  duration_ms: 0.157624
+  type: 'test'
+  ...
+# Subtest: negative: both debit and credit zero rejected
+ok 63 - negative: both debit and credit zero rejected
+  ---
+  duration_ms: 0.060423
+  type: 'test'
+  ...
+# Subtest: negative: 3-row transaction rejected
+ok 64 - negative: 3-row transaction rejected
+  ---
+  duration_ms: 0.053419
+  type: 'test'
+  ...
+# Subtest: negative: same account on both sides rejected
+ok 65 - negative: same account on both sides rejected
+  ---
+  duration_ms: 0.087863
+  type: 'test'
+  ...
+# Subtest: negative: inconsistent date within group rejected
+ok 66 - negative: inconsistent date within group rejected
+  ---
+  duration_ms: 0.064941
+  type: 'test'
+  ...
+# Subtest: negative: inconsistent evidence within group rejected
+ok 67 - negative: inconsistent evidence within group rejected
+  ---
+  duration_ms: 0.078757
+  type: 'test'
+  ...
+# Subtest: negative: unbalanced transaction rejected
+ok 68 - negative: unbalanced transaction rejected
+  ---
+  duration_ms: 0.080811
+  type: 'test'
+  ...
+# Subtest: negative: invalid account prefix rejected
+ok 69 - negative: invalid account prefix rejected
+  ---
+  duration_ms: 0.074178
+  type: 'test'
+  ...
+# Subtest: remove evidence from J0181 makes 5090 unreachable
+ok 70 - remove evidence from J0181 makes 5090 unreachable
+  ---
+  duration_ms: 1.000113
+  type: 'test'
+  ...
+# Subtest: MM_PER_UNIT is 50
+ok 71 - MM_PER_UNIT is 50
+  ---
+  duration_ms: 1.004632
+  type: 'test'
+  ...
+# Subtest: parseDXF: returns array of {code, value} pairs
+ok 72 - parseDXF: returns array of {code, value} pairs
+  ---
+  duration_ms: 0.169466
+  type: 'test'
+  ...
+# Subtest: parseDXF: code is a number
+ok 73 - parseDXF: code is a number
+  ---
+  duration_ms: 0.067436
+  type: 'test'
+  ...
+# Subtest: parseDXF: ignores lines with non-numeric codes
+ok 74 - parseDXF: ignores lines with non-numeric codes
+  ---
+  duration_ms: 0.073617
+  type: 'test'
+  ...
+# Subtest: dxf: $ACADVER is AC1015
+ok 75 - dxf: $ACADVER is AC1015
+  ---
+  duration_ms: 5.962351
+  type: 'test'
+  ...
+# Subtest: dxf: $INSUNITS is 4 (millimetres)
+ok 76 - dxf: $INSUNITS is 4 (millimetres)
+  ---
+  duration_ms: 2.990653
+  type: 'test'
+  ...
+# Subtest: dxf: LAYER table contains FLOOR
+ok 77 - dxf: LAYER table contains FLOOR
+  ---
+  duration_ms: 2.190321
+  type: 'test'
+  ...
+# Subtest: dxf: LAYER table contains WALL
+ok 78 - dxf: LAYER table contains WALL
+  ---
+  duration_ms: 2.123036
+  type: 'test'
+  ...
+# Subtest: dxf: LAYER table contains DOOR
+ok 79 - dxf: LAYER table contains DOOR
+  ---
+  duration_ms: 2.834712
+  type: 'test'
+  ...
+# Subtest: dxf: LAYER table contains ROOM_NAME
+ok 80 - dxf: LAYER table contains ROOM_NAME
+  ---
+  duration_ms: 3.645553
+  type: 'test'
+  ...
+# Subtest: dxf: LAYER table contains SEALED
+ok 81 - dxf: LAYER table contains SEALED
+  ---
+  duration_ms: 1.81369
+  type: 'test'
+  ...
+# Subtest: dxf: exactly 1 LWPOLYLINE on FLOOR layer
+ok 82 - dxf: exactly 1 LWPOLYLINE on FLOOR layer
+  ---
+  duration_ms: 2.271923
+  type: 'test'
+  ...
+# Subtest: dxf: FLOOR LWPOLYLINE is closed (flag 70 = 1)
+ok 83 - dxf: FLOOR LWPOLYLINE is closed (flag 70 = 1)
+  ---
+  duration_ms: 2.20028
+  type: 'test'
+  ...
+# Subtest: dxf: WALL layer uses LINE entities (not LWPOLYLINE)
+ok 84 - dxf: WALL layer uses LINE entities (not LWPOLYLINE)
+  ---
+  duration_ms: 2.115472
+  type: 'test'
+  ...
+# Subtest: dxf: WALL layer has LINE entities
+ok 85 - dxf: WALL layer has LINE entities
+  ---
+  duration_ms: 2.240795
+  type: 'test'
+  ...
+# Subtest: dxf: WALL LINE count equals buildWalls() segment count
+ok 86 - dxf: WALL LINE count equals buildWalls() segment count
+  ---
+  duration_ms: 2.382559
+  type: 'test'
+  ...
+# Subtest: dxf: buildWalls produces fewer segments than naive 4-sides-per-rect
+ok 87 - dxf: buildWalls produces fewer segments than naive 4-sides-per-rect
+  ---
+  duration_ms: 1.3894
+  type: 'test'
+  ...
+# Subtest: dxf: gap width in buildWalls matches DOOR_W for every door
+ok 88 - dxf: gap width in buildWalls matches DOOR_W for every door
+  ---
+  duration_ms: 1.173807
+  type: 'test'
+  ...
+# Subtest: dxf: DOOR layer LINE count equals door count
+ok 89 - dxf: DOOR layer LINE count equals door count
+  ---
+  duration_ms: 1.501007
+  type: 'test'
+  ...
+# Subtest: dxf: DOOR layer ARC count equals door count
+ok 90 - dxf: DOOR layer ARC count equals door count
+  ---
+  duration_ms: 1.376916
+  type: 'test'
+  ...
+# Subtest: dxf: ARC entities have finite radius
+ok 91 - dxf: ARC entities have finite radius
+  ---
+  duration_ms: 1.511927
+  type: 'test'
+  ...
+# Subtest: dxf: ROOM_NAME layer has TEXT entities
+ok 92 - dxf: ROOM_NAME layer has TEXT entities
+  ---
+  duration_ms: 2.138284
+  type: 'test'
+  ...
+# Subtest: dxf: ROOM_NAME TEXT count equals rooms + labeled corridors
+ok 93 - dxf: ROOM_NAME TEXT count equals rooms + labeled corridors
+  ---
+  duration_ms: 2.556484
+  type: 'test'
+  ...
+# Subtest: dxf: TEXT entities have non-empty string value (group code 1)
+ok 94 - dxf: TEXT entities have non-empty string value (group code 1)
+  ---
+  duration_ms: 2.684182
+  type: 'test'
+  ...
+# Subtest: dxf: SEALED layer has 3 LWPOLYLINE entities
+ok 95 - dxf: SEALED layer has 3 LWPOLYLINE entities
+  ---
+  duration_ms: 2.581451
+  type: 'test'
+  ...
+# Subtest: dxf: SEALED LWPOLYLINE entities are closed
+ok 96 - dxf: SEALED LWPOLYLINE entities are closed
+  ---
+  duration_ms: 1.581537
+  type: 'test'
+  ...
+# Subtest: dxf: no wall spans CORR_SPINE↔ENTRANCE join midpoint (horiz y=348 x≈647)
+ok 97 - dxf: no wall spans CORR_SPINE↔ENTRANCE join midpoint (horiz y=348 x≈647)
+  ---
+  duration_ms: 1.336661
+  type: 'test'
+  ...
+# Subtest: dxf: no wall spans HALL_W1↔CORR_SPINE join midpoint (vert x=spineX y≈72)
+ok 98 - dxf: no wall spans HALL_W1↔CORR_SPINE join midpoint (vert x=spineX y≈72)
+  ---
+  duration_ms: 1.404678
+  type: 'test'
+  ...
+# Subtest: dxf: no wall spans HALL_W2↔CORR_SPINE join midpoint (vert x=spineX y≈216)
+ok 99 - dxf: no wall spans HALL_W2↔CORR_SPINE join midpoint (vert x=spineX y≈216)
+  ---
+  duration_ms: 1.011024
+  type: 'test'
+  ...
+# Subtest: dxf: no wall spans CORR_SPINE↔HALL_E1 join midpoint (vert x=spineR y≈72)
+ok 100 - dxf: no wall spans CORR_SPINE↔HALL_E1 join midpoint (vert x=spineR y≈72)
+  ---
+  duration_ms: 1.246523
+  type: 'test'
+  ...
+# Subtest: dxf: no wall spans CORR_SPINE↔HALL_E2 join midpoint (vert x=spineR y≈216)
+ok 101 - dxf: no wall spans CORR_SPINE↔HALL_E2 join midpoint (vert x=spineR y≈216)
+  ---
+  duration_ms: 1.13732
+  type: 'test'
+  ...
+# Subtest: geometry metadata mmPerUnit equals DXF MM_PER_UNIT
+ok 102 - geometry metadata mmPerUnit equals DXF MM_PER_UNIT
+  ---
+  duration_ms: 0.805631
+  type: 'test'
+  ...
+# Subtest: dxf: all coordinates are finite
+ok 103 - dxf: all coordinates are finite
+  ---
+  duration_ms: 1.474477
+  type: 'test'
+  ...
+# Subtest: dxf: coordinate values are scaled (plan units × MM_PER_UNIT)
+ok 104 - dxf: coordinate values are scaled (plan units × MM_PER_UNIT)
+  ---
+  duration_ms: 1.64187
+  type: 'test'
+  ...
+# Subtest: dxf: ends with EOF entity
+ok 105 - dxf: ends with EOF entity
+  ---
+  duration_ms: 1.314079
+  type: 'test'
+  ...
+# Subtest: buildWalls: wall gap positions exactly match door gap coords
+ok 106 - buildWalls: wall gap positions exactly match door gap coords
+  ---
+  duration_ms: 0.945492
+  type: 'test'
+  ...
+# Subtest: buildWalls: repaired layout (0 sealed) produces 0 extra SEALED polys
+ok 107 - buildWalls: repaired layout (0 sealed) produces 0 extra SEALED polys
+  ---
+  duration_ms: 1.365344
+  type: 'test'
+  ...
+# Subtest: calcRoomWidth: minimum area applies when cents small
+ok 108 - calcRoomWidth: minimum area applies when cents small
+  ---
+  duration_ms: 0.95023
+  type: 'test'
+  ...
+# Subtest: calcRoomWidth: scales with gross cents above minimum
+ok 109 - calcRoomWidth: scales with gross cents above minimum
+  ---
+  duration_ms: 0.208038
+  type: 'test'
+  ...
+# Subtest: calcRoomWidth: larger cents gives larger width
+ok 110 - calcRoomWidth: larger cents gives larger width
+  ---
+  duration_ms: 0.09671
+  type: 'test'
+  ...
+# Subtest: original: 23 leaf rooms (all 24 accounts minus bank)
+ok 111 - original: 23 leaf rooms (all 24 accounts minus bank)
+  ---
+  duration_ms: 4.914388
+  type: 'test'
+  ...
+# Subtest: original: bank (1000) is a corridor, not a room
+ok 112 - original: bank (1000) is a corridor, not a room
+  ---
+  duration_ms: 2.509306
+  type: 'test'
+  ...
+# Subtest: original: 3 sealed rooms (1090, 5080, 5090)
+ok 113 - original: 3 sealed rooms (1090, 5080, 5090)
+  ---
+  duration_ms: 2.340992
+  type: 'test'
+  ...
+# Subtest: original: sealedAccounts list equals 3 IDs
+ok 114 - original: sealedAccounts list equals 3 IDs
+  ---
+  duration_ms: 1.7491
+  type: 'test'
+  ...
+# Subtest: original: no room-room overlaps
+ok 115 - original: no room-room overlaps
+  ---
+  duration_ms: 2.072492
+  type: 'test'
+  ...
+# Subtest: original: no corridor-corridor overlaps
+ok 116 - original: no corridor-corridor overlaps
+  ---
+  duration_ms: 1.524681
+  type: 'test'
+  ...
+# Subtest: original: no room-corridor overlaps
+ok 117 - original: no room-corridor overlaps
+  ---
+  duration_ms: 1.543988
+  type: 'test'
+  ...
+# Subtest: original: 20 doors (23 rooms - 3 sealed)
+ok 118 - original: 20 doors (23 rooms - 3 sealed)
+  ---
+  duration_ms: 2.225217
+  type: 'test'
+  ...
+# Subtest: original: all door gaps valid (wall alignment, width, within room+corridor)
+ok 119 - original: all door gaps valid (wall alignment, width, within room+corridor)
+  ---
+  duration_ms: 3.004628
+  type: 'test'
+  ...
+# Subtest: original: sealed rooms have no door
+ok 120 - original: sealed rooms have no door
+  ---
+  duration_ms: 1.540261
+  type: 'test'
+  ...
+# Subtest: original: door gap width equals DOOR_W
+ok 121 - original: door gap width equals DOOR_W
+  ---
+  duration_ms: 1.296135
+  type: 'test'
+  ...
+# Subtest: original: 20 physically reachable leaf rooms
+ok 122 - original: 20 physically reachable leaf rooms
+  ---
+  duration_ms: 1.954001
+  type: 'test'
+  ...
+# Subtest: original: sealed rooms not physically reachable
+ok 123 - original: sealed rooms not physically reachable
+  ---
+  duration_ms: 1.69579
+  type: 'test'
+  ...
+# Subtest: repaired: 23 physically reachable leaf rooms
+ok 124 - repaired: 23 physically reachable leaf rooms
+  ---
+  duration_ms: 1.823327
+  type: 'test'
+  ...
+# Subtest: repaired: 0 sealed rooms
+ok 125 - repaired: 0 sealed rooms
+  ---
+  duration_ms: 1.11037
+  type: 'test'
+  ...
+# Subtest: no-evidence: 0 physically reachable leaf rooms
+ok 126 - no-evidence: 0 physically reachable leaf rooms
+  ---
+  duration_ms: 1.956946
+  type: 'test'
+  ...
+# Subtest: no-evidence: evidence BFS reaches only 1000
+ok 127 - no-evidence: evidence BFS reaches only 1000
+  ---
+  duration_ms: 1.613567
+  type: 'test'
+  ...
+# Subtest: amount change: larger gross cents → wider room
+ok 128 - amount change: larger gross cents → wider room
+  ---
+  duration_ms: 0.168033
+  type: 'test'
+  ...
+# Subtest: amount change: spineX shifts right when west accounts grow larger
+ok 129 - amount change: spineX shifts right when west accounts grow larger
+  ---
+  duration_ms: 0.111017
+  type: 'test'
+  ...
+# Subtest: new account: adding a new account ID creates a new room
+ok 130 - new account: adding a new account ID creates a new room
+  ---
+  duration_ms: 0.108092
+  type: 'test'
+  ...
+# Subtest: bankMatch: window created for exact evidence+cents+account match
+ok 131 - bankMatch: window created for exact evidence+cents+account match
+  ---
+  duration_ms: 0.993742
+  type: 'test'
+  ...
+# Subtest: bankMatch: mismatch (wrong cents) produces no window
+ok 132 - bankMatch: mismatch (wrong cents) produces no window
+  ---
+  duration_ms: 1.08947
+  type: 'test'
+  ...
+# Subtest: bankMatch: mismatch (wrong account) produces no window
+ok 133 - bankMatch: mismatch (wrong account) produces no window
+  ---
+  duration_ms: 0.913493
+  type: 'test'
+  ...
+# Subtest: bankMatch: mismatch (wrong evidence ref) produces no window
+ok 134 - bankMatch: mismatch (wrong evidence ref) produces no window
+  ---
+  duration_ms: 0.902021
+  type: 'test'
+  ...
+# Subtest: bankMatch: bank participation alone does not produce window
+ok 135 - bankMatch: bank participation alone does not produce window
+  ---
+  duration_ms: 1.042062
+  type: 'test'
+  ...
+# Subtest: original: 1010 and 1020 are physically adjacent (share wall, gap=WALL)
+ok 136 - original: 1010 and 1020 are physically adjacent (share wall, gap=WALL)
+  ---
+  duration_ms: 0.934521
+  type: 'test'
+  ...
+# Subtest: original: 1010-1020 EV-C2 is listed as unplaced (no direct door)
+ok 137 - original: 1010-1020 EV-C2 is listed as unplaced (no direct door)
+  ---
+  duration_ms: 1.398045
+  type: 'test'
+  ...
+# Subtest: original: bounds contain all rooms and corridors
+ok 138 - original: bounds contain all rooms and corridors
+  ---
+  duration_ms: 0.941515
+  type: 'test'
+  ...
+# Subtest: original: spine does not overlap any room
+ok 139 - original: spine does not overlap any room
+  ---
+  duration_ms: 0.91229
+  type: 'test'
+  ...
+# Subtest: original: audit route starts at ENTRANCE
+ok 140 - original: audit route starts at ENTRANCE
+  ---
+  duration_ms: 1.139955
+  type: 'test'
+  ...
+# Subtest: original: audit route contains CORR_SPINE
+ok 141 - original: audit route contains CORR_SPINE
+  ---
+  duration_ms: 0.814979
+  type: 'test'
+  ...
+# Subtest: original: all rooms have positive width and depth
+ok 142 - original: all rooms have positive width and depth
+  ---
+  duration_ms: 1.007778
+  type: 'test'
+  ...
+# Subtest: original: all rooms have depth = ROOM_DEPTH
+ok 143 - original: all rooms have depth = ROOM_DEPTH
+  ---
+  duration_ms: 0.813275
+  type: 'test'
+  ...
+1..143
+# tests 143
+# suites 0
+# pass 143
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 111.223285
+
+--- 2026-11-16T22:46:47.200Z test/auditor.test.js (exit 0) ---
+
+> sealed-rooms@1.0.0 test
+> node --test test/*.test.js
+
+TAP version 13
+# Subtest: isPointInRect
+ok 1 - isPointInRect
+  ---
+  duration_ms: 0.716186
+  type: 'test'
+  ...
+# Subtest: isSegmentInside uses both endpoints in same rect
+ok 2 - isSegmentInside uses both endpoints in same rect
+  ---
+  duration_ms: 0.18262
+  type: 'test'
+  ...
+# Subtest: original: exactly 20 visited rooms
+ok 3 - original: exactly 20 visited rooms
+  ---
+  duration_ms: 0.863471
+  type: 'test'
+  ...
+# Subtest: repaired: exactly 23 visited rooms
+ok 4 - repaired: exactly 23 visited rooms
+  ---
+  duration_ms: 0.332891
+  type: 'test'
+  ...
+# Subtest: no-evidence: 0 visited rooms, 1 waypoint (entrance)
+ok 5 - no-evidence: 0 visited rooms, 1 waypoint (entrance)
+  ---
+  duration_ms: 0.185126
+  type: 'test'
+  ...
+# Subtest: no sealed rooms in visitedRooms
+ok 6 - no sealed rooms in visitedRooms
+  ---
+  duration_ms: 0.296413
+  type: 'test'
+  ...
+# Subtest: start and end waypoints are inside ENTRANCE rect
+ok 7 - start and end waypoints are inside ENTRANCE rect
+  ---
+  duration_ms: 0.162223
+  type: 'test'
+  ...
+# Subtest: every consecutive waypoint pair is inside the same convex rect
+ok 8 - every consecutive waypoint pair is inside the same convex rect
+  ---
+  duration_ms: 0.359831
+  type: 'test'
+  ...
+# Subtest: parseCSV: quoted field with comma inside
+ok 9 - parseCSV: quoted field with comma inside
+  ---
+  duration_ms: 1.312618
+  type: 'test'
+  ...
+# Subtest: parseCSV: escaped double-quote inside quoted field
+ok 10 - parseCSV: escaped double-quote inside quoted field
+  ---
+  duration_ms: 0.079699
+  type: 'test'
+  ...
+# Subtest: parseCSV: embedded newline in quoted field
+ok 11 - parseCSV: embedded newline in quoted field
+  ---
+  duration_ms: 0.093304
+  type: 'test'
+  ...
+# Subtest: parseCSV: unterminated quote throws
+ok 12 - parseCSV: unterminated quote throws
+  ---
+  duration_ms: 0.266647
+  type: 'test'
+  ...
+# Subtest: parseCSV: empty string throws
+ok 13 - parseCSV: empty string throws
+  ---
+  duration_ms: 0.138939
+  type: 'test'
+  ...
+# Subtest: parseCSV: whitespace-only throws
+ok 14 - parseCSV: whitespace-only throws
+  ---
+  duration_ms: 0.141754
+  type: 'test'
+  ...
+# Subtest: parseCents: accepts zero
+ok 15 - parseCents: accepts zero
+  ---
+  duration_ms: 0.554644
+  type: 'test'
+  ...
+# Subtest: parseCents: accepts normal integer
+ok 16 - parseCents: accepts normal integer
+  ---
+  duration_ms: 0.122309
+  type: 'test'
+  ...
+# Subtest: parseCents: rejects float string "12.5"
+ok 17 - parseCents: rejects float string "12.5"
+  ---
+  duration_ms: 0.214881
+  type: 'test'
+  ...
+# Subtest: parseCents: rejects junk suffix "12junk"
+ok 18 - parseCents: rejects junk suffix "12junk"
+  ---
+  duration_ms: 0.304999
+  type: 'test'
+  ...
+# Subtest: parseCents: rejects negative "-1"
+ok 19 - parseCents: rejects negative "-1"
+  ---
+  duration_ms: 0.13892
+  type: 'test'
+  ...
+# Subtest: parseCents: rejects unsafe integer
+ok 20 - parseCents: rejects unsafe integer
+  ---
+  duration_ms: 0.087523
+  type: 'test'
+  ...
+# Subtest: parseCents: rejects empty string
+ok 21 - parseCents: rejects empty string
+  ---
+  duration_ms: 0.071553
+  type: 'test'
+  ...
+# Subtest: parseDate: accepts valid date
+ok 22 - parseDate: accepts valid date
+  ---
+  duration_ms: 0.274412
+  type: 'test'
+  ...
+# Subtest: parseDate: rejects phantom date 2026-02-30
+ok 23 - parseDate: rejects phantom date 2026-02-30
+  ---
+  duration_ms: 0.102371
+  type: 'test'
+  ...
+# Subtest: parseDate: rejects bad format "09-01-2026"
+ok 24 - parseDate: rejects bad format "09-01-2026"
+  ---
+  duration_ms: 0.069469
+  type: 'test'
+  ...
+# Subtest: parseDate: rejects month 13
+ok 25 - parseDate: rejects month 13
+  ---
+  duration_ms: 0.071323
+  type: 'test'
+  ...
+# Subtest: parseDate: rejects day 00
+ok 26 - parseDate: rejects day 00
+  ---
+  duration_ms: 0.068047
+  type: 'test'
+  ...
+# Subtest: validateHeader: accepts correct header
+ok 27 - validateHeader: accepts correct header
+  ---
+  duration_ms: 0.0914
+  type: 'test'
+  ...
+# Subtest: validateHeader: rejects wrong column name
+ok 28 - validateHeader: rejects wrong column name
+  ---
+  duration_ms: 0.103954
+  type: 'test'
+  ...
+# Subtest: validateHeader: rejects wrong column count
+ok 29 - validateHeader: rejects wrong column count
+  ---
+  duration_ms: 0.046657
+  type: 'test'
+  ...
+# Subtest: validateDataRow: rejects row where both sides zero
+ok 30 - validateDataRow: rejects row where both sides zero
+  ---
+  duration_ms: 0.135883
+  type: 'test'
+  ...
+# Subtest: validateDataRow: rejects row where both sides non-zero
+ok 31 - validateDataRow: rejects row where both sides non-zero
+  ---
+  duration_ms: 0.103182
+  type: 'test'
+  ...
+# Subtest: validateDataRow: rejects invalid account
+ok 32 - validateDataRow: rejects invalid account
+  ---
+  duration_ms: 0.071803
+  type: 'test'
+  ...
+# Subtest: validateDataRow: rejects phantom date
+ok 33 - validateDataRow: rejects phantom date
+  ---
+  duration_ms: 0.063007
+  type: 'test'
+  ...
+# Subtest: validateDataRow: rejects empty memo
+ok 34 - validateDataRow: rejects empty memo
+  ---
+  duration_ms: 0.072235
+  type: 'test'
+  ...
+# Subtest: validateGroups: rejects inconsistent date within group
+ok 35 - validateGroups: rejects inconsistent date within group
+  ---
+  duration_ms: 0.180426
+  type: 'test'
+  ...
+# Subtest: validateGroups: rejects inconsistent evidence within group
+ok 36 - validateGroups: rejects inconsistent evidence within group
+  ---
+  duration_ms: 0.078396
+  type: 'test'
+  ...
+# Subtest: validateGroups: rejects inconsistent memo within group
+ok 37 - validateGroups: rejects inconsistent memo within group
+  ---
+  duration_ms: 0.077595
+  type: 'test'
+  ...
+# Subtest: validateGroups: rejects same account on both sides
+ok 38 - validateGroups: rejects same account on both sides
+  ---
+  duration_ms: 0.086451
+  type: 'test'
+  ...
+# Subtest: validateGroups: rejects unbalanced amounts
+ok 39 - validateGroups: rejects unbalanced amounts
+  ---
+  duration_ms: 0.507446
+  type: 'test'
+  ...
+# Subtest: validateGroups: rejects group with 3 rows
+ok 40 - validateGroups: rejects group with 3 rows
+  ---
+  duration_ms: 0.097733
+  type: 'test'
+  ...
+# Subtest: deriveTransactions: from=credit account, to=debit account
+ok 41 - deriveTransactions: from=credit account, to=debit account
+  ---
+  duration_ms: 0.116187
+  type: 'test'
+  ...
+# Subtest: deriveTransactions: bankMatched defaults to false
+ok 42 - deriveTransactions: bankMatched defaults to false
+  ---
+  duration_ms: 0.052939
+  type: 'test'
+  ...
+# Subtest: buildGraph: excludes edges with null evidence
+ok 43 - buildGraph: excludes edges with null evidence
+  ---
+  duration_ms: 0.086371
+  type: 'test'
+  ...
+# Subtest: fixture: processData is valid
+ok 44 - fixture: processData is valid
+  ---
+  duration_ms: 3.247026
+  type: 'test'
+  ...
+# Subtest: fixture: 194 transactions
+ok 45 - fixture: 194 transactions
+  ---
+  duration_ms: 1.651751
+  type: 'test'
+  ...
+# Subtest: fixture: 388 data rows
+ok 46 - fixture: 388 data rows
+  ---
+  duration_ms: 1.42103
+  type: 'test'
+  ...
+# Subtest: fixture: 24 accounts total
+ok 47 - fixture: 24 accounts total
+  ---
+  duration_ms: 1.246806
+  type: 'test'
+  ...
+# Subtest: fixture: 21 reachable accounts (evidence graph from 1000)
+ok 48 - fixture: 21 reachable accounts (evidence graph from 1000)
+  ---
+  duration_ms: 1.401023
+  type: 'test'
+  ...
+# Subtest: fixture: 3 unreachable accounts
+ok 49 - fixture: 3 unreachable accounts
+  ---
+  duration_ms: 1.410601
+  type: 'test'
+  ...
+# Subtest: fixture: unreachable accounts are 1090, 5080, 5090
+ok 50 - fixture: unreachable accounts are 1090, 5080, 5090
+  ---
+  duration_ms: 1.935159
+  type: 'test'
+  ...
+# Subtest: fixture: 2760000 cents in unreachable transactions
+ok 51 - fixture: 2760000 cents in unreachable transactions
+  ---
+  duration_ms: 1.464091
+  type: 'test'
+  ...
+# Subtest: repaired: processData is valid
+ok 52 - repaired: processData is valid
+  ---
+  duration_ms: 1.397426
+  type: 'test'
+  ...
+# Subtest: repaired: 24 accounts total
+ok 53 - repaired: 24 accounts total
+  ---
+  duration_ms: 1.552726
+  type: 'test'
+  ...
+# Subtest: repaired: 0 unreachable accounts
+ok 54 - repaired: 0 unreachable accounts
+  ---
+  duration_ms: 0.902343
+  type: 'test'
+  ...
+# Subtest: repaired: 0 unreachable cents
+ok 55 - repaired: 0 unreachable cents
+  ---
+  duration_ms: 1.333337
+  type: 'test'
+  ...
+# Subtest: negative: empty CSV
+ok 56 - negative: empty CSV
+  ---
+  duration_ms: 0.081361
+  type: 'test'
+  ...
+# Subtest: negative: header-only CSV
+ok 57 - negative: header-only CSV
+  ---
+  duration_ms: 0.097813
+  type: 'test'
+  ...
+# Subtest: negative: unterminated quoted field
+ok 58 - negative: unterminated quoted field
+  ---
+  duration_ms: 0.062837
+  type: 'test'
+  ...
+# Subtest: negative: float debit_cents rejected
+ok 59 - negative: float debit_cents rejected
+  ---
+  duration_ms: 0.157494
+  type: 'test'
+  ...
+# Subtest: negative: junk suffix in credit_cents rejected
+ok 60 - negative: junk suffix in credit_cents rejected
+  ---
+  duration_ms: 0.109374
+  type: 'test'
+  ...
+# Subtest: negative: phantom date 2026-02-30 rejected
+ok 61 - negative: phantom date 2026-02-30 rejected
+  ---
+  duration_ms: 0.075902
+  type: 'test'
+  ...
+# Subtest: negative: both debit and credit non-zero rejected
+ok 62 - negative: both debit and credit non-zero rejected
+  ---
+  duration_ms: 0.061435
+  type: 'test'
+  ...
+# Subtest: negative: both debit and credit zero rejected
+ok 63 - negative: both debit and credit zero rejected
+  ---
+  duration_ms: 0.052859
+  type: 'test'
+  ...
+# Subtest: negative: 3-row transaction rejected
+ok 64 - negative: 3-row transaction rejected
+  ---
+  duration_ms: 0.062928
+  type: 'test'
+  ...
+# Subtest: negative: same account on both sides rejected
+ok 65 - negative: same account on both sides rejected
+  ---
+  duration_ms: 0.115796
+  type: 'test'
+  ...
+# Subtest: negative: inconsistent date within group rejected
+ok 66 - negative: inconsistent date within group rejected
+  ---
+  duration_ms: 0.084428
+  type: 'test'
+  ...
+# Subtest: negative: inconsistent evidence within group rejected
+ok 67 - negative: inconsistent evidence within group rejected
+  ---
+  duration_ms: 0.092994
+  type: 'test'
+  ...
+# Subtest: negative: unbalanced transaction rejected
+ok 68 - negative: unbalanced transaction rejected
+  ---
+  duration_ms: 0.238414
+  type: 'test'
+  ...
+# Subtest: negative: invalid account prefix rejected
+ok 69 - negative: invalid account prefix rejected
+  ---
+  duration_ms: 0.136966
+  type: 'test'
+  ...
+# Subtest: remove evidence from J0181 makes 5090 unreachable
+ok 70 - remove evidence from J0181 makes 5090 unreachable
+  ---
+  duration_ms: 1.053435
+  type: 'test'
+  ...
+# Subtest: MM_PER_UNIT is 50
+ok 71 - MM_PER_UNIT is 50
+  ---
+  duration_ms: 1.058424
+  type: 'test'
+  ...
+# Subtest: parseDXF: returns array of {code, value} pairs
+ok 72 - parseDXF: returns array of {code, value} pairs
+  ---
+  duration_ms: 0.172232
+  type: 'test'
+  ...
+# Subtest: parseDXF: code is a number
+ok 73 - parseDXF: code is a number
+  ---
+  duration_ms: 0.065522
+  type: 'test'
+  ...
+# Subtest: parseDXF: ignores lines with non-numeric codes
+ok 74 - parseDXF: ignores lines with non-numeric codes
+  ---
+  duration_ms: 0.067957
+  type: 'test'
+  ...
+# Subtest: dxf: $ACADVER is AC1015
+ok 75 - dxf: $ACADVER is AC1015
+  ---
+  duration_ms: 6.307084
+  type: 'test'
+  ...
+# Subtest: dxf: $INSUNITS is 4 (millimetres)
+ok 76 - dxf: $INSUNITS is 4 (millimetres)
+  ---
+  duration_ms: 3.738122
+  type: 'test'
+  ...
+# Subtest: dxf: LAYER table contains FLOOR
+ok 77 - dxf: LAYER table contains FLOOR
+  ---
+  duration_ms: 2.647729
+  type: 'test'
+  ...
+# Subtest: dxf: LAYER table contains WALL
+ok 78 - dxf: LAYER table contains WALL
+  ---
+  duration_ms: 1.782574
+  type: 'test'
+  ...
+# Subtest: dxf: LAYER table contains DOOR
+ok 79 - dxf: LAYER table contains DOOR
+  ---
+  duration_ms: 1.810627
+  type: 'test'
+  ...
+# Subtest: dxf: LAYER table contains ROOM_NAME
+ok 80 - dxf: LAYER table contains ROOM_NAME
+  ---
+  duration_ms: 2.705676
+  type: 'test'
+  ...
+# Subtest: dxf: LAYER table contains SEALED
+ok 81 - dxf: LAYER table contains SEALED
+  ---
+  duration_ms: 3.014372
+  type: 'test'
+  ...
+# Subtest: dxf: exactly 1 LWPOLYLINE on FLOOR layer
+ok 82 - dxf: exactly 1 LWPOLYLINE on FLOOR layer
+  ---
+  duration_ms: 1.829953
+  type: 'test'
+  ...
+# Subtest: dxf: FLOOR LWPOLYLINE is closed (flag 70 = 1)
+ok 83 - dxf: FLOOR LWPOLYLINE is closed (flag 70 = 1)
+  ---
+  duration_ms: 2.168615
+  type: 'test'
+  ...
+# Subtest: dxf: WALL layer uses LINE entities (not LWPOLYLINE)
+ok 84 - dxf: WALL layer uses LINE entities (not LWPOLYLINE)
+  ---
+  duration_ms: 2.225571
+  type: 'test'
+  ...
+# Subtest: dxf: WALL layer has LINE entities
+ok 85 - dxf: WALL layer has LINE entities
+  ---
+  duration_ms: 1.552074
+  type: 'test'
+  ...
+# Subtest: dxf: WALL LINE count equals buildWalls() segment count
+ok 86 - dxf: WALL LINE count equals buildWalls() segment count
+  ---
+  duration_ms: 1.607719
+  type: 'test'
+  ...
+# Subtest: dxf: buildWalls produces fewer segments than naive 4-sides-per-rect
+ok 87 - dxf: buildWalls produces fewer segments than naive 4-sides-per-rect
+  ---
+  duration_ms: 1.231507
+  type: 'test'
+  ...
+# Subtest: dxf: gap width in buildWalls matches DOOR_W for every door
+ok 88 - dxf: gap width in buildWalls matches DOOR_W for every door
+  ---
+  duration_ms: 1.364034
+  type: 'test'
+  ...
+# Subtest: dxf: DOOR layer LINE count equals door count
+ok 89 - dxf: DOOR layer LINE count equals door count
+  ---
+  duration_ms: 2.208058
+  type: 'test'
+  ...
+# Subtest: dxf: DOOR layer ARC count equals door count
+ok 90 - dxf: DOOR layer ARC count equals door count
+  ---
+  duration_ms: 2.495153
+  type: 'test'
+  ...
+# Subtest: dxf: ARC entities have finite radius
+ok 91 - dxf: ARC entities have finite radius
+  ---
+  duration_ms: 1.702646
+  type: 'test'
+  ...
+# Subtest: dxf: ROOM_NAME layer has TEXT entities
+ok 92 - dxf: ROOM_NAME layer has TEXT entities
+  ---
+  duration_ms: 1.67851
+  type: 'test'
+  ...
+# Subtest: dxf: ROOM_NAME TEXT count equals rooms + labeled corridors
+ok 93 - dxf: ROOM_NAME TEXT count equals rooms + labeled corridors
+  ---
+  duration_ms: 1.562986
+  type: 'test'
+  ...
+# Subtest: dxf: TEXT entities have non-empty string value (group code 1)
+ok 94 - dxf: TEXT entities have non-empty string value (group code 1)
+  ---
+  duration_ms: 1.445786
+  type: 'test'
+  ...
+# Subtest: dxf: SEALED layer has 3 LWPOLYLINE entities
+ok 95 - dxf: SEALED layer has 3 LWPOLYLINE entities
+  ---
+  duration_ms: 2.438117
+  type: 'test'
+  ...
+# Subtest: dxf: SEALED LWPOLYLINE entities are closed
+ok 96 - dxf: SEALED LWPOLYLINE entities are closed
+  ---
+  duration_ms: 1.373311
+  type: 'test'
+  ...
+# Subtest: dxf: no wall spans CORR_SPINE↔ENTRANCE join midpoint (horiz y=348 x≈647)
+ok 97 - dxf: no wall spans CORR_SPINE↔ENTRANCE join midpoint (horiz y=348 x≈647)
+  ---
+  duration_ms: 1.442731
+  type: 'test'
+  ...
+# Subtest: dxf: no wall spans HALL_W1↔CORR_SPINE join midpoint (vert x=spineX y≈72)
+ok 98 - dxf: no wall spans HALL_W1↔CORR_SPINE join midpoint (vert x=spineX y≈72)
+  ---
+  duration_ms: 1.000737
+  type: 'test'
+  ...
+# Subtest: dxf: no wall spans HALL_W2↔CORR_SPINE join midpoint (vert x=spineX y≈216)
+ok 99 - dxf: no wall spans HALL_W2↔CORR_SPINE join midpoint (vert x=spineX y≈216)
+  ---
+  duration_ms: 1.028699
+  type: 'test'
+  ...
+# Subtest: dxf: no wall spans CORR_SPINE↔HALL_E1 join midpoint (vert x=spineR y≈72)
+ok 100 - dxf: no wall spans CORR_SPINE↔HALL_E1 join midpoint (vert x=spineR y≈72)
+  ---
+  duration_ms: 1.072751
+  type: 'test'
+  ...
+# Subtest: dxf: no wall spans CORR_SPINE↔HALL_E2 join midpoint (vert x=spineR y≈216)
+ok 101 - dxf: no wall spans CORR_SPINE↔HALL_E2 join midpoint (vert x=spineR y≈216)
+  ---
+  duration_ms: 0.887615
+  type: 'test'
+  ...
+# Subtest: geometry metadata mmPerUnit equals DXF MM_PER_UNIT
+ok 102 - geometry metadata mmPerUnit equals DXF MM_PER_UNIT
+  ---
+  duration_ms: 0.963336
+  type: 'test'
+  ...
+# Subtest: dxf: all coordinates are finite
+ok 103 - dxf: all coordinates are finite
+  ---
+  duration_ms: 1.577011
+  type: 'test'
+  ...
+# Subtest: dxf: coordinate values are scaled (plan units × MM_PER_UNIT)
+ok 104 - dxf: coordinate values are scaled (plan units × MM_PER_UNIT)
+  ---
+  duration_ms: 2.460459
+  type: 'test'
+  ...
+# Subtest: dxf: ends with EOF entity
+ok 105 - dxf: ends with EOF entity
+  ---
+  duration_ms: 1.627295
+  type: 'test'
+  ...
+# Subtest: buildWalls: wall gap positions exactly match door gap coords
+ok 106 - buildWalls: wall gap positions exactly match door gap coords
+  ---
+  duration_ms: 1.248489
+  type: 'test'
+  ...
+# Subtest: buildWalls: repaired layout (0 sealed) produces 0 extra SEALED polys
+ok 107 - buildWalls: repaired layout (0 sealed) produces 0 extra SEALED polys
+  ---
+  duration_ms: 2.319706
+  type: 'test'
+  ...
+# Subtest: calcRoomWidth: minimum area applies when cents small
+ok 108 - calcRoomWidth: minimum area applies when cents small
+  ---
+  duration_ms: 0.652457
+  type: 'test'
+  ...
+# Subtest: calcRoomWidth: scales with gross cents above minimum
+ok 109 - calcRoomWidth: scales with gross cents above minimum
+  ---
+  duration_ms: 0.149819
+  type: 'test'
+  ...
+# Subtest: calcRoomWidth: larger cents gives larger width
+ok 110 - calcRoomWidth: larger cents gives larger width
+  ---
+  duration_ms: 0.083335
+  type: 'test'
+  ...
+# Subtest: original: 23 leaf rooms (all 24 accounts minus bank)
+ok 111 - original: 23 leaf rooms (all 24 accounts minus bank)
+  ---
+  duration_ms: 4.131696
+  type: 'test'
+  ...
+# Subtest: original: bank (1000) is a corridor, not a room
+ok 112 - original: bank (1000) is a corridor, not a room
+  ---
+  duration_ms: 2.909937
+  type: 'test'
+  ...
+# Subtest: original: 3 sealed rooms (1090, 5080, 5090)
+ok 113 - original: 3 sealed rooms (1090, 5080, 5090)
+  ---
+  duration_ms: 2.308455
+  type: 'test'
+  ...
+# Subtest: original: sealedAccounts list equals 3 IDs
+ok 114 - original: sealedAccounts list equals 3 IDs
+  ---
+  duration_ms: 1.365446
+  type: 'test'
+  ...
+# Subtest: original: no room-room overlaps
+ok 115 - original: no room-room overlaps
+  ---
+  duration_ms: 1.390604
+  type: 'test'
+  ...
+# Subtest: original: no corridor-corridor overlaps
+ok 116 - original: no corridor-corridor overlaps
+  ---
+  duration_ms: 1.541926
+  type: 'test'
+  ...
+# Subtest: original: no room-corridor overlaps
+ok 117 - original: no room-corridor overlaps
+  ---
+  duration_ms: 1.485481
+  type: 'test'
+  ...
+# Subtest: original: 20 doors (23 rooms - 3 sealed)
+ok 118 - original: 20 doors (23 rooms - 3 sealed)
+  ---
+  duration_ms: 1.604051
+  type: 'test'
+  ...
+# Subtest: original: all door gaps valid (wall alignment, width, within room+corridor)
+ok 119 - original: all door gaps valid (wall alignment, width, within room+corridor)
+  ---
+  duration_ms: 1.955518
+  type: 'test'
+  ...
+# Subtest: original: sealed rooms have no door
+ok 120 - original: sealed rooms have no door
+  ---
+  duration_ms: 1.588783
+  type: 'test'
+  ...
+# Subtest: original: door gap width equals DOOR_W
+ok 121 - original: door gap width equals DOOR_W
+  ---
+  duration_ms: 1.418595
+  type: 'test'
+  ...
+# Subtest: original: 20 physically reachable leaf rooms
+ok 122 - original: 20 physically reachable leaf rooms
+  ---
+  duration_ms: 2.43935
+  type: 'test'
+  ...
+# Subtest: original: sealed rooms not physically reachable
+ok 123 - original: sealed rooms not physically reachable
+  ---
+  duration_ms: 1.697375
+  type: 'test'
+  ...
+# Subtest: repaired: 23 physically reachable leaf rooms
+ok 124 - repaired: 23 physically reachable leaf rooms
+  ---
+  duration_ms: 0.926508
+  type: 'test'
+  ...
+# Subtest: repaired: 0 sealed rooms
+ok 125 - repaired: 0 sealed rooms
+  ---
+  duration_ms: 1.023068
+  type: 'test'
+  ...
+# Subtest: no-evidence: 0 physically reachable leaf rooms
+ok 126 - no-evidence: 0 physically reachable leaf rooms
+  ---
+  duration_ms: 1.037686
+  type: 'test'
+  ...
+# Subtest: no-evidence: evidence BFS reaches only 1000
+ok 127 - no-evidence: evidence BFS reaches only 1000
+  ---
+  duration_ms: 1.207582
+  type: 'test'
+  ...
+# Subtest: amount change: larger gross cents → wider room
+ok 128 - amount change: larger gross cents → wider room
+  ---
+  duration_ms: 0.175057
+  type: 'test'
+  ...
+# Subtest: amount change: spineX shifts right when west accounts grow larger
+ok 129 - amount change: spineX shifts right when west accounts grow larger
+  ---
+  duration_ms: 0.111428
+  type: 'test'
+  ...
+# Subtest: new account: adding a new account ID creates a new room
+ok 130 - new account: adding a new account ID creates a new room
+  ---
+  duration_ms: 0.104455
+  type: 'test'
+  ...
+# Subtest: bankMatch: window created for exact evidence+cents+account match
+ok 131 - bankMatch: window created for exact evidence+cents+account match
+  ---
+  duration_ms: 0.995277
+  type: 'test'
+  ...
+# Subtest: bankMatch: mismatch (wrong cents) produces no window
+ok 132 - bankMatch: mismatch (wrong cents) produces no window
+  ---
+  duration_ms: 1.09358
+  type: 'test'
+  ...
+# Subtest: bankMatch: mismatch (wrong account) produces no window
+ok 133 - bankMatch: mismatch (wrong account) produces no window
+  ---
+  duration_ms: 0.921588
+  type: 'test'
+  ...
+# Subtest: bankMatch: mismatch (wrong evidence ref) produces no window
+ok 134 - bankMatch: mismatch (wrong evidence ref) produces no window
+  ---
+  duration_ms: 1.128595
+  type: 'test'
+  ...
+# Subtest: bankMatch: bank participation alone does not produce window
+ok 135 - bankMatch: bank participation alone does not produce window
+  ---
+  duration_ms: 1.027076
+  type: 'test'
+  ...
+# Subtest: original: 1010 and 1020 are physically adjacent (share wall, gap=WALL)
+ok 136 - original: 1010 and 1020 are physically adjacent (share wall, gap=WALL)
+  ---
+  duration_ms: 1.284656
+  type: 'test'
+  ...
+# Subtest: original: 1010-1020 EV-C2 is listed as unplaced (no direct door)
+ok 137 - original: 1010-1020 EV-C2 is listed as unplaced (no direct door)
+  ---
+  duration_ms: 1.433844
+  type: 'test'
+  ...
+# Subtest: original: bounds contain all rooms and corridors
+ok 138 - original: bounds contain all rooms and corridors
+  ---
+  duration_ms: 0.953659
+  type: 'test'
+  ...
+# Subtest: original: spine does not overlap any room
+ok 139 - original: spine does not overlap any room
+  ---
+  duration_ms: 1.748481
+  type: 'test'
+  ...
+# Subtest: original: audit route starts at ENTRANCE
+ok 140 - original: audit route starts at ENTRANCE
+  ---
+  duration_ms: 1.584516
+  type: 'test'
+  ...
+# Subtest: original: audit route contains CORR_SPINE
+ok 141 - original: audit route contains CORR_SPINE
+  ---
+  duration_ms: 1.525315
+  type: 'test'
+  ...
+# Subtest: original: all rooms have positive width and depth
+ok 142 - original: all rooms have positive width and depth
+  ---
+  duration_ms: 1.697065
+  type: 'test'
+  ...
+# Subtest: original: all rooms have depth = ROOM_DEPTH
+ok 143 - original: all rooms have depth = ROOM_DEPTH
+  ---
+  duration_ms: 1.450856
+  type: 'test'
+  ...
+1..143
+# tests 143
+# suites 0
+# pass 143
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 111.465623

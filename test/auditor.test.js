@@ -5,6 +5,7 @@ import { processData } from '../src/data.js';
 import { buildLayout, applyBankStatements } from '../src/geometry.js';
 import { buildAuditWalk, isPointInRect, isSegmentInside } from '../src/auditor.js';
 
+// Auditor tests for Sealed Rooms walkthrough validation (PostFileSave hook test)
 const journalText = fs.readFileSync('./journal.csv', 'utf8');
 const bankData    = JSON.parse(fs.readFileSync('./bank-statement.json', 'utf8'));
 
