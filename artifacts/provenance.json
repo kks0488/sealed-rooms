@@ -27,8 +27,8 @@
     {
       "file": "src/renderer.js",
       "initialAuthor": "Kiro",
-      "supervisorAdded": 39,
-      "supervisorDeleted": 24
+      "supervisorAdded": 44,
+      "supervisorDeleted": 25
     },
     {
       "file": "src/style.css",
@@ -45,7 +45,7 @@
     {
       "file": "scripts/capture.mjs",
       "initialAuthor": "Codex supervisor",
-      "supervisorAdded": 148,
+      "supervisorAdded": 150,
       "supervisorDeleted": 0
     },
     {

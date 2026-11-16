@@ -64,7 +64,9 @@ try {
   const roomBoxes = await page.locator('[data-room-id]').evaluateAll(nodes => nodes.map(n => {
     const r = n.getBoundingClientRect(); return { left: r.left, right: r.right, top: r.top, bottom: r.bottom };
   }));
-  check('entire plan fits 1440x900', roomBoxes.every(r => r.left >= 0 && r.right <= 1440 && r.top >= 0 && r.bottom <= 900));
+  const frame = await page.locator('#viewport').boundingBox();
+  const textBoxes = await page.locator('#viewport svg text').evaluateAll(nodes => nodes.map(n => { const r = n.getBoundingClientRect(); return { top: r.top, bottom: r.bottom }; }));
+  check('entire plan and dimension labels fit 1440x900', roomBoxes.every(r => r.left >= 0 && r.right <= 1440 && r.top >= 0 && r.bottom <= 900) && textBoxes.every(r => r.top >= frame.y && r.bottom <= frame.y + frame.height));
   check('no page overflow', await page.evaluate(() => document.documentElement.scrollWidth === 1440 && document.documentElement.scrollHeight === 900));
   await page.screenshot({ path: path.join(shots, '01-floorplan.png') });
 

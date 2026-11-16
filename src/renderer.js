@@ -40,7 +40,7 @@ export function renderFloorplan(layout, selectedId = null, onSelect = null, audi
   const vbX = bounds.x - 30;
   const vbY = bounds.y - 40;
   const vbW = bounds.w + 60;
-  const vbH = bounds.h + 100;
+  const vbH = bounds.h + 120;
 
   const svg = svgElement('svg', {
     viewBox: `${vbX} ${vbY} ${vbW} ${vbH}`,
@@ -217,6 +217,10 @@ function renderRoom(g, room, selectedId, onSelect) {
       fill: CHALK,
     });
     text.textContent = line;
+    if (line.length * 5.5 > w - 8) {
+      text.setAttribute('textLength', String(w - 8));
+      text.setAttribute('lengthAdjust', 'spacingAndGlyphs');
+    }
     labelGroup.appendChild(text);
     yOffset += 12;
   }
