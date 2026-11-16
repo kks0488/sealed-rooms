@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sealed Rooms - Accounting Evidence Visualizer</title>
+  <link rel="stylesheet" href="./src/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Sealed Rooms</h1>
+      <p class="subtitle">Accounting Evidence Floorplan Visualizer</p>
+    </header>
+
+    <div class="controls">
+      <div class="control-section">
+        <label for="csv-input">Import CSV:</label>
+        <input type="file" id="csv-input" accept=".csv" />
+        <select id="sample-select">
+          <option value="">Load Sample...</option>
+          <option value="original">Original journal.csv</option>
+          <option value="repaired">Evidence repaired</option>
+        </select>
+      </div>
+      
+      <div class="control-section">
+        <label for="room-select">Select Room:</label>
+        <select id="room-select">
+          <option value="">-- All Rooms --</option>
+        </select>
+      </div>
+
+      <div class="control-section">
+        <button id="auditor-toggle" disabled>Start Walkthrough</button>
+        <button id="auditor-reset" disabled>Reset</button>
+      </div>
+
+      <div class="control-section">
+        <button id="export-dxf-btn" disabled>Export DXF</button>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="viewport-wrapper">
+        <div id="viewport">
+          <!-- SVG floorplan rendered here -->
+        </div>
+      </div>
+
+      <div class="sidebar">
+        <div class="sidebar-section">
+          <h3>Room Details</h3>
+          <div id="room-details">
+            <p>Select a room to view details</p>
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <h3>Transactions</h3>
+          <div id="transaction-list">
+            <p>No transactions selected</p>
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <h3>Auditor Route</h3>
+          <div id="auditor-info">
+            <p>Enable auditor mode to see walkthrough</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>Fictional ledger. Local review. References are not proof of authenticity.</p>
+    </footer>
+  </div>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
