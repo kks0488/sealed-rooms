@@ -131,6 +131,7 @@ function textEntity(layer, x, y, heightPlan, str) {
     40, mm(heightPlan),
     1, safe,
     72, 1,
+    11, mm(x), 21, mm(y), 31, '0.0000',
     100, 'AcDbText',
   );
 }

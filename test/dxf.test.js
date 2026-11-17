@@ -291,6 +291,26 @@ test('dxf: TEXT entities have non-empty string value (group code 1)', () => {
   }
 });
 
+test('dxf: TEXT alignment point (11/21) equals insertion point (10/20) when group 72 is non-zero', () => {
+  const { entities } = getDXF();
+  const texts = entities.filter(e => e.type === 'TEXT');
+  for (const t of texts) {
+    const g72 = t.groups.find(g => g.code === 72);
+    if (!g72 || parseInt(g72.value, 10) === 0) continue;
+    const g10 = t.groups.find(g => g.code === 10);
+    const g20 = t.groups.find(g => g.code === 20);
+    const g11 = t.groups.find(g => g.code === 11);
+    const g21 = t.groups.find(g => g.code === 21);
+    const label = t.groups.find(g => g.code === 1)?.value ?? '(unknown)';
+    assert.ok(g11, `TEXT "${label}": group 72 is non-zero but group 11 (alignment X) is missing`);
+    assert.ok(g21, `TEXT "${label}": group 72 is non-zero but group 21 (alignment Y) is missing`);
+    assert.equal(g11.value, g10.value,
+      `TEXT "${label}": alignment X (11=${g11.value}) ≠ insertion X (10=${g10.value})`);
+    assert.equal(g21.value, g20.value,
+      `TEXT "${label}": alignment Y (21=${g21.value}) ≠ insertion Y (20=${g20.value})`);
+  }
+});
+
 // ---------------------------------------------------------------------------
 // SEALED layer: closed polylines for 3 sealed rooms
 // ---------------------------------------------------------------------------
