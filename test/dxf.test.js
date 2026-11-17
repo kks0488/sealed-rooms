@@ -272,10 +272,11 @@ test('dxf: ROOM_NAME layer has TEXT entities', () => {
   assert.ok(texts > 0, 'No TEXT on ROOM_NAME layer');
 });
 
-test('dxf: ROOM_NAME TEXT count equals rooms + labeled corridors', () => {
+test('dxf: ROOM_NAME TEXT count equals rooms×2 + labeled corridors', () => {
   const { layout, entities } = getDXF();
   const labeledCorridors = layout.corridors.filter(c => c.label).length;
-  const expected = layout.rooms.length + labeledCorridors;
+  // Each room now produces two TEXT entities: account number + account name.
+  const expected = layout.rooms.length * 2 + labeledCorridors;
   const texts    = countOnLayer(entities, 'TEXT', 'ROOM_NAME');
   assert.equal(texts, expected,
     `ROOM_NAME TEXT count ${texts} ≠ expected ${expected}`);
@@ -480,6 +481,86 @@ test('buildWalls: wall gap positions exactly match door gap coords', () => {
 
     assert.equal(spanning.length, 0,
       `Door ${door.roomId}: wall segment spans gap [${gapXmin},${gapXmax}] at y=${gapY}`);
+  }
+});
+
+// ---------------------------------------------------------------------------
+// Task 6: two-line room labels — width fit and content completeness
+// ---------------------------------------------------------------------------
+
+// Helper: extract ROOM_NAME TEXT strings from DXF entities
+function getRoomNameTexts(entities) {
+  return entities
+    .filter(e => e.type === 'TEXT' && e.groups.some(g => g.code === 8 && g.value === 'ROOM_NAME'))
+    .map(e => ({
+      str:    e.groups.find(g => g.code === 1)?.value ?? '',
+      height: parseFloat(e.groups.find(g => g.code === 40)?.value ?? '0'),
+    }));
+}
+
+test('dxf: every ROOM_NAME TEXT estimated width fits within its room inner width', () => {
+  // This test rebuilds the DXF and cross-checks each TEXT against the room it
+  // belongs to, using the same char-width estimate the renderer uses (chars × h × 0.6).
+  const { layout, entities } = getDXF();
+  const CHAR_ASPECT = 0.6;
+  const wallThickMM = (layout.metadata?.wallThickness ?? 8) * MM_PER_UNIT;
+
+  // Build a map of account number → room for fast lookup
+  const roomByAcc = new Map(layout.rooms.map(r => [r.account, r]));
+
+  // Collect ROOM_NAME TEXT entities with height in mm
+  const texts = getRoomNameTexts(entities);
+
+  // The room-label texts come in pairs (account then name); corridor labels are single.
+  // We validate each TEXT whose string matches an account number OR whose string
+  // is the name part. Strategy: for each TEXT, find the matching room by checking
+  // whether the string equals an account number or is a substring of a room label.
+  for (const t of texts) {
+    // Find room: string equals account number, OR it is the name part of a label
+    let room = roomByAcc.get(t.str);
+    if (!room) {
+      // Try name-part match: label = "<acc> <name>", possibly truncated with "..."
+      room = layout.rooms.find(r => {
+        const spIdx  = r.label.indexOf(' ');
+        const name   = spIdx === -1 ? '' : r.label.slice(spIdx + 1);
+        // Accept exact match or truncated match (text ends with '...')
+        return name === t.str ||
+               (t.str.endsWith('...') && name.startsWith(t.str.slice(0, -3)));
+      });
+    }
+    if (!room) continue; // corridor label — skip
+
+    const innerWidthMM = room.w * MM_PER_UNIT - wallThickMM;
+    const estimatedW   = t.str.length * t.height * CHAR_ASPECT;
+
+    assert.ok(
+      estimatedW <= innerWidthMM + 0.01, // 0.01 mm float tolerance
+      `TEXT "${t.str}": estimated width ${estimatedW.toFixed(1)} mm > inner width ${innerWidthMM.toFixed(1)} mm (room ${room.account}, h=${t.height.toFixed(1)} mm)`
+    );
+  }
+});
+
+test('dxf: every room account number appears in ROOM_NAME and name appears or is shortened with "..."', () => {
+  const { layout, entities } = getDXF();
+  const texts    = getRoomNameTexts(entities);
+  const strSet   = new Set(texts.map(t => t.str));
+
+  for (const room of layout.rooms) {
+    const spIdx   = room.label.indexOf(' ');
+    const accNum  = spIdx === -1 ? room.label : room.label.slice(0, spIdx);
+    const name    = spIdx === -1 ? ''          : room.label.slice(spIdx + 1);
+
+    // Account number must appear verbatim
+    assert.ok(strSet.has(accNum),
+      `Account number "${accNum}" missing from ROOM_NAME TEXT entities`);
+
+    // Name must appear verbatim, or in shortened form ending with "..."
+    if (name.length > 0) {
+      const namePresent = strSet.has(name) ||
+        [...strSet].some(s => s.endsWith('...') && name.startsWith(s.slice(0, -3)));
+      assert.ok(namePresent,
+        `Account name "${name}" (room ${accNum}) missing from ROOM_NAME TEXT entities`);
+    }
   }
 });
 

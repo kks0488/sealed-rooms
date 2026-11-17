@@ -294,16 +294,58 @@ export function buildDXF(layout) {
     entities.push(arcEntity('DOOR', door.arcCX, door.arcCY, door.arcR, 0, 90));
   }
 
-  // ROOM_NAME: text at room centre
+  // ROOM_NAME: two centred TEXT lines per room (account number upper, name lower).
+  //
+  // Sizing: choose one height so the longer line (chars × height × 0.6) fits
+  // within 85% of the room's inner width, capped [120 mm, 300 mm].
+  // If even 120 mm doesn't fit the name, truncate with "…" (trailing "...").
+  // Heights are in plan units for the mm() converter (1 pu = MM_PER_UNIT mm).
+  //
+  const CHAR_ASPECT   = 0.6;
+  const FIT_RATIO     = 0.85;
+  const MAX_H_MM      = 300;
+  const MIN_H_MM      = 120;
+  const wallThickPU   = layout.metadata?.wallThickness ?? 8; // plan units
+
   for (const room of rooms) {
-    entities.push(textEntity(
-      'ROOM_NAME',
-      room.x + room.w * 0.5,
-      room.y + room.h * 0.5,
-      6,
-      room.label.replace(/\n/g, ' '),
-    ));
+    const label    = room.label.replace(/\n/g, ' ').trim();
+    const spaceIdx = label.indexOf(' ');
+    const accLine  = spaceIdx === -1 ? label : label.slice(0, spaceIdx);
+    let   nameLine = spaceIdx === -1 ? ''    : label.slice(spaceIdx + 1);
+
+    const innerWidthMM  = (room.w - wallThickPU) * MM_PER_UNIT;
+    const targetWidthMM = innerWidthMM * FIT_RATIO;
+
+    // Height driven by longer line
+    const longerLen = Math.max(accLine.length, nameLine.length || 1);
+    let heightMM = targetWidthMM / (longerLen * CHAR_ASPECT);
+    heightMM = Math.min(heightMM, MAX_H_MM);
+    heightMM = Math.max(heightMM, MIN_H_MM);
+
+    // Truncate name if it still overflows at minimum height
+    if (nameLine.length > 0) {
+      const maxChars = Math.floor(targetWidthMM / (heightMM * CHAR_ASPECT));
+      if (nameLine.length > maxChars) {
+        nameLine = nameLine.slice(0, Math.max(1, maxChars - 3)) + '...';
+      }
+    }
+
+    // Convert height back to plan units for the DXF mm() converter
+    const heightPU = heightMM / MM_PER_UNIT;
+
+    // Vertical centres: account line above midpoint, name line below
+    const cx = room.x + room.w * 0.5;
+    const cy = room.y + room.h * 0.5;
+    const lineOffsetPU = heightPU * 0.65; // half-line gap in plan units
+
+    // Upper line: account number
+    entities.push(textEntity('ROOM_NAME', cx, cy - lineOffsetPU, heightPU, accLine));
+    // Lower line: account name
+    if (nameLine.length > 0) {
+      entities.push(textEntity('ROOM_NAME', cx, cy + lineOffsetPU, heightPU, nameLine));
+    }
   }
+
   for (const corr of corridors) {
     if (corr.label) {
       entities.push(textEntity(
