@@ -25,6 +25,7 @@ import {
   dxfCoordinates,
   countOnLayer,
   MM_PER_UNIT,
+  yCad,
 } from '../src/dxf.js';
 
 // ---------------------------------------------------------------------------
@@ -574,4 +575,198 @@ test('buildWalls: repaired layout (0 sealed) produces 0 extra SEALED polys', () 
   const ents2  = dxfEntities(pairs2);
   const count  = countOnLayer(ents2, 'LWPOLYLINE', 'SEALED');
   assert.equal(count, 0, 'Repaired layout should have 0 SEALED polylines');
+});
+
+// ---------------------------------------------------------------------------
+// Task 7: y-flip orientation, corridor labels, arc endpoints
+// ---------------------------------------------------------------------------
+
+// Helper: get all ROOM_NAME TEXT entities with their y value (group 20, in CAD mm)
+function getRoomNameTextsWithY(entities) {
+  return entities
+    .filter(e => e.type === 'TEXT' && e.groups.some(g => g.code === 8 && g.value === 'ROOM_NAME'))
+    .map(e => ({
+      str:      e.groups.find(g => g.code === 1)?.value ?? '',
+      height:   parseFloat(e.groups.find(g => g.code === 40)?.value ?? '0'),
+      xMM:      parseFloat(e.groups.find(g => g.code === 10)?.value ?? '0'),
+      yMM:      parseFloat(e.groups.find(g => g.code === 20)?.value ?? '0'),
+      rotation: parseFloat(e.groups.find(g => g.code === 50)?.value ?? '0'),
+    }));
+}
+
+// (a) Entrance label is below every room label in CAD (Entrance has the lowest CAD y).
+// Plan Entrance is at the bottom (highest plan-y); after yCad it has the most negative y.
+test('dxf: Entrance TEXT y is lower (more negative) than every room TEXT y in CAD', () => {
+  const { layout, entities } = getDXF();
+
+  const entrance = layout.corridors.find(c => c.id === 'ENTRANCE');
+  assert.ok(entrance, 'ENTRANCE corridor not found');
+
+  // Entrance TEXT y in CAD (plan centre → yCad)
+  const entrCY   = entrance.y + entrance.h * 0.5;
+  const entrYmm  = yCad(entrCY) * MM_PER_UNIT;
+
+  // All room-label TEXT y values: rooms produce two texts each
+  const roomAccounts = new Set(layout.rooms.map(r => r.account));
+  const allTexts = getRoomNameTextsWithY(entities);
+
+  // Room texts are those whose string matches a room account number or name
+  const roomTexts = allTexts.filter(t => {
+    // account number match
+    if (roomAccounts.has(t.str)) return true;
+    // name part match
+    return layout.rooms.some(r => {
+      const sp = r.label.indexOf(' ');
+      const name = sp === -1 ? '' : r.label.slice(sp + 1);
+      return name.length > 0 && (
+        name === t.str ||
+        (t.str.endsWith('...') && name.startsWith(t.str.slice(0, -3)))
+      );
+    });
+  });
+
+  assert.ok(roomTexts.length > 0, 'No room TEXT entities found');
+
+  for (const rt of roomTexts) {
+    assert.ok(
+      entrYmm < rt.yMM,
+      `Entrance TEXT y (${entrYmm.toFixed(1)}) is not below room TEXT "${rt.str}" y (${rt.yMM.toFixed(1)})`
+    );
+  }
+});
+
+// (b) For every room, the account-number TEXT sits at a higher CAD y than the name TEXT.
+test('dxf: for every room, account-number TEXT has higher CAD y than name TEXT', () => {
+  const { layout, entities } = getDXF();
+  const allTexts = getRoomNameTextsWithY(entities);
+
+  for (const room of layout.rooms) {
+    const sp      = room.label.indexOf(' ');
+    const accNum  = sp === -1 ? room.label : room.label.slice(0, sp);
+    const name    = sp === -1 ? '' : room.label.slice(sp + 1);
+    if (!name) continue; // no name line to compare
+
+    // Find the two TEXT entities belonging to this room.
+    // Account text: exact match on accNum.
+    const accText = allTexts.find(t => t.str === accNum);
+    // Name text: exact or truncated match.
+    const nameText = allTexts.find(t =>
+      t.str === name ||
+      (t.str.endsWith('...') && name.startsWith(t.str.slice(0, -3)))
+    );
+
+    assert.ok(accText,  `Account number TEXT "${accNum}" not found`);
+    assert.ok(nameText, `Name TEXT for room "${accNum}" not found`);
+
+    assert.ok(
+      accText.yMM > nameText.yMM,
+      `Room ${accNum}: account TEXT y (${accText.yMM.toFixed(1)}) not above name TEXT y (${nameText.yMM.toFixed(1)}) in CAD`
+    );
+  }
+});
+
+// (c) Corridor labels: each labeled corridor has the correct rotation and its text
+// height satisfies both the long-dimension and short-dimension fit rules.
+test('dxf: corridor labels have correct rotation and fit their corridor', () => {
+  const { layout, entities } = getDXF();
+  const CHAR_ASPECT = 0.6;
+  const FIT_RATIO   = 0.85;
+  const wallThickMM = (layout.metadata?.wallThickness ?? 8) * MM_PER_UNIT;
+
+  const allTexts = getRoomNameTextsWithY(entities);
+
+  for (const corr of layout.corridors) {
+    if (!corr.label) continue;
+
+    const label = corr.label.replace(/\n/g, ' ').trim();
+    // Find the TEXT entity for this corridor — match by content (possibly truncated)
+    const t = allTexts.find(t =>
+      t.str === label ||
+      (t.str.endsWith('...') && label.startsWith(t.str.slice(0, -3)))
+    );
+    assert.ok(t, `No TEXT found for corridor label "${label}"`);
+
+    const isVertical   = corr.h > corr.w;
+    const innerW_mm    = corr.w * MM_PER_UNIT - wallThickMM;
+    const innerH_mm    = corr.h * MM_PER_UNIT - wallThickMM;
+    const longMM       = isVertical ? innerH_mm : innerW_mm;
+    const shortMM      = isVertical ? innerW_mm : innerH_mm;
+    const expectedRot  = isVertical ? 90 : 0;
+
+    // Rotation must match orientation
+    assert.equal(
+      t.rotation, expectedRot,
+      `Corridor "${corr.id}" label rotation ${t.rotation} ≠ expected ${expectedRot}`
+    );
+
+    // Text width fits long dimension: len × h × CHAR_ASPECT ≤ longMM × FIT_RATIO
+    const estimatedW = t.str.length * t.height * CHAR_ASPECT;
+    assert.ok(
+      estimatedW <= longMM * FIT_RATIO + 0.01,
+      `Corridor "${corr.id}" label "${t.str}": est. width ${estimatedW.toFixed(1)} > long dim ${(longMM * FIT_RATIO).toFixed(1)} mm`
+    );
+
+    // Text height fits short dimension: h ≤ shortMM × FIT_RATIO (unless floored at 120)
+    // The floor may push height above short limit for very narrow corridors; we only
+    // assert the fit when shortMM × FIT_RATIO ≥ 120 (the floor).
+    const shortLimit = shortMM * FIT_RATIO;
+    if (shortLimit >= 120) {
+      assert.ok(
+        t.height <= shortLimit + 0.01,
+        `Corridor "${corr.id}" label height ${t.height.toFixed(1)} mm > short dim limit ${shortLimit.toFixed(1)} mm`
+      );
+    }
+  }
+});
+
+// (d) Every door arc: its center is gap endpoint 1 in CAD (within 1 mm), and
+// the arc foot at angle 360° (end of [270,360]) is gap endpoint 2 in CAD (within 1 mm).
+// This confirms the y-flip placed both arc endpoints on the door gap line.
+test('dxf: door arc center and foot at 360° lie on door gap endpoints in CAD', () => {
+  const { layout, entities } = getDXF();
+  const doorArcs = entities.filter(e =>
+    e.type === 'ARC' && e.groups.some(g => g.code === 8 && g.value === 'DOOR')
+  );
+
+  assert.equal(
+    doorArcs.length, layout.doors.length,
+    'ARC count must match door count'
+  );
+
+  for (let i = 0; i < layout.doors.length; i++) {
+    const door = layout.doors[i];
+    const arc  = doorArcs[i];
+
+    const arcCX_mm   = parseFloat(arc.groups.find(g => g.code === 10)?.value);
+    const arcCY_mm   = parseFloat(arc.groups.find(g => g.code === 20)?.value);
+    const arcR_mm    = parseFloat(arc.groups.find(g => g.code === 40)?.value);
+    const arcStart   = parseFloat(arc.groups.find(g => g.code === 50)?.value);
+    const arcEnd     = parseFloat(arc.groups.find(g => g.code === 51)?.value);
+
+    // Expected CAD coords for gap endpoints
+    const ep1X_mm = door.gapX1 * MM_PER_UNIT;
+    const ep1Y_mm = yCad(door.gapY1) * MM_PER_UNIT;
+    const ep2X_mm = door.gapX2 * MM_PER_UNIT;
+    const ep2Y_mm = yCad(door.gapY2) * MM_PER_UNIT;
+
+    // Arc angles must be [270, 360] after the y-flip mirror
+    assert.equal(arcStart, 270, `Door ${door.roomId}: arc start angle should be 270, got ${arcStart}`);
+    assert.equal(arcEnd,   360, `Door ${door.roomId}: arc end angle should be 360, got ${arcEnd}`);
+
+    // Arc center == gap endpoint 1 (hinge) within 1 mm
+    const dCX = Math.hypot(arcCX_mm - ep1X_mm, arcCY_mm - ep1Y_mm);
+    assert.ok(
+      dCX <= 1,
+      `Door ${door.roomId}: arc center (${arcCX_mm}, ${arcCY_mm}) not within 1 mm of gap ep1 (${ep1X_mm}, ${ep1Y_mm}); dist=${dCX.toFixed(2)}`
+    );
+
+    // Arc foot at 360° == gap endpoint 2 (free end) within 1 mm
+    const footX_mm = arcCX_mm + arcR_mm * Math.cos(arcEnd * Math.PI / 180);
+    const footY_mm = arcCY_mm + arcR_mm * Math.sin(arcEnd * Math.PI / 180);
+    const dFoot = Math.hypot(footX_mm - ep2X_mm, footY_mm - ep2Y_mm);
+    assert.ok(
+      dFoot <= 1,
+      `Door ${door.roomId}: arc foot at 360° (${footX_mm.toFixed(1)}, ${footY_mm.toFixed(1)}) not within 1 mm of gap ep2 (${ep2X_mm}, ${ep2Y_mm}); dist=${dFoot.toFixed(2)}`
+    );
+  }
 });

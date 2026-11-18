@@ -12,3 +12,9 @@
 {"timestamp":"2026-11-17T20:25:26.929Z","filename":"test/dxf.test.js","testExitCode":0}
 {"timestamp":"2026-11-17T20:25:41.286Z","filename":"test/dxf.test.js","eventName":"PostFileSave","payloadKeys":"session_id,hook_event_name,cwd,file_path"}
 {"timestamp":"2026-11-17T20:25:41.286Z","filename":"test/dxf.test.js","testExitCode":0}
+{"timestamp":"2026-11-18T02:47:20.253Z","filename":"src/dxf.js","eventName":"PostFileSave","payloadKeys":"session_id,hook_event_name,cwd,file_path"}
+{"timestamp":"2026-11-18T02:47:20.253Z","filename":"src/dxf.js","testExitCode":0}
+{"timestamp":"2026-11-18T02:48:37.281Z","filename":"test/dxf.test.js","eventName":"PostFileSave","payloadKeys":"session_id,hook_event_name,cwd,file_path"}
+{"timestamp":"2026-11-18T02:48:37.281Z","filename":"test/dxf.test.js","testExitCode":0}
+{"timestamp":"2026-11-18T02:49:08.333Z","filename":"test/dxf.test.js","eventName":"PostFileSave","payloadKeys":"session_id,hook_event_name,cwd,file_path"}
+{"timestamp":"2026-11-18T02:49:08.333Z","filename":"test/dxf.test.js","testExitCode":0}

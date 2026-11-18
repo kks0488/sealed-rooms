@@ -15,11 +15,23 @@
  * Units: $INSUNITS = 4 (millimetres)
  * Version: AC1015
  *
+ * Coordinate system: DXF/CAD uses y-upward; SVG/browser uses y-downward.
+ * All plan coordinates are converted via yCad(y) = -y before writing
+ * group codes 20/21.  x is unchanged.
+ *
  * Wall segments are computed from layout.walls (canonical wall list built by
  * buildWalls() below, exported so SVG renderer can share the same segments).
  */
 
 export const MM_PER_UNIT = 50; // 1 plan unit = 50 mm
+
+// ---------------------------------------------------------------------------
+// y-axis flip: plan (screen, y-down) → DXF/CAD (y-up)
+// Every group-code 20 and 21 must pass through this helper.
+// ---------------------------------------------------------------------------
+function yCad(y) {
+  return -y;
+}
 
 function mm(v) {
   const n = v * MM_PER_UNIT;
@@ -85,53 +97,58 @@ function sectionTables() {
 }
 
 // ---------------------------------------------------------------------------
-// Entity constructors
+// Entity constructors — all y values go through yCad() before mm()
 // ---------------------------------------------------------------------------
 
 function lwPolylineClosed(layer, pts) {
+  // pts: array of [x, y] in plan (screen) coordinates
   const header = gc(
     0, 'LWPOLYLINE', 5, h(),
     100, 'AcDbEntity', 8, layer,
     100, 'AcDbPolyline',
     90, pts.length, 70, 1, 43, '0.0',
   );
-  const coords = pts.flatMap(([x, y]) => [gc(10, mm(x), 20, mm(y))]).join('\n');
+  const coords = pts.flatMap(([x, y]) => [gc(10, mm(x), 20, mm(yCad(y)))]).join('\n');
   return header + '\n' + coords;
 }
 
 function lineEntity(layer, x1, y1, x2, y2) {
+  // x1,y1,x2,y2 in plan (screen) coordinates
   return gc(
     0, 'LINE', 5, h(),
     100, 'AcDbEntity', 8, layer,
     100, 'AcDbLine',
-    10, mm(x1), 20, mm(y1),
-    11, mm(x2), 21, mm(y2),
+    10, mm(x1), 20, mm(yCad(y1)),
+    11, mm(x2), 21, mm(yCad(y2)),
   );
 }
 
 function arcEntity(layer, cx, cy, r, startDeg, endDeg) {
+  // cx, cy in plan (screen) coordinates; angles already adjusted for CAD orientation
   return gc(
     0, 'ARC', 5, h(),
     100, 'AcDbEntity', 8, layer,
     100, 'AcDbCircle',
-    10, mm(cx), 20, mm(cy), 30, '0.0000',
+    10, mm(cx), 20, mm(yCad(cy)), 30, '0.0000',
     40, mm(r),
     100, 'AcDbArc',
     50, startDeg, 51, endDeg,
   );
 }
 
-function textEntity(layer, x, y, heightPlan, str) {
+function textEntity(layer, x, y, heightPlan, str, rotation = 0) {
+  // x, y in plan (screen) coordinates
   const safe = String(str).replace(/[\r\n]+/g, ' ').trim();
   return gc(
     0, 'TEXT', 5, h(),
     100, 'AcDbEntity', 8, layer,
     100, 'AcDbText',
-    10, mm(x), 20, mm(y), 30, '0.0000',
+    10, mm(x), 20, mm(yCad(y)), 30, '0.0000',
     40, mm(heightPlan),
     1, safe,
+    50, rotation,
     72, 1,
-    11, mm(x), 21, mm(y), 31, '0.0000',
+    11, mm(x), 21, mm(yCad(y)), 31, '0.0000',
     100, 'AcDbText',
   );
 }
@@ -276,7 +293,7 @@ export function buildDXF(layout) {
   const sealedSet = new Set(sealedAccounts);
   const entities  = [];
 
-  // FLOOR: closed slab polyline
+  // FLOOR: closed slab polyline (plan coords, yCad applied inside lwPolylineClosed)
   const { x: bx, y: by, w: bw, h: bh } = bounds;
   entities.push(lwPolylineClosed('FLOOR', [
     [bx, by], [bx + bw, by], [bx + bw, by + bh], [bx, by + bh],
@@ -288,13 +305,28 @@ export function buildDXF(layout) {
     entities.push(lineEntity('WALL', seg.x1, seg.y1, seg.x2, seg.y2));
   }
 
-  // DOOR: gap LINE + quarter-circle swing, identical to the SVG coordinates.
+  // DOOR: gap LINE + quarter-circle swing.
+  //
+  // SVG (y-down): arc center=(gapX1, gapY1), r=DOOR_W, angles 0°→90° CCW in math
+  //   = sweeps from (gapX2, gapY1) east-to-south into the room.
+  //
+  // After y-flip (y-up CAD), mirroring across the x-axis turns [start, end] into
+  // [360-end, 360-start]: [0, 90] → [270, 360].
+  // This preserves the same bottom-right quarter in CAD orientation.
+  //
+  // Arc endpoint at 360° (= 0°): (arcCX + arcR, yCad(arcCY)) = (gapX2, -gapY1) in plan-unit
+  // = gap endpoint 2 in CAD. The arc foot at 270° goes into the room (away from corridor).
+  //
   for (const door of doors) {
     entities.push(lineEntity('DOOR', door.gapX1, door.gapY1, door.gapX2, door.gapY2));
-    entities.push(arcEntity('DOOR', door.arcCX, door.arcCY, door.arcR, 0, 90));
+    // Flip angles: [0, 90] → [270, 360]
+    entities.push(arcEntity('DOOR', door.arcCX, door.arcCY, door.arcR, 270, 360));
   }
 
-  // ROOM_NAME: two centred TEXT lines per room (account number upper, name lower).
+  // ROOM_NAME: two centred TEXT lines per room.
+  //
+  // After y-flip: accLine sits at yCad(cy - offset) = -cy + offset (higher CAD y = visually
+  // upper), nameLine at yCad(cy + offset) = -cy - offset (lower CAD y = visually lower).
   //
   // Sizing: choose one height so the longer line (chars × height × 0.6) fits
   // within 85% of the room's inner width, capped [120 mm, 300 mm].
@@ -333,29 +365,70 @@ export function buildDXF(layout) {
     // Convert height back to plan units for the DXF mm() converter
     const heightPU = heightMM / MM_PER_UNIT;
 
-    // Vertical centres: account line above midpoint, name line below
+    // Vertical centres in plan (screen) coords:
+    //   accLine at cy - offset  → after yCad: -cy + offset  (higher CAD y = upper in CAD)
+    //   nameLine at cy + offset → after yCad: -cy - offset  (lower  CAD y = lower in CAD)
     const cx = room.x + room.w * 0.5;
     const cy = room.y + room.h * 0.5;
-    const lineOffsetPU = heightPU * 0.65; // half-line gap in plan units
+    const lineOffsetPU = heightPU * 0.65;
 
-    // Upper line: account number
+    // Account number — upper line in CAD (higher y after flip)
     entities.push(textEntity('ROOM_NAME', cx, cy - lineOffsetPU, heightPU, accLine));
-    // Lower line: account name
+    // Account name — lower line in CAD (lower y after flip)
     if (nameLine.length > 0) {
       entities.push(textEntity('ROOM_NAME', cx, cy + lineOffsetPU, heightPU, nameLine));
     }
   }
 
+  // Corridor labels — sized and optionally rotated.
+  //
+  // Rules (task 7):
+  //   • If corridor height > width (tall/narrow → vertical spine):
+  //     – Write rotated 90° (TEXT group 50 = 90).
+  //     – Fit rule against inner LENGTH (height): chars × h × 0.6 ≤ 85% of innerH_mm, cap 300, floor 120.
+  //     – Additionally text height ≤ 85% of inner width in mm.
+  //     – Truncate with "..." only if 120 mm floor still fails.
+  //   • If corridor width ≥ height (wide → Entrance):
+  //     – Write horizontal (rotation 0).
+  //     – Fit rule against inner WIDTH: chars × h × 0.6 ≤ 85% of innerW_mm, cap 300, floor 120.
+  //     – Additionally text height ≤ 85% of inner height in mm.
+  //     – Truncate with "..." only if 120 mm floor still fails.
+  //
   for (const corr of corridors) {
-    if (corr.label) {
-      entities.push(textEntity(
-        'ROOM_NAME',
-        corr.x + corr.w * 0.5,
-        corr.y + corr.h * 0.5,
-        5,
-        corr.label.replace(/\n/g, ' '),
-      ));
+    if (!corr.label) continue;
+
+    let label = corr.label.replace(/\n/g, ' ').trim();
+    const innerW_mm = (corr.w - wallThickPU) * MM_PER_UNIT;
+    const innerH_mm = (corr.h - wallThickPU) * MM_PER_UNIT;
+    const isVertical = corr.h > corr.w;
+
+    // The "long" dimension constrains text width; the "short" dimension constrains text height
+    const longMM  = isVertical ? innerH_mm : innerW_mm;
+    const shortMM = isVertical ? innerW_mm : innerH_mm;
+
+    let heightMM = (longMM * FIT_RATIO) / (label.length * CHAR_ASPECT);
+    heightMM = Math.min(heightMM, MAX_H_MM);
+    heightMM = Math.max(heightMM, MIN_H_MM);
+
+    // Additionally cap height to 85% of the short dimension
+    const maxByShort = shortMM * FIT_RATIO;
+    if (heightMM > maxByShort) heightMM = maxByShort;
+    // Re-apply floor after short-side cap
+    heightMM = Math.max(heightMM, MIN_H_MM);
+
+    // Truncate if even 120 mm doesn't fit the long dimension
+    if (label.length * MIN_H_MM * CHAR_ASPECT > longMM * FIT_RATIO) {
+      const maxChars = Math.floor((longMM * FIT_RATIO) / (MIN_H_MM * CHAR_ASPECT));
+      label = label.slice(0, Math.max(1, maxChars - 3)) + '...';
+      heightMM = MIN_H_MM;
     }
+
+    const heightPU = heightMM / MM_PER_UNIT;
+    const cx = corr.x + corr.w * 0.5;
+    const cy = corr.y + corr.h * 0.5;
+    const rotation = isVertical ? 90 : 0;
+
+    entities.push(textEntity('ROOM_NAME', cx, cy, heightPU, label, rotation));
   }
 
   // SEALED: closed polyline fill for each sealed room
@@ -445,3 +518,8 @@ export function countOnLayer(entities, type, layer) {
     e.groups.some(g => g.code === 8 && g.value === layer)
   ).length;
 }
+
+// ---------------------------------------------------------------------------
+// Exported yCad helper so tests can convert plan coords to CAD coords
+// ---------------------------------------------------------------------------
+export { yCad };
