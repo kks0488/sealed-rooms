@@ -3,8 +3,8 @@
  *
  * Renders buildLayout output as SVG:
  * - Drafting grid background
- * - Navy/teal room fills, sealed burgundy amounts
- * - Chalk walls (stroke 3), door swings teal
+ * - Navy/teal room fills, sealed burgundy amounts with diagonal hatch
+ * - Chalk walls (stroke 3), door gaps + swing arcs teal
  * - Bank windows and dimensions (meters at 50mm/unit)
  * - Auditor walkthrough visualization
  */
@@ -36,11 +36,15 @@ function svgElement(tag, attrs = {}) {
 export function renderFloorplan(layout, selectedId = null, onSelect = null, auditState = null) {
   const { bounds, rooms, corridors, doors, windows, metadata } = layout;
 
-  // ViewBox: bounds + margins
-  const vbX = bounds.x - 30;
-  const vbY = bounds.y - 40;
-  const vbW = bounds.w + 60;
-  const vbH = bounds.h + 120;
+  // ViewBox: snug to actual content including annotation space below (scale bar = +55)
+  // and minimal space above/sides for context.  The wing labels sit 13 units above each hall,
+  // so the first visible content is at approximately y = HALL1_Y - 16 = 44.
+  // We add a 20-unit pad on all sides for a tidy margin.
+  const PAD = 20;
+  const vbX = bounds.x - PAD;
+  const vbY = bounds.y - PAD;
+  const vbW = bounds.w + PAD * 2;
+  const vbH = bounds.h + PAD * 2 + 55; // 55 extra below for dimension / scale bar
 
   const svg = svgElement('svg', {
     viewBox: `${vbX} ${vbY} ${vbW} ${vbH}`,
@@ -48,6 +52,25 @@ export function renderFloorplan(layout, selectedId = null, onSelect = null, audi
     class: 'floorplan',
     style: `width: 100%; height: 100%; background: ${NAVY};`,
   });
+
+  // Defs: hatch pattern for sealed rooms
+  const defs = svgElement('defs');
+  const hatchPattern = svgElement('pattern', {
+    id: 'sealed-hatch',
+    patternUnits: 'userSpaceOnUse',
+    width: '8',
+    height: '8',
+    patternTransform: 'rotate(45)',
+  });
+  const hatchLine = svgElement('line', {
+    x1: '0', y1: '0', x2: '0', y2: '8',
+    stroke: '#c05050',
+    'stroke-width': '1.5',
+    opacity: '0.45',
+  });
+  hatchPattern.appendChild(hatchLine);
+  defs.appendChild(hatchPattern);
+  svg.appendChild(defs);
 
   const g = svgElement('g');
 
@@ -75,7 +98,7 @@ export function renderFloorplan(layout, selectedId = null, onSelect = null, audi
 
   // Rooms
   for (const room of rooms) {
-    renderRoom(g, room, selectedId, onSelect);
+    renderRoom(g, room, selectedId, onSelect, doors);
   }
 
   // Walls (canonical segments from buildWalls, stroke 3)
@@ -92,7 +115,7 @@ export function renderFloorplan(layout, selectedId = null, onSelect = null, audi
     g.appendChild(line);
   }
 
-  // Door swing arcs (teal)
+  // Door drawings: leaf line + swing arc, in teal
   for (const door of doors) {
     renderDoor(g, door);
   }
@@ -165,7 +188,7 @@ function renderDraftingGrid(g, bounds, gridSize) {
 /**
  * Render a single room
  */
-function renderRoom(g, room, selectedId, onSelect) {
+function renderRoom(g, room, selectedId, onSelect, doors) {
   const { id, account, label, x, y, w, h, sealed, cents } = room;
 
   // Room group
@@ -189,6 +212,19 @@ function renderRoom(g, room, selectedId, onSelect) {
   });
   group.appendChild(rect);
 
+  // Sealed rooms: diagonal hatch overlay so "sealed" reads in greyscale
+  if (sealed) {
+    const hatch = svgElement('rect', {
+      x: String(x),
+      y: String(y),
+      width: String(w),
+      height: String(h),
+      fill: 'url(#sealed-hatch)',
+      stroke: 'none',
+    });
+    group.appendChild(hatch);
+  }
+
   // Selection highlight
   if (id === selectedId) {
     const highlight = svgElement('rect', {
@@ -203,54 +239,110 @@ function renderRoom(g, room, selectedId, onSelect) {
     group.appendChild(highlight);
   }
 
-  // Room label (wrapped, with account ID separate)
-  const labelGroup = svgElement('g');
-  const lines = wrapText(label.replace(/^\d+\s*/, ''), w - 6);
-  let yOffset = y + 24;
-  for (const line of lines) {
-    const text = svgElement('text', {
-      x: String(x + w / 2),
-      y: String(yOffset),
-      'text-anchor': 'middle',
-      'font-size': '10',
-      'font-weight': '600',
-      fill: CHALK,
-    });
-    text.textContent = line;
-    if (line.length * 5.5 > w - 8) {
-      text.setAttribute('textLength', String(w - 8));
-      text.setAttribute('lengthAdjust', 'spacingAndGlyphs');
-    }
-    labelGroup.appendChild(text);
-    yOffset += 12;
+  // ---- Room text: centred in room, account number above name ----
+  // The door opens from the north wall (top).  The arc swings down into the room
+  // by arcR (= DOOR_W = 14) plan units.  We keep text clear of that zone.
+  const thisDoor = doors ? doors.find(d => d.roomId === id) : null;
+  const arcDepth = thisDoor ? thisDoor.arcR : 0;
+
+  // Available text zone: from the door-clear zone to the bottom of the room.
+  // Door occupies y .. y+arcDepth; text sits in y+arcDepth .. y+h.
+  // If the room has no door (sealed), use full interior.
+  const textZoneTop = y + arcDepth;
+  const textZoneBot = y + h;
+  const textZoneH = textZoneBot - textZoneTop;
+
+  // Parse account number and name from label (label = "NNNN Name…")
+  const spaceIdx = label.indexOf(' ');
+  const accStr = spaceIdx === -1 ? label : label.slice(0, spaceIdx);
+  const nameStr = spaceIdx === -1 ? '' : label.slice(spaceIdx + 1);
+
+  // Font sizes: scale to room width, capped
+  // Supervisor correction (task 8): the first sizes (7/6) were unreadable in the
+  // demo capture; names now wrap instead of shrinking.
+  const fontSizeAcc = Math.min(11, Math.max(8, Math.floor(w / 6)));
+  const fontSizeName = Math.min(10, Math.max(8, Math.floor(w / 7)));
+
+  // For sealed rooms, also show amount on a third line
+  const amountStr = (sealed && cents > 0)
+    ? `$${(cents / 100).toLocaleString('en-US', { maximumFractionDigits: 0 })}`
+    : '';
+
+  // Count wrapped name lines so the amount never lands on a name line.
+  const nameLines = nameStr ? wrapText(nameStr, w - 10, fontSizeName) : [];
+  const lineHeight = fontSizeName + 3;
+  const lineCount = 1 + nameLines.length + (amountStr ? 1 : 0);
+  const totalTextH = fontSizeAcc + (lineCount - 1) * lineHeight;
+
+  // Centre the text block in the available zone.
+  // If the zone is too tight (< totalTextH + 4px), fall back to room centre.
+  let blockTop;
+  if (textZoneH >= totalTextH + 4) {
+    blockTop = textZoneTop + (textZoneH - totalTextH) / 2;
+  } else {
+    // Fallback: centre in full room interior
+    blockTop = y + (h - totalTextH) / 2;
   }
 
-  // Account ID below label
-  const accountText = svgElement('text', {
-    x: String(x + w / 2),
-    y: String(y + 11),
+  const textCX = x + w / 2;
+
+  // Account number line
+  const accText = svgElement('text', {
+    x: String(textCX),
+    y: String(blockTop + fontSizeAcc),
     'text-anchor': 'middle',
-    'font-size': '8',
-    'font-weight': '400',
+    'font-size': String(fontSizeAcc),
+    'font-weight': '700',
     fill: CHALK,
-    opacity: '0.7',
+    'font-family': 'monospace',
+    opacity: '0.9',
+    'pointer-events': 'none',
+    'user-select': 'none',
+    'data-label-type': 'account',
   });
-  accountText.textContent = account;
-  labelGroup.appendChild(accountText);
+  accText.textContent = accStr;
+  group.appendChild(accText);
 
-  group.appendChild(labelGroup);
+  // Name line
+  if (nameStr) {
+    let ny = blockTop + fontSizeAcc + lineHeight;
+    for (const line of nameLines) {
+      const nameText = svgElement('text', {
+        x: String(textCX),
+        y: String(ny),
+        'text-anchor': 'middle',
+        'font-size': String(fontSizeName),
+        'font-weight': '500',
+        fill: CHALK,
+        opacity: '0.85',
+        'pointer-events': 'none',
+        'user-select': 'none',
+        'data-label-type': 'name',
+      });
+      if (line.length * fontSizeName * 0.55 > w - 8) {
+        nameText.setAttribute('textLength', String(w - 8));
+        nameText.setAttribute('lengthAdjust', 'spacingAndGlyphs');
+      }
+      nameText.textContent = line;
+      group.appendChild(nameText);
+      ny += lineHeight;
+    }
+  }
 
-  // Amount label for sealed rooms (inside, burgundy/gold)
-  if (sealed && cents > 0) {
+  // Amount line (sealed only)
+  if (amountStr) {
     const amountText = svgElement('text', {
-      x: String(x + w / 2),
-      y: String(y + h - 12),
+      x: String(textCX),
+      y: String(blockTop + fontSizeAcc + lineHeight * (nameLines.length + 1)),
       'text-anchor': 'middle',
-      'font-size': '11',
+      'font-size': String(fontSizeName + 1),
       fill: '#ffdd44',
       'font-weight': '700',
+      'pointer-events': 'none',
+      'user-select': 'none',
+      'data-label-type': 'amount',
     });
-    amountText.textContent = `$${(cents / 100).toLocaleString('en-US', { maximumFractionDigits: 0 })}`;
+    amountText.textContent = amountStr;
     group.appendChild(amountText);
   }
 
@@ -269,32 +361,52 @@ function renderRoom(g, room, selectedId, onSelect) {
 }
 
 /**
- * Render door swing arc (teal)
+ * Render a door as: leaf line (across the gap) + quarter-circle swing arc.
+ *
+ * Layout: all doors are on the north wall of a room (y-axis = room.y).
+ * Gap runs from (gapX1, gapY1) to (gapX2, gapY2) — both have same Y.
+ * arcCX = gapX1, arcCY = gapY1, arcR = DOOR_W.
+ *
+ * In SVG (y-down):
+ *   - Leaf line: (arcCX, arcCY) → (arcCX + arcR, arcCY)  [across the gap]
+ *   - Swing arc: quarter circle from (arcCX + arcR, arcCY) sweeping down-left
+ *     to (arcCX, arcCY + arcR), i.e. large-arc=0, sweep=1 (clockwise in SVG).
+ *
+ * This matches the DXF representation (arc 270°–360° after y-flip = same quarter).
  */
 function renderDoor(g, door) {
   const { arcCX, arcCY, arcR, gapX1, gapY1, gapX2, gapY2 } = door;
-  g.appendChild(svgElement('line', { x1: arcCX, y1: arcCY, x2: arcCX, y2: arcCY + arcR,
-    stroke: TEAL, 'stroke-width': 1.1 }));
 
-  // Door swing arc (teal dashed)
-  if (arcR && arcR > 0) {
-    const path = svgElement('path', {
-      d: doorArcPath(gapX1, gapY1, gapX2, gapY2, arcCX, arcCY, arcR),
-      fill: 'none',
-      stroke: TEAL,
-      'stroke-width': '1.2',
-      'stroke-dasharray': '3,2',
-      opacity: '0.7',
-    });
-    g.appendChild(path);
-  }
-}
+  // Leaf line: from hinge (arcCX, arcCY) to door tip (arcCX + arcR, arcCY)
+  // The gap goes gapX1 → gapX2; the leaf spans the same distance horizontally.
+  const leafX2 = arcCX + arcR;
+  const leafY = arcCY; // same as gapY1
 
-/**
- * Generate door swing arc SVG path
- */
-function doorArcPath(x1, y1, x2, y2, cx, cy, r) {
-  return `M ${cx + r} ${cy} A ${r} ${r} 0 0 1 ${cx} ${cy + r}`;
+  const leaf = svgElement('line', {
+    x1: String(arcCX),
+    y1: String(leafY),
+    x2: String(leafX2),
+    y2: String(leafY),
+    stroke: TEAL,
+    'stroke-width': '1.8',
+    'stroke-linecap': 'square',
+    class: 'door-leaf',
+  });
+  g.appendChild(leaf);
+
+  // Swing arc: from (arcCX + arcR, arcCY) → (arcCX, arcCY + arcR)
+  // Quarter circle, clockwise (sweep-flag=1 in SVG y-down)
+  const arcPath = `M ${arcCX + arcR} ${arcCY} A ${arcR} ${arcR} 0 0 1 ${arcCX} ${arcCY + arcR}`;
+  const arc = svgElement('path', {
+    d: arcPath,
+    fill: 'none',
+    stroke: TEAL,
+    'stroke-width': '1.2',
+    'stroke-dasharray': '4,2',
+    opacity: '0.85',
+    class: 'door-arc',
+  });
+  g.appendChild(arc);
 }
 
 function renderAnnotations(g, layout) {
@@ -402,57 +514,12 @@ function renderDimensions(g, bounds, metadata) {
 }
 
 /**
- * Render metrics display (data-driven counts)
+ * Wrap text to fit within width (px approximation using charWidth)
  */
-function renderMetrics(g, layout, auditState, bounds) {
-  const { rooms, unplacedConnections } = layout;
-
-  const sealedCount = rooms.filter(r => r.sealed).length;
-  const sealedCents = rooms
-    .filter(r => r.sealed)
-    .reduce((sum, r) => sum + r.cents, 0);
-  const totalCents = rooms.reduce((sum, r) => sum + r.cents, 0);
-
-  const metricsY = bounds.y - 25;
-  const metricsText = svgElement('text', {
-    x: String(bounds.x + 10),
-    y: String(metricsY),
-    'font-size': '9',
-    fill: CHALK,
-    opacity: '0.8',
-  });
-
-  let info = `Rooms: ${rooms.length} | Sealed: ${sealedCount} ($${(sealedCents / 100).toFixed(0)})`;
-  if (unplacedConnections && unplacedConnections.length > 0) {
-    info += ` | Unplaced routes: ${unplacedConnections.length} (via bank)`;
-  }
-
-  metricsText.textContent = info;
-  g.appendChild(metricsText);
-
-  // Auditor status
-  if (auditState) {
-    const statusY = metricsY - 12;
-    const statusText = svgElement('text', {
-      x: String(bounds.x + 10),
-      y: String(statusY),
-      'font-size': '8',
-      fill: CHALK,
-      opacity: '0.6',
-    });
-    statusText.textContent = `Status: ${auditState.state}`;
-    g.appendChild(statusText);
-  }
-}
-
-/**
- * Wrap text to fit within width
- */
-function wrapText(text, maxWidth) {
-  const chars = Array.from(text);
-  // Don't split words like "Inventory"
+function wrapText(text, maxWidth, fontSize = 9) {
+  const charWidth = fontSize * 0.55;
   const words = text.split(' ');
-  if (words.length === 1 && chars.length <= 14) {
+  if (words.length === 1 && text.length * charWidth <= maxWidth) {
     return [text];
   }
 
@@ -460,7 +527,7 @@ function wrapText(text, maxWidth) {
   let line = '';
   for (const word of words) {
     const testLine = line ? line + ' ' + word : word;
-    if ((testLine.length * 5.5) > maxWidth && line) {
+    if (testLine.length * charWidth > maxWidth && line) {
       lines.push(line);
       line = word;
     } else {

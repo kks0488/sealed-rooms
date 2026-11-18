@@ -68,6 +68,63 @@ try {
   const textBoxes = await page.locator('#viewport svg text').evaluateAll(nodes => nodes.map(n => { const r = n.getBoundingClientRect(); return { top: r.top, bottom: r.bottom }; }));
   check('entire plan and dimension labels fit 1440x900', roomBoxes.every(r => r.left >= 0 && r.right <= 1440 && r.top >= 0 && r.bottom <= 900) && textBoxes.every(r => r.top >= frame.y && r.bottom <= frame.y + frame.height));
   check('no page overflow', await page.evaluate(() => document.documentElement.scrollWidth === 1440 && document.documentElement.scrollHeight === 900));
+
+  // Task-8 browser checks
+  // (a) no room label bounding box intersects any door arc/opening bounding box
+  const labelArcOverlap = await page.evaluate(() => {
+    const labels = [...document.querySelectorAll('[data-label-type]')];
+    const arcs   = [...document.querySelectorAll('.door-arc, .door-leaf')];
+    const rects  = r => ({ l: r.left, r: r.right, t: r.top, b: r.bottom });
+    const overlaps = r => { const a = rects(r); return arcs.some(arc => { const b = rects(arc.getBoundingClientRect()); return a.l < b.r && a.r > b.l && a.t < b.b && a.b > b.t; }); };
+    return labels.map(el => ({ text: el.textContent, box: rects(el.getBoundingClientRect()), hit: overlaps(el.getBoundingClientRect()) })).filter(x => x.hit);
+  });
+  check('no room label overlaps a door arc or opening', labelArcOverlap.length === 0, labelArcOverlap);
+
+  // Supervisor check: text lines inside one room never overlap each other,
+  // stay inside the room, and are at least 8px tall on screen.
+  const labelProblems = await page.evaluate(() => {
+    const out = [];
+    for (const room of document.querySelectorAll('[data-room-id]')) {
+      const rb = room.querySelector('rect')?.getBoundingClientRect();
+      const boxes = [...room.querySelectorAll('[data-label-type]')].map(el => ({ text: el.textContent, b: el.getBoundingClientRect() }));
+      for (const x of boxes) {
+        if (x.b.height < 8) out.push({ room: room.dataset.roomId, text: x.text, small: x.b.height });
+        if (rb && (x.b.left < rb.left - 1 || x.b.right > rb.right + 1 || x.b.bottom > rb.bottom + 1)) out.push({ room: room.dataset.roomId, text: x.text, outside: true });
+      }
+      for (let i = 0; i < boxes.length; i++) for (let j = i + 1; j < boxes.length; j++) {
+        const a = boxes[i].b, b = boxes[j].b;
+        if (a.left < b.right && a.right > b.left && a.top < b.bottom - 1 && a.bottom - 1 > b.top) out.push({ room: room.dataset.roomId, overlap: [boxes[i].text, boxes[j].text] });
+      }
+    }
+    return out;
+  });
+  check('room text lines are readable, inside the room and never overlap', labelProblems.length === 0, labelProblems);
+
+  // (b) total door arcs in SVG == number of non-sealed rooms (1 arc per door); sealed rooms have 0
+  const totalDoorArcs = await page.locator('.door-arc').count();
+  const nonSealedCount = layout.rooms.filter(r => !r.sealed).length;
+  check('door arc count equals non-sealed room count (1 arc per door)', totalDoorArcs === nonSealedCount, { totalDoorArcs, nonSealedCount });
+
+  // (c) plan top and bottom margins inside the plan panel differ by at most 15% of panel height
+  const marginBalance = await page.evaluate(() => {
+    const panel = document.getElementById('viewport').getBoundingClientRect();
+    const svg   = document.querySelector('#viewport svg');
+    if (!svg) return { ok: false, reason: 'no svg' };
+    // Find the actual rendered bounding box of all room-group elements
+    const rooms = [...document.querySelectorAll('[data-room-id]')];
+    if (!rooms.length) return { ok: false, reason: 'no rooms' };
+    const tops    = rooms.map(r => r.getBoundingClientRect().top);
+    const bottoms = rooms.map(r => r.getBoundingClientRect().bottom);
+    const contentTop    = Math.min(...tops);
+    const contentBottom = Math.max(...bottoms);
+    const topMargin    = contentTop - panel.top;
+    const bottomMargin = panel.bottom - contentBottom;
+    const diff = Math.abs(topMargin - bottomMargin);
+    const threshold = panel.height * 0.15;
+    return { ok: diff <= threshold, topMargin, bottomMargin, diff, threshold };
+  });
+  check('plan top and bottom margins differ by at most 15% of panel height', marginBalance.ok, marginBalance);
+
   await page.screenshot({ path: path.join(shots, '01-floorplan.png') });
 
   await page.locator('#auditor-toggle').click();

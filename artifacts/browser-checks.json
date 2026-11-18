@@ -36,6 +36,35 @@
     "pass": true
   },
   {
+    "name": "no room label overlaps a door arc or opening",
+    "pass": true,
+    "detail": []
+  },
+  {
+    "name": "room text lines are readable, inside the room and never overlap",
+    "pass": true,
+    "detail": []
+  },
+  {
+    "name": "door arc count equals non-sealed room count (1 arc per door)",
+    "pass": true,
+    "detail": {
+      "totalDoorArcs": 20,
+      "nonSealedCount": 20
+    }
+  },
+  {
+    "name": "plan top and bottom margins differ by at most 15% of panel height",
+    "pass": true,
+    "detail": {
+      "ok": true,
+      "topMargin": 116.97543334960938,
+      "bottomMargin": 191.1295166015625,
+      "diff": 74.15408325195312,
+      "threshold": 82.875
+    }
+  },
+  {
     "name": "auditor visibly moves on accessible floor without jumping",
     "pass": true
   },

@@ -56,12 +56,12 @@
     }
   ],
   "unitTests": {
-    "pass": 143,
-    "total": 143
+    "pass": 150,
+    "total": 150
   },
   "browserChecks": {
-    "pass": 23,
-    "total": 23
+    "pass": 27,
+    "total": 27
   },
   "rawKiroTask4Commit": "639ff865a93725e153e6ff274868b852881125fd",
   "supervisorDocumentationChanges": [
@@ -89,5 +89,22 @@
       "supervisorAdded": 8,
       "supervisorDeleted": 7
     }
-  ]
+  ],
+  "supervisorTask8Changes": {
+    "reason": "Kiro stopped with a monthly usage limit before finishing task 8; supervisor fixed unreadable 6-7 px room names and the sealed-room amount overlapping a wrapped name, and added one browser check.",
+    "files": [
+      {
+        "file": "src/renderer.js",
+        "initialAuthor": "Kiro",
+        "supervisorAdded": 8,
+        "supervisorDeleted": 5
+      },
+      {
+        "file": "scripts/capture.mjs",
+        "initialAuthor": "Kiro (task 8 checks) / Codex supervisor",
+        "supervisorAdded": 20,
+        "supervisorDeleted": 0
+      }
+    ]
+  }
 }
