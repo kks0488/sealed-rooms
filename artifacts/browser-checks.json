@@ -58,10 +58,10 @@
     "pass": true,
     "detail": {
       "ok": true,
-      "topMargin": 116.97543334960938,
-      "bottomMargin": 191.1295166015625,
-      "diff": 74.15408325195312,
-      "threshold": 82.875
+      "topMargin": 120.786376953125,
+      "bottomMargin": 197.3563232421875,
+      "diff": 76.5699462890625,
+      "threshold": 85.575
     }
   },
   {

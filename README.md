@@ -1,167 +1,54 @@
 # Sealed Rooms
 
-An offline accounting evidence floorplan visualizer for fictional data. Maps accounting transactions to a spatial building layout where room dimensions reflect monetary amounts.
+Sealed Rooms turns a double-entry journal into a floor plan so bookkeepers and small finance teams can see which accounts have no evidence path back to the operating bank. Each account is a room. References form doorways, and rooms the auditor cannot reach are marked as sealed.
 
-## Overview
+**Kiroween 2026 · Frankenstein** combines accounting journal entries and CAD floor plans. The same ledger drives an interactive browser walkthrough and a DXF drawing.
 
-- **Fictional ledger**: 194 transactions across 388 data rows + header (each ID repeats exactly 2 balanced rows), 24 accounts, $27,600 in sealed evidence
-- **Spatial layout**: Entrance (opening balances), central bank circulation spine, four wings (assets, liabilities, income, expenses)
-- **Auditor walkthrough**: Interactive path following portal doors; 3 rooms never entered (sealed evidence)
-- **DXF export**: ASCII AC1015 format with layer structure (FLOOR, WALL, DOOR, ROOM_NAME, SEALED)
-- **Bank exception**: One connection (1010→1020) routed via bank circulation due to layout constraints
-- **Minimum area**: 5,400 plan-square-units (60×90 depth); scale 50mm/unit
-- **No dependencies**: Native ES modules, Node.js built-ins only, offline
+![Sealed Rooms floor plan with three hatched rooms](artifacts/01-floorplan.png)
 
-## Data
+## Try it
 
-### CSV Schema
-
-`journal.csv` (7 columns):
-```
-transaction,date,account,debit_cents,credit_cents,evidence,memo
-```
-
-- **transaction**: J0001–J0194 (unique, repeated exactly 2 times per ID for balanced debit/credit)
-- **date**: ISO 8601 (2026-09-01 to 2026-11-27)
-- **account**: 1xxx (assets), 2xxx (liabilities), 4xxx (income), 5xxx (expense), or 1000 (bank)
-- **debit_cents/credit_cents**: Integer cents (no decimals)
-- **evidence**: Document reference or empty when no reference was supplied
-- **memo**: Description
-
-**Totals**: 194 unique transactions, 388 data rows + 1 header row, balanced. The parser also supports quoted commas and embedded newlines.
-
-### Accounts (24)
-
-**Bank**: 1000 Operating bank  
-**Assets**: 1010 Cash, 1020 Clearing, 1030 Inventory, 1040 Receivables, 1050 Equipment, 1060 Prepaid rent, 1090 Suspense  
-**Liabilities**: 2000 Trade payables, 2010 Sales tax, 2020 Bridge loan, 2030 Gift cards, 2040 Customer deposits  
-**Income**: 4000 Shop sales, 4010 Online sales, 4020 Workshop income, 4030 Other income  
-**Expense**: 5000 Rent, 5010 Payroll, 5020 Utilities, 5030 Supplies, 5040 Marketing, 5080 Dormant, 5090 Unverified
-
-### Sealed Evidence
-
-3 accounts have unmapped transactions totaling $27,600:
-- **1090 Suspense reserve**: $12,800
-- **5080 Dormant maintenance**: $6,100
-- **5090 Unverified services**: $8,700
-
-**Note**: References (evidence column) are not proof of authenticity. This is a fictional demonstration.
-
-## Build & Run
-
-### Development
-
-```bash
-npm run dev
-```
-
-Starts local HTTP server (localhost, random port). Open browser to shown URL. Import CSV or load samples.
-
-### Build
+Use Node.js 22 and npm 10 (verified with Node.js 22.22.1 and npm 10.9.4). Run these commands from the repository root. The app has no packages to install.
 
 ```bash
 npm run build
+npm run dev
 ```
 
-Copies assets to `dist/` directory (index.html, src/*, journal.csv, samples/, bank-statement.json).
+Open the local address printed by the server. The original fictional journal loads on startup. Select a room to see its entries and references, then choose **Run auditor** to follow the evidence paths from the entrance. The original sample has three sealed rooms with $27,600 in entries to review. Choose **Evidence repaired** to see the same sample with its missing references filled in. Use **Export DXF** to download the current drawing. [Room details screenshot](artifacts/03-room-details.png)
 
-### Test
+You can also drop a journal CSV into the page. The header is `transaction,date,account,debit_cents,credit_cents,evidence,memo`. Each transaction ID has a debit row and a credit row with matching dates, amounts, evidence references, and memos. The bundled `journal.csv` contains 194 transactions across 388 data rows and 24 accounts. The parser supports quoted commas and embedded newlines. CSV parsing and DXF export run in the browser. Any static HTTP host can serve the files in `dist/`.
 
-```bash
-npm test
-```
+## How the plan works
 
-Runs Node.js built-in test runner (143 tests):
-- **Data validation** (62): CSV parsing, encoding, balance checks, evidence reachability
-- **Geometry** (36): Room layout, corridor placement, door gaps, wall segments
-- **DXF** (37): Wall canonicalization, layer consistency, DXF entity correctness
-- **Auditor** (8): Waypoint validity, segment containment, room visit order
+The operating bank is the central corridor, opening balances are the entrance, and rooms are arranged in asset, liability, income, and expense wings. Room size reflects gross activity, with a minimum size to keep small accounts readable. The auditor follows evidence-bearing paths from the bank and summarizes the accounts it could not reach. A supplied reference is treated as a reference only. The app does not verify the underlying document. The sample bank-statement matches are fictional.
 
-### Verify
+The DXF contains walls, door openings and swings, room labels, and sealed-room outlines at 50 mm per plan unit. One layout connection, Cash to Clearing, is routed through bank circulation. The plan prioritizes bank-rooted reachability over a direct doorway for every account pairing.
 
-```bash
-bash scripts/verify.sh
-```
+## How we used Kiro
 
-Browser verification uses an existing Playwright installation and standalone Chromium. This workspace reuses the installed Playwright package for testing only; no prototype application code is imported. Other machines can set `SEALED_PLAYWRIGHT` to a module file URL and `SEALED_CHROMIUM` to their existing browser executable.
+Kiro CLI 3.3.0 produced the requirements, design, and implementation tasks in `.kiro/specs/sealed-rooms/`. We used the spec to work through ledger validation and evidence reachability, room geometry and DXF export, then the browser and auditor walkthrough. Later Kiro tasks corrected DXF text placement, label fit and orientation. In task 8, Kiro added door swings, sealed-room hatching, and plan centering before reaching its monthly limit.
 
-## Features
+The product, technology, and structure steering files kept us working with fictional data, running locally, and using the plan’s door openings for the auditor’s path. The `PostFileSave` hook runs `npm test` when Kiro saves JavaScript under `src/` or `test/`. The repository includes 11 recorded hook runs in `artifacts/hook-events.jsonl`.
 
-### Floorplan
-
-- **Navy+chalk rendering**: Midnight background (#0b1526), chalk walls (stroke 3)
-- **Room fills**: Navy (reachable), burgundy (sealed)
-- **Door swings**: Teal dashed arcs showing swing area
-- **Bank windows**: Synthetic dashed rectangles for bank statement validation
-- **Grid**: Subtle drafting grid (50-unit spacing)
-- **Dimensions**: Bottom scale bar (100 units = 5m at 50mm/unit); room labels with amounts (sealed only)
-
-### CSV Import
-
-- **Drag/drop**: Drop any .csv file to import
-- **Samples**: Original journal.csv or Evidence-repaired sample
-- **Validation**: Inline error message on parse failure; preserves last valid layout
-- **Safe DOM**: All user input rendered via `textContent` (no HTML injection)
-
-### Auditor Walkthrough
-
-- **BFS path**: Shortest routes from entrance through non-sealed rooms
-- **Interpolated dot**: Follows polyline at ~900 plan-units/sec
-- **Reduced motion**: Completes in one frame if `prefers-reduced-motion` detected
-- **Statistics**: Shows count of unsealed rooms visited; final message lists rooms never entered and total sealed amount
-
-### DXF Export
-
-- **Format**: AutoCAD AC1015 (ASCII DXF format)
-- **Layers**: FLOOR (exterior), WALL (canonical segments), DOOR (openings), ROOM_NAME (labels), SEALED (unmapped)
-- **Scale**: 50mm per plan unit
-- **Units**: Millimeters
-- **Metadata**: Drawing size, layer colors, lineweight
-- **Validation**: Parser checks entity structure and layer consistency (no CAD application opened)
+We started from our November 17 proof of concept, made outside Kiro during the submission period. We reused its design concept and copied two fictional data files, `fixture.json` and `journal.csv`. We copied no application source from the proof of concept. Outside Kiro, we also reviewed and corrected the implementation, built the browser verification, and finished room-label sizing and spacing in task 8 after the limit was reached. The implementation history and `artifacts/provenance.json` record those contributions.
 
 ## Architecture
 
-### Modules
+- `data.js` parses the CSV, checks balanced entries, and finds evidence paths from the bank.
+- `geometry.js` places rooms, corridors, doors, and windows.
+- `renderer.js` draws the SVG plan, and `auditor.js` builds the path through its doors.
+- `dxf.js` exports the plan geometry, and `main.js` connects import, playback, and export to the browser controls.
 
-- **data.js**: CSV parsing, account lookup, evidence graph BFS, transaction derivation
-- **geometry.js**: Room placement (area ∝ gross amount), corridor layout, door/window generation
-- **dxf.js**: Wall canonicalization (union/dedup), DXF entity generation, layer management
-- **renderer.js**: SVG floorplan (navy fills, teal accents, drafting grid), auditor dot interpolation
-- **auditor.js**: BFS path construction (room↔corridor via door portals, corridor shared edges), waypoint generation
-- **main.js**: Event handling, CSV import, auditor animation (RAF + position interpolation), sidebar updates
+## Verify
 
-### Data Flow
-
-```
-journal.csv → parseCSV → balance check → evidence BFS
-                               ↓
-                  buildLayout(transactions)
-                               ↓
-                  applyBankStatements(layout)
-                               ↓
-        renderFloorplan + buildAuditWalk + buildDXF
+```bash
+npm test
+bash scripts/verify.sh
 ```
 
-## Known Limitations
-
-1. **Topology**: One account pair (1010↔1020) must route via bank circulation—no direct room-to-room door due to layout constraints.
-   The layout preserves bank-rooted evidence reachability and lists non-bank connections as routed limitations; it is not a general exact account-adjacency floorplan solver. Bank circulation space is excluded from the room-value area rule.
-2. **Minimum area**: All rooms ≥60×90 units; very small accounts are floor-sized.
-3. **Evidence validation**: Bank statement window validation is synthetic; no real banking data.
-4. **Offline only**: No external requests; bank windows and window data are generated fixtures.
-
-## Prior work
-
-Prior external work exists for design concepts and overall architecture. This implementation:
-- **Copied data**: Only fixture.json and journal.csv were copied from the prior non-Kiro proof. No application source code from `../proto` was copied.
-- **Kiro implementation**: Initial application logic, steering/specs, tests and hook setup were written through Kiro CLI 3.3.0, then reviewed and corrected as disclosed below.
-- **Externally supplied**: Overall concept and non-Kiro prototype
-- **Supervisor corrections**: Codex supervisor reviewed and corrected index.html, src/main.js, src/renderer.js, src/style.css, src/dxf.js; authored .gitignore, scripts/capture.mjs, scripts/verify.sh (see artifacts/provenance.json for exact line counts)
-
-This is a reconstructed implementation, not pure Kiro authorship.
+The first command runs the unit tests with Node.js. The second also builds the app and runs the browser walkthrough checks with Playwright and standalone Chromium. Set `SEALED_PLAYWRIGHT` to the file URL of your installed `playwright-core/index.mjs` and `SEALED_CHROMIUM` to your Chromium executable if you are using a different setup.
 
 ## License
 
-ISC (see LICENSE)
-
-Copyright (c) 2026 Sealed Rooms contributors
+ISC. See [LICENSE](LICENSE).
