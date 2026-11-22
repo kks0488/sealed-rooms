@@ -8,6 +8,8 @@ Sealed Rooms turns a double-entry journal into a floor plan so bookkeepers and s
 
 ## Try it
 
+Live demo: https://kks0488.github.io/sealed-rooms/ (runs entirely in your browser; all ledger data in this repository is fictional).
+
 Use Node.js 22 and npm 10 (verified with Node.js 22.22.1 and npm 10.9.4). Run these commands from the repository root. The app has no packages to install.
 
 ```bash
