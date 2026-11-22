@@ -1,0 +1,9 @@
+{
+  "_comment": "FICTIONAL bank statement records for Sealed Rooms demo. Used ONLY for window markers when evidence+cents+account match a posted transaction exactly. No inference from bank use alone.",
+  "records": [
+    { "evidence": "EV-0001", "cents": 18000,  "account": "1010" },
+    { "evidence": "EV-0012", "cents": 105109, "account": "1000" },
+    { "evidence": "EV-0017", "cents": 144704, "account": "5010" },
+    { "evidence": "EV-C2",   "cents": 345600, "account": "1020" }
+  ]
+}
