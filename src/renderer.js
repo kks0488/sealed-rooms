@@ -50,7 +50,7 @@ export function renderFloorplan(layout, selectedId = null, onSelect = null, audi
     viewBox: `${vbX} ${vbY} ${vbW} ${vbH}`,
     preserveAspectRatio: 'xMidYMid meet',
     class: 'floorplan',
-    style: `width: 100%; height: 100%; background: ${NAVY};`,
+    style: `background: ${NAVY};`,
   });
 
   // Defs: hatch pattern for sealed rooms

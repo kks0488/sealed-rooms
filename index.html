@@ -18,14 +18,14 @@
       <div class="control-section">
         <label for="csv-input" class="import-button">Import CSV</label>
         <input type="file" id="csv-input" accept=".csv" hidden />
-        <select id="sample-select">
-          <option value="">Load Sample...</option>
+        <select id="sample-select" aria-label="Sample ledger">
+          <option value="" disabled>Load Sample...</option>
           <option value="original">Original journal.csv</option>
           <option value="repaired">Evidence repaired</option>
         </select>
       </div>
       
-      <div class="control-section">
+      <div class="control-section room-picker">
         <label for="room-select">Select Room:</label>
         <select id="room-select">
           <option value="">-- All Rooms --</option>
