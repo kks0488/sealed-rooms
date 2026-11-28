@@ -19,8 +19,15 @@ import { buildAuditWalk } from './auditor.js';
 // Global state
 let currentLayout = null;
 let currentTransactions = null;
+let unreachableCents = 0;
 let currentBankStatement = null;
 let selectedRoomId = null;
+let currentSample = '';
+let ledgerLoadId = 0;
+
+const sealedAmountFormat = new Intl.NumberFormat('en-US', {
+  style: 'currency', currency: 'USD', maximumFractionDigits: 0,
+});
 
 // Auditor state: position is interpolated along waypoint polyline
 const auditState = {
@@ -76,6 +83,8 @@ async function init() {
     }
 
     currentTransactions = result.transactions;
+    unreachableCents = result.unreachableCents;
+    elements.sampleSelect.value = currentSample = 'original';
 
     // Build layout and apply bank statements
     currentLayout = buildLayout(currentTransactions);
@@ -281,11 +290,9 @@ function updateAuditorInfo() {
     p1.textContent = `✓ Walkthrough complete`;
     div.appendChild(p1);
 
-    const unreachable = currentLayout.rooms.filter(r => r.sealed);
-    const unvisitedCents = unreachable.reduce((sum, r) => sum + r.cents, 0);
     const p2 = document.createElement('p');
-    const dollars = (unvisitedCents / 100).toLocaleString('en-US', { maximumFractionDigits: 0 });
-    p2.textContent = `Rooms never entered: ${unreachable.length} — $${dollars}`;
+    const dollars = sealedAmountFormat.format(unreachableCents / 100);
+    p2.textContent = `Rooms never entered: ${currentLayout.sealedAccounts.length} — ${dollars}`;
     div.appendChild(p2);
 
     info.appendChild(div);
@@ -296,21 +303,20 @@ function updateAuditorInfo() {
  * Handle room selection from viewport
  */
 function onRoomSelect(roomId) {
-  cancelAudit();
+  if (auditState.state === 'walking') cancelAudit();
   selectedRoomId = roomId;
-  elements.roomSelect.value = roomId;
+  elements.roomSelect.value = roomId ?? '';
   renderLayout();
 }
 
 /**
  * Handle CSV file upload
  */
-async function handleCSVUpload(e) {
+function handleCSVUpload(e) {
   const file = e.target.files[0];
   if (!file) return;
 
-  const text = await file.text();
-  processCSVText(text);
+  loadLedger(() => file.text());
 }
 
 /**
@@ -320,27 +326,26 @@ function handleSampleSelect(e) {
   const choice = e.target.value;
   if (!choice) return;
 
-  if (choice === 'original') {
-    loadSample('./journal.csv', 'original journal');
-  } else if (choice === 'repaired') {
-    loadSample('./samples/sample-repaired.csv', 'repaired sample');
-  }
-
-  // Reset dropdown
-  e.target.value = '';
+  const url = choice === 'original' ? './journal.csv' : './samples/sample-repaired.csv';
+  loadLedger(async () => {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return res.text();
+  }, choice);
 }
 
 /**
- * Load sample CSV
+ * Load the latest requested ledger and keep the picker aligned with the active sample.
  */
-async function loadSample(url, name) {
+async function loadLedger(readCSV, sample = '') {
+  const loadId = ++ledgerLoadId;
   try {
-    const res = await fetch(url);
-    if (!res.ok) throw new Error(`Failed to load ${name}`);
-    const text = await res.text();
-    processCSVText(text);
+    const text = await readCSV();
+    if (loadId === ledgerLoadId) processCSVText(text, sample);
   } catch (err) {
-    showInlineError(`Failed to load ${name}: ${err.message}`);
+    if (loadId === ledgerLoadId) showInlineError(`Failed to load ledger: ${err.message}`);
+  } finally {
+    if (loadId === ledgerLoadId) elements.sampleSelect.value = currentSample;
   }
 }
 
@@ -360,26 +365,24 @@ function handleDragDrop(e) {
     return;
   }
 
-  file.text()
-    .then(text => processCSVText(text))
-    .catch(err => {
-      showInlineError(`Failed to read file: ${err.message}`);
-    });
+  loadLedger(() => file.text());
 }
 
 /**
  * Process CSV text and rebuild layout
  */
-function processCSVText(csvText) {
+function processCSVText(csvText, sample) {
   const result = processData(csvText);
   if (!result.valid) {
     showInlineError(`CSV validation failed: ${result.errors.join(', ')}`);
     return; // Preserve last valid layout
   }
 
+  const layout = buildLayout(result.transactions);
+  currentLayout = applyBankStatements(layout, currentBankStatement, result.transactions);
   currentTransactions = result.transactions;
-  currentLayout = buildLayout(currentTransactions);
-  currentLayout = applyBankStatements(currentLayout, currentBankStatement, currentTransactions);
+  unreachableCents = result.unreachableCents;
+  currentSample = sample;
 
   // Cancel any running auditor
   cancelAudit();
@@ -559,9 +562,7 @@ function updateDotOnly() {
  * Handle room selection from dropdown
  */
 function handleRoomSelect(e) {
-  cancelAudit();
-  selectedRoomId = e.target.value || null;
-  renderLayout();
+  onRoomSelect(e.target.value || null);
 }
 
 function selectedAccount() {
@@ -575,13 +576,11 @@ function selectedAccount() {
 
 function updateMetrics() {
   const accounts = new Set(currentTransactions.flatMap(t => [t.from, t.to]));
-  const sealed = currentLayout.rooms.filter(r => r.sealed);
-  const amount = sealed.reduce((sum, r) => sum + r.cents, 0);
   const values = [
     [currentTransactions.length, 'TRANSACTIONS'], [currentTransactions.length * 2, 'JOURNAL LINES'],
     [accounts.size, 'ACCOUNTS'], [currentLayout.reachableRooms.size + 1, 'CONNECTED'],
-    [sealed.length, 'SEALED ROOMS'],
-    [new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(amount / 100), 'IN SEALED ROOMS'],
+    [currentLayout.sealedAccounts.length, 'SEALED ROOMS'],
+    [sealedAmountFormat.format(unreachableCents / 100), 'IN SEALED ROOMS'],
   ];
   const metrics = document.getElementById('metrics');
   metrics.replaceChildren(...values.map(([value, label]) => {

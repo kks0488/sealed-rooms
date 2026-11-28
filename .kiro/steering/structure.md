@@ -18,7 +18,8 @@
 │   └── dxf.test.js
 ├── scripts/                 # Build and dev tools
 │   ├── server.js           # Local dev server
-│   └── build.js            # Production build script
+│   ├── build.js            # Production build script
+│   └── post-save.mjs       # Runs tests after a Kiro save
 ├── .kiro/                   # Kiro configuration
 │   ├── steering/           # Steering documents (this folder)
 │   │   ├── product.md
@@ -27,6 +28,8 @@
 │   ├── specs/              # Detailed specifications
 │   │   └── sealed-rooms/   # Sealed Rooms specific specs
 │   └── hooks/              # Kiro event hooks
+├── artifacts/               # Recorded evidence and verification output
+│   └── hook-events.jsonl    # Saved hook events and test exit codes
 ├── fixture.json             # Fictional transactions, entries and cases
 ├── journal.csv              # Accounting transactions
 ├── samples/                 # Sample CSV files
@@ -42,18 +45,14 @@
 .kiro/specs/sealed-rooms/
 ├── requirements.md         # Functional requirements
 ├── design.md              # Spatial design specifications
-├── validation.md          # Data validation rules
-├── auditor-rules.md       # Audit path logic
-└── dxf-spec.md            # DXF output format
+└── tasks.md                # Implementation tasks and completion notes
 ```
 
 ## .kiro/hooks/
 
 ```
 .kiro/hooks/
-├── message.js             # Runs on message send
-├── tool-call.js           # Runs on tool usage
-└── file-save.js           # Runs on file save
+└── test-on-save.json       # Runs scripts/post-save.mjs on PostFileSave
 ```
 
 ## Key Directories Explained

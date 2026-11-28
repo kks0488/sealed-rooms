@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
-# 시험: bash scripts/verify.sh
+# Verify: bash scripts/verify.sh
 set -euo pipefail
 cd "$(dirname "$0")/.."
-mkdir -p artifacts
-npm test > artifacts/test.tap 2>&1
-tail -10 artifacts/test.tap
+output_dir=${1:-artifacts}
+mkdir -p "$output_dir"
+npm test > "$output_dir/test.tap" 2>&1
+tail -10 "$output_dir/test.tap"
 for source in src/*.js scripts/*.js; do node --check "$source"; done
-npm run build > artifacts/build.log 2>&1
-cat artifacts/build.log
-node scripts/capture.mjs > artifacts/capture.log 2>&1
-cat artifacts/capture.log
+npm run build > "$output_dir/build.log" 2>&1
+cat "$output_dir/build.log"
+node scripts/capture.mjs "$@" > "$output_dir/capture.log" 2>&1
+cat "$output_dir/capture.log"

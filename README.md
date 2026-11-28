@@ -1,6 +1,6 @@
 # Sealed Rooms
 
-Sealed Rooms turns a double-entry journal into a floor plan so bookkeepers and small finance teams can see which accounts have no evidence path back to the operating bank. Each account is a room. References form doorways, and rooms the auditor cannot reach are marked as sealed.
+Sealed Rooms turns a double-entry journal into a floor plan so bookkeepers and small finance teams can see which accounts need supporting documents first. Each account is a room. References form doorways, and rooms the auditor cannot reach are marked as sealed. In the sample, room 5090 (Unverified services) shows an $8,700 entry with a missing reference.
 
 **Kiroween 2026 · Frankenstein** combines accounting journal entries and CAD floor plans. The same ledger drives an interactive browser walkthrough and a DXF drawing.
 
@@ -17,7 +17,7 @@ npm run build
 npm run dev
 ```
 
-Open the local address printed by the server. The original fictional journal loads on startup. Select a room to see its entries and references, then choose **Run auditor** to follow the evidence paths from the entrance. The original sample has three sealed rooms with $27,600 in entries to review. Choose **Evidence repaired** to see the same sample with its missing references filled in. Use **Export DXF** to download the current drawing. [Room details screenshot](artifacts/03-room-details.png)
+Open the local address printed by the server. The original fictional journal loads on startup. Choose **Run auditor** to follow the evidence paths from the entrance, then use the plan or **Select Room** to inspect the entries while the completed summary stays visible. The original sample has three sealed rooms with $27,600 in entries to review. A transaction touching two sealed rooms counts once in that total. Choose **Evidence repaired** to load the same journal with the missing references filled in. The picker shows the selected sample name, and the totals drop to zero sealed rooms and $0. Use **Export DXF** to download the current drawing. [Room details from the original walkthrough](artifacts/03-room-details.png)
 
 You can also drop a journal CSV into the page. The header is `transaction,date,account,debit_cents,credit_cents,evidence,memo`. Each transaction ID has a debit row and a credit row with matching dates, amounts, evidence references, and memos. The bundled `journal.csv` contains 194 transactions across 388 data rows and 24 accounts. The parser supports quoted commas and embedded newlines. CSV parsing and DXF export run in the browser. Any static HTTP host can serve the files in `dist/`.
 
@@ -31,9 +31,9 @@ The DXF contains walls, door openings and swings, room labels, and sealed-room o
 
 Kiro CLI 3.3.0 produced the requirements, design, and implementation tasks in `.kiro/specs/sealed-rooms/`. We used the spec to work through ledger validation and evidence reachability, room geometry and DXF export, then the browser and auditor walkthrough. Later Kiro tasks corrected DXF text placement, label fit and orientation. In task 8, Kiro added door swings, sealed-room hatching, and plan centering before reaching its monthly limit.
 
-The product, technology, and structure steering files kept us working with fictional data, running locally, and using the plan’s door openings for the auditor’s path. The `PostFileSave` hook runs `npm test` when Kiro saves JavaScript under `src/` or `test/`. The repository includes 11 recorded hook runs in `artifacts/hook-events.jsonl`.
+The product, technology, and structure steering files kept us working with fictional data, running locally, and using the plan’s door openings for the auditor’s path. The `PostFileSave` hook runs `npm test` when Kiro saves JavaScript under `src/` or `test/`. The repository includes 11 recorded hook runs in `artifacts/hook-events.jsonl`. When we split DXF room names into two lines, a save triggered a test that still expected one label per room. We updated the test for the two-line labels and the next run passed.
 
-We started from our November 17 proof of concept, made outside Kiro during the submission period. We reused its design concept and copied two fictional data files, `fixture.json` and `journal.csv`. We copied no application source from the proof of concept. Outside Kiro, we also reviewed and corrected the implementation, built the browser verification, and finished room-label sizing and spacing in task 8 after the limit was reached. The implementation history and `artifacts/provenance.json` record those contributions.
+We started from our November 17 proof of concept, made outside Kiro during the submission period. We reused its design concept and two fictional data files, a transaction list and a journal. We copied no application source from the proof of concept. Outside Kiro, we also reviewed and corrected the implementation, built the browser verification, and finished room-label sizing and spacing in task 8 after the limit was reached. The implementation history and `artifacts/provenance.json` record those contributions.
 
 ## Architecture
 

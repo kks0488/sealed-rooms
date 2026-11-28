@@ -8,13 +8,14 @@ import { processData } from '../src/data.js';
 import { buildLayout } from '../src/geometry.js';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
-const shots = path.resolve(root, '../shots2');
-const artifacts = path.join(root, 'artifacts');
+const shots = process.argv[2] ? path.resolve(process.argv[2]) : path.resolve(root, '../shots');
+const artifacts = process.argv[2] ? shots : path.join(root, 'artifacts');
 const modulePath = process.env.SEALED_PLAYWRIGHT || new URL('../../proto/node_modules/playwright-core/index.mjs', import.meta.url).href;
 const { chromium } = await import(modulePath);
 await mkdir(shots, { recursive: true });
 await mkdir(artifacts, { recursive: true });
 const csv = await readFile(path.join(root, 'journal.csv'), 'utf8');
+const betweenSealedRooms = `${csv.trimEnd()}\nJ0195,2026-09-01,5090,10000,0,,Audit regression\nJ0195,2026-09-01,5080,0,10000,,Audit regression\n`;
 const layout = buildLayout(processData(csv).transactions);
 const entrance = layout.corridors.find(c => c.id === 'ENTRANCE');
 const start = { x: entrance.x + entrance.w / 2, y: entrance.y + entrance.h / 2 };
@@ -22,6 +23,14 @@ const checks = [];
 function check(name, condition, detail) {
   checks.push({ name, pass: Boolean(condition), ...(detail === undefined ? {} : { detail }) });
   assert.ok(condition, name + (detail === undefined ? '' : ': ' + JSON.stringify(detail)));
+}
+async function exportDxf(page, filename) {
+  const pending = page.waitForEvent('download');
+  await page.locator('#export-dxf-btn').click();
+  const download = await pending;
+  const saved = path.join(artifacts, filename);
+  await download.saveAs(saved);
+  return { name: download.suggestedFilename(), contents: await readFile(saved, 'utf8') };
 }
 const srv = spawn(process.execPath, ['scripts/server.js'], { cwd: root,
   env: { ...process.env, PORT: '0' }, stdio: ['ignore', 'pipe', 'pipe'] });
@@ -40,10 +49,13 @@ try {
     args: ['--no-sandbox'] });
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 }, locale: 'en-US', acceptDownloads: true });
   const errors = [], external = [], httpFailures = [];
-  page.on('pageerror', e => errors.push(e.message));
-  page.on('console', m => { if (m.type() === 'error') errors.push(m.text()); });
-  page.on('request', r => { if (/^https?:/.test(r.url()) && !r.url().startsWith(origin + '/')) external.push(r.url()); });
-  page.on('response', r => { if (r.status() >= 400) httpFailures.push({ url: r.url(), status: r.status() }); });
+  function watch(page) {
+    page.on('pageerror', e => errors.push(e.message));
+    page.on('console', m => { if (m.type() === 'error') errors.push(m.text()); });
+    page.on('request', r => { if (/^https?:/.test(r.url()) && !r.url().startsWith(origin + '/')) external.push(r.url()); });
+    page.on('response', r => { if (r.status() >= 400) httpFailures.push({ url: r.url(), status: r.status() }); });
+  }
+  watch(page);
   await page.goto(origin, { waitUntil: 'networkidle' });
   const dot = page.locator('[data-testid="auditor-dot"]');
   const position = () => dot.evaluate(el => ({ x: Number(el.getAttribute('cx')), y: Number(el.getAttribute('cy')) }));
@@ -58,6 +70,7 @@ try {
 
   check('23 leaf rooms plus bank = 24 accounts', await page.locator('[data-room-id]').count() === 23);
   check('original ledger totals', JSON.stringify(await summary()) === JSON.stringify(['194', '388', '24', '21', '3', '$27,600']), await summary());
+  check('original sample is shown on startup', await page.locator('#sample-select option:checked').innerText() === 'Original journal.csv');
   check('auditor exists at entrance before running', await dot.count() === 1 && JSON.stringify(await position()) === JSON.stringify(start));
   check('night paper', await page.locator('#viewport svg').evaluate(el => getComputedStyle(el).backgroundColor) === 'rgb(11, 21, 38)');
   check('entrance, bank and wings labelled', (await page.locator('#viewport').innerText()).includes('OPENING BALANCES') && (await page.locator('#viewport').innerText()).includes('OPERATING BANK'));
@@ -143,11 +156,13 @@ try {
   console.log('Waiting for real continuous tour to finish…');
   await page.waitForFunction(() => document.querySelector('#auditor-info').dataset.state === 'complete', {}, { timeout: 90000 });
   check('original completion 3 / $27,600', (await page.locator('#auditor-info').innerText()).includes('Rooms never entered: 3 — $27,600'));
+  const completedPosition = await position();
+  await page.screenshot({ path: path.join(shots, '02-auditor-complete.png') });
 
   await page.locator('[data-room-id="5090"]').click();
   const detail = await page.locator('.sidebar').innerText();
   check('sealed room explains exact missing transaction', detail.includes('J0181') && detail.includes('No evidence reference supplied') && detail.includes('8700'));
-  check('room selection cancels and resets auditor', await state() === 'idle' && JSON.stringify(await position()) === JSON.stringify(start));
+  check('room selection keeps the completed audit and final dot', await state() === 'complete' && (await page.locator('#auditor-info').innerText()).includes('Rooms never entered: 3 — $27,600') && JSON.stringify(await position()) === JSON.stringify(completedPosition));
   await page.screenshot({ path: path.join(shots, '03-room-details.png') });
   await page.locator('[data-room-id="5090"]').focus();
   await page.keyboard.press('Enter');
@@ -155,11 +170,7 @@ try {
   await page.locator('[data-account-id="1000"]').first().click();
   check('bank corridor opens its source transactions', (await page.locator('#room-details').innerText()).includes('Operating bank') && await page.locator('#transaction-list .transaction-row').count() === 193);
 
-  const downloadPromise = page.waitForEvent('download');
-  await page.locator('#export-dxf-btn').click();
-  const download = await downloadPromise;
-  await download.saveAs(path.join(artifacts, 'browser-export.dxf'));
-  const dxf = await readFile(path.join(artifacts, 'browser-export.dxf'), 'utf8');
+  const { contents: dxf } = await exportDxf(page, 'browser-export.dxf');
   const lines = dxf.trim().split(/\r?\n/), pairs = [];
   for (let i = 0; i < lines.length; i += 2) pairs.push({ code: Number(lines[i]), value: lines[i + 1] });
   const unitAt = pairs.findIndex(p => p.code === 9 && p.value === '$INSUNITS');
@@ -174,14 +185,26 @@ try {
   await page.locator('#sample-select').selectOption('repaired');
   await page.waitForFunction(() => document.querySelectorAll('#metrics strong')[4]?.textContent === '0');
   check('sample import cancels old tour and opens all accounts', await state() === 'idle' && (await summary())[3] === '24' && (await summary())[5] === '$0');
+  check('sample picker retains Evidence repaired', await page.locator('#sample-select option:checked').innerText() === 'Evidence repaired');
+  await page.screenshot({ path: path.join(shots, '04-evidence-repaired.png') });
+  const repairedDxf = await exportDxf(page, 'desktop-repaired.dxf');
+  check('desktop exports the repaired plan', repairedDxf.name === 'floorplan.dxf' && repairedDxf.contents.trimEnd().endsWith('\nEOF') && repairedDxf.contents !== dxf, { filename: repairedDxf.name, bytes: Buffer.byteLength(repairedDxf.contents) });
+  await page.screenshot({ path: path.join(shots, '05-dxf-export.png') });
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.locator('#auditor-toggle').click();
   await page.waitForFunction(() => document.querySelector('#auditor-info').dataset.state === 'complete');
   check('reduced motion and repaired completion 0 / $0', (await page.locator('#auditor-info').innerText()).includes('Rooms never entered: 0 — $0'));
+
+  await drop(betweenSealedRooms);
+  await page.waitForFunction(() => document.querySelector('#metrics strong')?.textContent === '195');
+  check('$100 between sealed rooms adds $100 to the header', (await summary()).slice(-2).join(' / ') === '3 / $27,700', await summary());
+  await page.locator('#auditor-toggle').click();
+  await page.waitForFunction(() => document.querySelector('#auditor-info').dataset.state === 'complete');
+  check('$100 between sealed rooms adds $100 to the audit summary', (await page.locator('#auditor-info').innerText()).includes('Rooms never entered: 3 — $27,700'));
   await page.emulateMedia({ reducedMotion: 'no-preference' });
 
   await drop(csv);
-  await page.waitForFunction(() => document.querySelectorAll('#metrics strong')[4]?.textContent === '3');
+  await page.waitForFunction(() => document.querySelector('#metrics strong')?.textContent === '194');
   check('drag/drop reconstructs original plan', JSON.stringify(await summary()) === JSON.stringify(['194', '388', '24', '21', '3', '$27,600']));
   const widthBefore = await page.locator('[data-room-id="1010"] rect').first().getAttribute('width');
   const changedLines = csv.split('\n');
@@ -196,6 +219,55 @@ try {
   await drop(csv.replaceAll('Scheduled posting / Petty cash', '<img src=x onerror=window.__auditXss=1>'));
   await page.waitForTimeout(200); await page.locator('[data-room-id="1010"]').click();
   check('CSV text cannot inject HTML', await page.locator('.sidebar img').count() === 0 && await page.evaluate(() => window.__auditXss !== 1) && (await page.locator('.sidebar').innerText()).includes('<img'));
+
+  const mobile = await browser.newPage({ viewport: { width: 393, height: 852 }, isMobile: true, hasTouch: true, locale: 'en-US', acceptDownloads: true });
+  watch(mobile);
+  await mobile.goto(origin, { waitUntil: 'networkidle' });
+  const mobileLayout = await mobile.evaluate(() => {
+    const box = selector => document.querySelector(selector).getBoundingClientRect();
+    const metric = box('#metrics div:last-child');
+    const picker = box('#room-select');
+    const plan = box('.floorplan');
+    const viewport = box('#viewport');
+    const { width, height } = document.querySelector('.floorplan').viewBox.baseVal;
+    return {
+      pageWidth: document.documentElement.scrollWidth,
+      metricFits: metric.left >= 0 && metric.right <= innerWidth && metric.bottom <= innerHeight,
+      pickerHeight: picker.height,
+      pickerFont: parseFloat(getComputedStyle(document.querySelector('#room-select')).fontSize),
+      planFits: plan.width === innerWidth && Math.abs(plan.height - plan.width * height / width) < 1 && Math.abs(viewport.bottom - plan.bottom) < 1,
+    };
+  });
+  check('393px first screen shows $27,600 without horizontal overflow', mobileLayout.pageWidth === 393 && mobileLayout.metricFits && await mobile.locator('#metrics div:last-child strong').innerText() === '$27,600', mobileLayout);
+  check('mobile plan fits width with no extra panel height', mobileLayout.planFits);
+  check('mobile room picker has full account labels and a readable touch target', mobileLayout.pickerHeight >= 44 && mobileLayout.pickerFont >= 16 && (await mobile.locator('#room-select option[value="5090"]').innerText()).includes('Unverified services'));
+  await mobile.screenshot({ path: path.join(shots, 'mobile-01-floorplan.png') });
+
+  await mobile.locator('#auditor-toggle').tap();
+  await mobile.waitForFunction(() => document.querySelector('#auditor-info').dataset.state === 'walking');
+  await mobile.screenshot({ path: path.join(shots, 'mobile-02-auditor-walking.png') });
+  await mobile.waitForFunction(() => document.querySelector('#auditor-info').dataset.state === 'complete', {}, { timeout: 90000 });
+  await mobile.screenshot({ path: path.join(shots, 'mobile-02-auditor-complete.png') });
+  await mobile.locator('#room-select').selectOption('5090');
+  const phoneDetail = await mobile.locator('.sidebar').innerText();
+  const phoneAudit = await mobile.locator('#auditor-info').innerText();
+  check('mobile 5090 picker reveals the missing $8,700 entry and retains the audit', phoneDetail.includes('Unverified services') && phoneDetail.includes('8700') && phoneDetail.includes('J0181') && phoneDetail.includes('Reference: missing') && phoneAudit.includes('Rooms never entered: 3 — $27,600'));
+  const phoneSidebar = await mobile.evaluate(() => {
+    const sidebar = document.querySelector('.sidebar').getBoundingClientRect();
+    const plan = document.querySelector('.floorplan').getBoundingClientRect();
+    return { width: sidebar.width, gap: sidebar.top - plan.bottom, pageWidth: document.documentElement.scrollWidth };
+  });
+  check('selected mobile sidebar spans the screen directly below the plan', phoneSidebar.width === 393 && phoneSidebar.pageWidth === 393 && phoneSidebar.gap >= 0 && phoneSidebar.gap <= 2, phoneSidebar);
+  await mobile.screenshot({ path: path.join(shots, 'mobile-03-room-details.png'), fullPage: true });
+
+  await mobile.locator('#sample-select').selectOption('repaired');
+  await mobile.waitForFunction(() => document.querySelector('#metrics div:last-child strong').textContent === '$0');
+  check('mobile repaired ledger shows its name and zero sealed rooms', await mobile.locator('#sample-select option:checked').innerText() === 'Evidence repaired' && await mobile.locator('#metrics div:nth-last-child(2) strong').innerText() === '0');
+  await mobile.screenshot({ path: path.join(shots, 'mobile-04-evidence-repaired.png') });
+  const mobileDxf = await exportDxf(mobile, 'mobile-repaired.dxf');
+  check('mobile exports the same repaired DXF as desktop', mobileDxf.name === repairedDxf.name && mobileDxf.contents === repairedDxf.contents, { filename: mobileDxf.name, bytes: Buffer.byteLength(mobileDxf.contents) });
+  await mobile.screenshot({ path: path.join(shots, 'mobile-05-dxf-export.png') });
+
   check('no outside requests', external.length === 0, external);
   check('no browser or HTTP errors', errors.length === 0 && httpFailures.length === 0, { errors, httpFailures });
   console.log(`Browser checks ${checks.length}/${checks.length} passed`);

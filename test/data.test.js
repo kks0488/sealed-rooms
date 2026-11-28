@@ -319,6 +319,17 @@ test('fixture: 2760000 cents in unreachable transactions', () => {
   assert.equal(result.unreachableCents, 2760000);
 });
 
+test('counts a transaction between two unreachable accounts only once', () => {
+  const [, debit, credit] = minimalCSV({
+    id: 'J0195', acc_deb: '5090', acc_cre: '5080', amount: '10000', evidence: '',
+  }).split('\n');
+  const result = processData(`${journalCSV.trimEnd()}\n${debit}\n${credit}\n`);
+  assert.equal(result.valid, true);
+  assert.equal(result.txCount, 195);
+  assert.equal(result.unreachableAccounts.size, 3);
+  assert.equal(result.unreachableCents, 2770000);
+});
+
 // ---- sample-repaired.csv: 0 unreachable ------------------------------------
 
 const repairedPath = new URL('../samples/sample-repaired.csv', import.meta.url);
